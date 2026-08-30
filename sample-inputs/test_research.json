@@ -1,0 +1,17 @@
+{
+  "documentTitle": "Clinical Diagnostic Performance Analysis of SparseCross-ViT",
+  "publishedDate": "2026-08-20",
+  "leadResearchers": ["Dr. Elena Vance", "Marcus Thorne"],
+  "institution": "Center for Advanced Medical Machine Learning",
+  "abstract": "We present SparseCross-ViT, an asymmetric cross-attention vision transformer that reduces self-attention memory overhead by 64% while maintaining 98.4% top-1 diagnostic accuracy across 120,000 multi-label chest radiograph scans.",
+  "performanceMetrics": {
+    "memoryOverheadReduction": "64%",
+    "top1DiagnosticAccuracy": "98.4%",
+    "inferenceLatencyMs": "42ms",
+    "totalValidationScans": 120000
+  },
+  "conclusions": [
+    "Dynamic token pruning decouples contextual pooling from local spatial extraction without diagnostic quality loss.",
+    "Enables real-time point-of-care clinical inference on standard hospital edge workstations."
+  ]
+}

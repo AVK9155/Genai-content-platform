@@ -1,0 +1,6 @@
+Feature	Baseline Model	SparseCross-ViT	Improvement
+Memory Overhead (GB)	18.4 GB	6.6 GB	-64.1%
+Inference Latency (ms)	128 ms	42 ms	-67.2%
+Top-1 Diagnostic Accuracy	96.3%	98.4%	+2.1%
+Parameters (Millions)	142M	88M	-38.0%
+Hardware Requirement	Datacenter GPU	Clinical Edge PC	Local Edge Compatible

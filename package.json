@@ -1,0 +1,18 @@
+{
+  "name": "jal-suraksha",
+  "version": "1.0.0",
+  "description": "Water-Borne Disease Early Warning System for Northeast India",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "db:generate": "cd backend && npx prisma generate",
+    "db:push": "cd backend && npx prisma db push",
+    "db:seed": "cd backend && npm run seed",
+    "db:reset": "cd backend && npx prisma db push --force-reset && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

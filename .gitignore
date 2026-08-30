@@ -1,0 +1,47 @@
+# ─── Node & NPM ──────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ─── Environment & Secrets ───────────────────────
+.env
+.env.local
+.env.production
+backend-genai/.env
+
+# ─── Build Outputs ───────────────────────────────
+dist/
+build/
+.next/
+
+# ─── Database ────────────────────────────────────
+*.db
+*.sqlite
+prisma/dev.db
+backend-genai/prisma/*.db
+
+# ─── Logs ────────────────────────────────────────
+*.log
+logs/
+
+# ─── OS Junk ─────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE / Editor ────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+
+# ─── Zip Archives (large test files) ─────────────
+*.zip
+
+# ─── Temp / Cache ────────────────────────────────
+.cache/
+.tmp/
+tmp/
+
+# ─── Data stores (auto-created) ──────────────────
+backend-genai/data/*.json

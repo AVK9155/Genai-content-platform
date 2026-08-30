@@ -1,0 +1,15 @@
+1
+00:00:00,500 --> 00:00:04,200
+Welcome back to The Growth Blueprint. Today we are breaking down why SaaS companies fail their pricing models.
+
+2
+00:00:04,500 --> 00:00:09,100
+Most founders think pricing is about matching competitors, but it is really about aligning your value metric with customer success.
+
+3
+00:00:09,500 --> 00:00:15,000
+If you charge per seat when your product creates value through automated background tasks, you disincentivize team adoption.
+
+4
+00:00:15,500 --> 00:00:21,300
+In our portfolio, switching from seat-based tiers to usage-correlated pricing increased net revenue retention from 104% to 138%.
