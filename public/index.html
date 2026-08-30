@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GENAI — One Input. Infinite Content.</title>
+  <title>GENAI Ã¢â‚¬â€ One Input. Infinite Content.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -1327,7 +1327,7 @@
       color: var(--ink-dim);
       background: transparent;
       border: none;
-    /* ── User Account Badge & Sign Out ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ User Account Badge & Sign Out Ã¢â€â‚¬Ã¢â€â‚¬ */
     .account-pill {
       display: flex;
       align-items: center;
@@ -2204,7 +2204,7 @@
       font-weight: 500;
     }
 
-    /* ═══════════ LIVE PLATFORM MOCKUPS CSS ═══════════ */
+    /* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â LIVE PLATFORM MOCKUPS CSS Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
     .mockup-toggle-btn {
       font-family: var(--font-mono);
       font-size: 10.5px;
@@ -2489,47 +2489,7 @@
     .faq-q:hover { background: rgba(255,255,255,0.05); }
     .faq-a { padding: 14px 18px; font-size: 13px; line-height: 1.7; color: var(--ink-dim); border-top: 1px solid var(--line); white-space: pre-wrap; }
 
-    /* ── AUDIO VOICEOVER STUDIO ── */
-    #ttsStudio {
-      position: fixed; bottom: 24px; right: 24px; z-index: 1200;
-      background: #12121f; border: 1px solid rgba(155,107,255,.5);
-      border-radius: 20px; padding: 20px 22px; width: 340px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.7), 0 0 40px rgba(155,107,255,.15);
-      display: none; flex-direction: column; gap: 12px;
-      font-family: var(--font-body);
-      transition: transform .3s ease, opacity .3s ease;
-    }
-    #ttsStudio.open { display: flex; animation: slideUpFade .3s ease; }
-    @keyframes slideUpFade { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-    .tts-header { display:flex; justify-content:space-between; align-items:center; }
-    .tts-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color:#fff; display:flex; align-items:center; gap:7px; }
-    .tts-close { background:transparent; border:1px solid rgba(255,255,255,.12); color:#aaa; width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:13px; display:flex; align-items:center; justify-content:center; transition:.15s; }
-    .tts-close:hover { background:rgba(255,255,255,.08); color:#fff; }
-    .tts-label { font-size:11px; font-family: var(--font-mono); text-transform:uppercase; letter-spacing:.07em; color: var(--ink-dim); margin-bottom:3px; }
-    .tts-select { width:100%; background:#1a1a2e; border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:8px 12px; color:#e8e8f0; font-size:13px; outline:none; }
-    .tts-progress-wrap { background:rgba(255,255,255,.06); border-radius:100px; height:4px; overflow:hidden; margin: 2px 0; }
-    .tts-progress-bar { height:100%; background: linear-gradient(90deg, var(--violet), var(--cyan)); width:0%; transition: width .4s linear; border-radius:100px; }
-    .tts-controls { display:flex; gap:8px; justify-content:center; }
-    .tts-ctrl-btn { flex:1; background:rgba(155,107,255,.15); border:1px solid rgba(155,107,255,.3); color:#c4a8ff; border-radius:10px; padding:9px 6px; font-size:13px; font-weight:600; cursor:pointer; transition:.15s; }
-    .tts-ctrl-btn:hover { background:rgba(155,107,255,.3); color:#fff; }
-    .tts-ctrl-btn.primary { background:var(--violet); border-color:var(--violet); color:#fff; }
-    .tts-ctrl-btn.primary:hover { background:#b07fff; }
-    .tts-slider-row { display:flex; align-items:center; gap:10px; font-size:12px; color:var(--ink-dim); }
-    .tts-slider-row input[type=range] { flex:1; accent-color: var(--violet); }
-    .tts-word { font-size:12px; color: var(--ink-dimmer); font-family: var(--font-mono); text-align:center; min-height:16px; }
-    .tts-snip { font-size:12px; color: var(--ink-dim); line-height:1.5; border:1px solid var(--line); border-radius:8px; padding:8px 10px; max-height:56px; overflow:hidden; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; }
 
-    /* ── ZIP EXPORT BUTTON ── */
-    .zip-btn {
-      background: linear-gradient(135deg, rgba(155,107,255,.2), rgba(63,227,208,.15));
-      border: 1px solid rgba(155,107,255,.4);
-      color: #c4a8ff; border-radius: 10px;
-      padding: 8px 14px; font-size: 12.5px; font-weight: 600;
-      cursor: pointer; transition: .2s;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .zip-btn:hover { background: linear-gradient(135deg, rgba(155,107,255,.4), rgba(63,227,208,.3)); color:#fff; border-color:var(--violet); }
-    .zip-btn.loading { opacity:.6; pointer-events:none; }
   </style>
 </head>
 
@@ -2540,59 +2500,19 @@
   <div class="glow-a"></div>
   <div class="glow-b"></div>
 
-  <!-- ═══ TTS VOICEOVER STUDIO ════════════════════════════════════════════ -->
-  <div id="ttsStudio" role="dialog" aria-label="Audio Voiceover Studio" aria-modal="true">
-    <div class="tts-header">
-      <div class="tts-title">🔊 <span>Voiceover Studio</span></div>
-      <button class="tts-close" onclick="closeTtsStudio()" title="Close">✕</button>
-    </div>
-    <div class="tts-snip" id="ttsSnippet">Select a format and click Listen to begin…</div>
-    <div class="tts-progress-wrap">
-      <div class="tts-progress-bar" id="ttsBar"></div>
-    </div>
-    <div class="tts-word" id="ttsWordDisplay"></div>
 
-    <div class="tts-controls">
-      <button class="tts-ctrl-btn" onclick="ttsSkipBack()" title="Skip back 10s">⏮ −10s</button>
-      <button class="tts-ctrl-btn primary" id="ttsPlayBtn" onclick="ttsTogglePlay()">▶ Play</button>
-      <button class="tts-ctrl-btn" onclick="ttsStop()" title="Stop">⏹ Stop</button>
-    </div>
 
-    <div>
-      <div class="tts-label">Voice</div>
-      <select class="tts-select" id="ttsVoiceSelect" onchange="ttsApplyVoice()">
-        <option value="">Loading voices…</option>
-      </select>
-    </div>
-
-    <div>
-      <div class="tts-slider-row">
-        <span>Speed</span>
-        <input type="range" id="ttsSpeedSlider" min="0.5" max="2" step="0.25" value="1" oninput="ttsApplyRate()">
-        <span id="ttsSpeedVal" style="min-width:30px;">1×</span>
-      </div>
-    </div>
-
-    <div>
-      <div class="tts-slider-row">
-        <span>Pitch</span>
-        <input type="range" id="ttsPitchSlider" min="0.5" max="2" step="0.1" value="1" oninput="ttsApplyPitch()">
-        <span id="ttsPitchVal" style="min-width:30px;">1.0</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ COLLABORATION MODALS ═══════════════════════════════════════════ -->
+  <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â COLLABORATION MODALS Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
 
 
   <!-- Share Modal -->
   <div id="shareModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;" class="collab-overlay hidden">
     <div style="background:#12121f;border:1px solid rgba(139,92,246,.4);border-radius:20px;padding:32px;max-width:480px;width:90%;position:relative;">
-      <button onclick="document.getElementById('shareModal').classList.add('hidden')" style="position:absolute;top:14px;right:14px;background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px;">🔗 Share this Session</div>
+      <button onclick="document.getElementById('shareModal').classList.add('hidden')" style="position:absolute;top:14px;right:14px;background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">Ã¢Å“â€¢</button>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px;">Ã°Å¸â€â€” Share this Session</div>
       <div style="color:#9090b0;font-size:13px;margin-bottom:20px;">Anyone with this link can view the generated outputs and leave comments.</div>
       <div style="display:flex;gap:8px;margin-bottom:16px;">
-        <input id="shareLinkInput" readonly style="flex:1;background:#1a1a2e;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;color:#e8e8f0;font-size:13px;outline:none;" placeholder="Generating link…"/>
+        <input id="shareLinkInput" readonly style="flex:1;background:#1a1a2e;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;color:#e8e8f0;font-size:13px;outline:none;" placeholder="Generating linkÃ¢â‚¬Â¦"/>
         <button id="copyShareBtn" onclick="copyShareLink()" style="background:#8b5cf6;color:#fff;border:none;padding:11px 18px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;white-space:nowrap;transition:.2s;">Copy</button>
       </div>
       <div style="display:flex;gap:8px;">
@@ -2600,7 +2520,7 @@
         <button onclick="createShare()" style="background:transparent;border:1px solid rgba(139,92,246,.5);color:#8b5cf6;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;transition:.2s;">Regenerate</button>
       </div>
       <div id="shareOpenBtn" style="display:none;margin-top:14px;">
-        <button onclick="openShareUrl()" style="width:100%;background:linear-gradient(135deg,#8b5cf6,#3fe3d0);color:#fff;border:none;padding:12px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600;">Open Shared View →</button>
+        <button onclick="openShareUrl()" style="width:100%;background:linear-gradient(135deg,#8b5cf6,#3fe3d0);color:#fff;border:none;padding:12px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600;">Open Shared View Ã¢â€ â€™</button>
       </div>
     </div>
   </div>
@@ -2608,8 +2528,8 @@
   <!-- Team Workspace Modal -->
   <div id="teamModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);" class="collab-overlay hidden">
     <div style="background:#12121f;border:1px solid rgba(63,227,208,.3);border-radius:20px;padding:32px;max-width:560px;width:90%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-height:85vh;overflow-y:auto;">
-      <button onclick="document.getElementById('teamModal').classList.add('hidden')" style="position:absolute;top:14px;right:14px;background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:4px;">👥 Team Workspace</div>
+      <button onclick="document.getElementById('teamModal').classList.add('hidden')" style="position:absolute;top:14px;right:14px;background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">Ã¢Å“â€¢</button>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:4px;">Ã°Å¸â€˜Â¥ Team Workspace</div>
       <div style="color:#9090b0;font-size:13px;margin-bottom:24px;">Shared brand voice profiles available to all team members.</div>
       <div id="teamProfilesList" style="margin-bottom:20px;display:flex;flex-direction:column;gap:10px;"></div>
       <div style="border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px;">
@@ -2622,7 +2542,7 @@
           <option value="marketing">Marketing / persuasive</option>
           <option value="technical">Technical</option>
         </select>
-        <textarea id="tpNotes" placeholder="Voice notes: vocabulary, example lines, reading level…" style="width:100%;background:#1a1a2e;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;color:#e8e8f0;font-size:13px;outline:none;height:80px;resize:none;margin-bottom:10px;"></textarea>
+        <textarea id="tpNotes" placeholder="Voice notes: vocabulary, example lines, reading levelÃ¢â‚¬Â¦" style="width:100%;background:#1a1a2e;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;color:#e8e8f0;font-size:13px;outline:none;height:80px;resize:none;margin-bottom:10px;"></textarea>
         <input id="tpAuthor" placeholder="Your name (optional)" style="width:100%;background:#1a1a2e;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;color:#e8e8f0;font-size:13px;outline:none;margin-bottom:10px;"/>
         <button onclick="saveTeamProfile()" style="width:100%;background:#3fe3d0;color:#0c0c18;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.04em;">Save Team Profile</button>
       </div>
@@ -2632,8 +2552,8 @@
   <!-- Version History Drawer -->
   <div id="versionDrawer" style="position:fixed;right:-420px;top:0;bottom:0;width:380px;background:#12121f;border-left:1px solid rgba(139,92,246,.3);z-index:998;transition:.3s ease;padding:24px;overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.5);">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;">🕐 Version History</div>
-      <button onclick="closeVersionDrawer()" style="background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">✕</button>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;">Ã°Å¸â€¢Â Version History</div>
+      <button onclick="closeVersionDrawer()" style="background:transparent;border:1px solid rgba(255,255,255,.1);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;">Ã¢Å“â€¢</button>
     </div>
     <div id="versionFmtLabel" style="font-size:11px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:#8b5cf6;margin-bottom:16px;"></div>
     <div id="versionList" style="display:flex;flex-direction:column;gap:10px;"></div>
@@ -2663,7 +2583,7 @@
         <button type="button" class="nav-jump" data-target="use-cases">Use Cases</button>
       </div>
       <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
-        <button class="nav-cta" id="navLaunchBtn" type="button">Sign In / Launch Platform →</button>
+        <button class="nav-cta" id="navLaunchBtn" type="button">Sign In / Launch Platform Ã¢â€ â€™</button>
       </div>
     </nav>
 
@@ -2672,10 +2592,10 @@
       <div class="hero-content">
         <div class="eyebrow" style="justify-content:center;">Gen AI Content Transformation</div>
         <h1>TRANSFORM CONTENT.<br><span class="line2">AUTOMATICALLY.</span></h1>
-        <p class="sub">Turn one piece of content into dozens of high-quality, on-brand formats — powered by generative
+        <p class="sub">Turn one piece of content into dozens of high-quality, on-brand formats Ã¢â‚¬â€ powered by generative
           AI, reviewed by you before anything publishes.</p>
         <div class="hero-btns">
-          <button class="btn-primary" id="heroStartBtn" type="button">Start Transforming →</button>
+          <button class="btn-primary" id="heroStartBtn" type="button">Start Transforming Ã¢â€ â€™</button>
           <button type="button" class="btn-ghost nav-jump" data-target="features">Explore the Platform</button>
         </div>
       </div>
@@ -2684,17 +2604,17 @@
 
     <section class="pipeline" id="pipeline">
       <div class="wrap">
-        <div class="eyebrow" style="justify-content:center;">One Input → AI Core → Many Outputs</div>
+        <div class="eyebrow" style="justify-content:center;">One Input Ã¢â€ â€™ AI Core Ã¢â€ â€™ Many Outputs</div>
         <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(24px,3.4vw,38px);">Watch a single
           source become a full content set</h2>
         <div class="pipe-row">
           <div class="pipe-doc"><small>Source</small>research-paper.pdf</div>
-          <div class="pipe-arrow" aria-hidden="true">→</div>
+          <div class="pipe-arrow" aria-hidden="true">Ã¢â€ â€™</div>
           <div style="text-align:center;">
             <div class="pipe-core"></div>
-            <div class="pipe-status">Analyzing · Extracting · Generating</div>
+            <div class="pipe-status">Analyzing Ã‚Â· Extracting Ã‚Â· Generating</div>
           </div>
-          <div class="pipe-arrow" aria-hidden="true">→</div>
+          <div class="pipe-arrow" aria-hidden="true">Ã¢â€ â€™</div>
           <div class="pipe-outputs">
             <div class="pipe-chip">Blog</div>
             <div class="pipe-chip">LinkedIn</div>
@@ -2723,7 +2643,7 @@
           <div class="step-item reveal">
             <div class="step-num">01</div>
             <h3>Upload</h3>
-            <p>Drop in a document, article, transcript, or URL — any format you already have.</p>
+            <p>Drop in a document, article, transcript, or URL Ã¢â‚¬â€ any format you already have.</p>
           </div>
           <div class="step-item reveal">
             <div class="step-num">02</div>
@@ -2759,7 +2679,7 @@
           <div class="feat-card reveal">
             <div class="feat-icon"></div>
             <h3>Multi-Format Generation</h3>
-            <p>One source, many outputs — blog posts, social, decks, scripts, and more.</p>
+            <p>One source, many outputs Ã¢â‚¬â€ blog posts, social, decks, scripts, and more.</p>
           </div>
           <div class="feat-card reveal">
             <div class="feat-icon"></div>
@@ -2769,7 +2689,7 @@
           <div class="feat-card reveal">
             <div class="feat-icon"></div>
             <h3>Tone Control</h3>
-            <p>Professional, casual, academic, or technical — set once, apply everywhere.</p>
+            <p>Professional, casual, academic, or technical Ã¢â‚¬â€ set once, apply everywhere.</p>
           </div>
           <div class="feat-card reveal">
             <div class="feat-icon"></div>
@@ -2804,13 +2724,13 @@
         </div>
         <div class="testi-grid">
           <div class="testi-card reveal">
-            <p>"A research report becomes notes, a presentation, and a public summary — without three separate tools."
+            <p>"A research report becomes notes, a presentation, and a public summary Ã¢â‚¬â€ without three separate tools."
             </p>
             <div class="testi-who">
               <div class="testi-avatar"></div>
               <div>
                 <div class="testi-name">Research Team</div>
-                <div class="testi-role">Report → Notes → Slides</div>
+                <div class="testi-role">Report Ã¢â€ â€™ Notes Ã¢â€ â€™ Slides</div>
               </div>
             </div>
           </div>
@@ -2820,17 +2740,17 @@
               <div class="testi-avatar"></div>
               <div>
                 <div class="testi-name">Marketing Team</div>
-                <div class="testi-role">Brief → Ads → Social</div>
+                <div class="testi-role">Brief Ã¢â€ â€™ Ads Ã¢â€ â€™ Social</div>
               </div>
             </div>
           </div>
           <div class="testi-card reveal">
-            <p>"A long-form video becomes shorts, captions, and tweets — no production team required."</p>
+            <p>"A long-form video becomes shorts, captions, and tweets Ã¢â‚¬â€ no production team required."</p>
             <div class="testi-who">
               <div class="testi-avatar"></div>
               <div>
                 <div class="testi-name">Independent Creator</div>
-                <div class="testi-role">Video → Shorts → Captions</div>
+                <div class="testi-role">Video Ã¢â€ â€™ Shorts Ã¢â€ â€™ Captions</div>
               </div>
             </div>
           </div>
@@ -2871,7 +2791,7 @@
           <span id="accountLabel"></span>
           <button type="button" class="account-signout" id="signOutBtn">Sign out</button>
         </div>
-        <button class="nav-cta ghost-cta" id="backToSiteBtn" type="button">← Back to site</button>
+        <button class="nav-cta ghost-cta" id="backToSiteBtn" type="button">Ã¢â€ Â Back to site</button>
         <div class="status-pill" id="netStatusPill" role="status" aria-live="polite"><span class="status-dot"
             id="netStatusDot"></span><span id="netStatusText">Engine Online</span></div>
       </div>
@@ -2894,7 +2814,7 @@
           <div class="field-label" style="margin-top:16px;"><label for="authSignInEmail">Email</label></div>
           <input type="email" id="authSignInEmail" class="bv-input" placeholder="you@example.com"
             autocomplete="email" />
-          <button type="button" class="btn-generate" id="authSignInBtn">Continue →</button>
+          <button type="button" class="btn-generate" id="authSignInBtn">Continue Ã¢â€ â€™</button>
 
           <div class="auth-existing" id="authExisting" style="display:none;">
             <div class="field-label" id="authExistingLabel">Or select a recent workspace</div>
@@ -2909,12 +2829,12 @@
           <div class="field-label"><label for="authEmail">Email</label></div>
           <input type="email" id="authEmail" class="bv-input" placeholder="you@example.com" autocomplete="email" />
 
-          <button type="button" class="btn-generate" id="authContinueBtn">Create Workspace →</button>
+          <button type="button" class="btn-generate" id="authContinueBtn">Create Workspace Ã¢â€ â€™</button>
         </div>
 
         <div class="error-box" id="authError" role="alert"></div>
 
-        <p class="auth-disclaimer">⚠ Demo account only — no password required and nothing here is securely
+        <p class="auth-disclaimer">Ã¢Å¡Â  Demo account only Ã¢â‚¬â€ no password required and nothing here is securely
           authenticated. This just labels a workspace so profiles and history don't mix between people testing the demo.
         </p>
       </div>
@@ -2945,7 +2865,7 @@
               <div class="panel-title" id="sourcePanelTitle">
                 <span>Source Content</span>
                 <button type="button" id="clearAllBtn" class="clear-link-btn"
-                  title="Clear all input and start fresh">Clear Input ✕</button>
+                  title="Clear all input and start fresh">Clear Input Ã¢Å“â€¢</button>
               </div>
 
               <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-labelledby="dropZoneText"
@@ -2964,7 +2884,7 @@
                 aria-label="Upload source file" />
               <div class="file-chip" id="fileChip" style="display:none;">
                 <span id="fileChipName"></span>
-                <button id="fileChipRemove" title="Remove" aria-label="Remove uploaded file" type="button">✕</button>
+                <button id="fileChipRemove" title="Remove" aria-label="Remove uploaded file" type="button">Ã¢Å“â€¢</button>
               </div>
 
               <div id="imagePreviewWrap"
@@ -2975,23 +2895,23 @@
                 <div style="position:absolute;top:10px;right:10px;">
                   <button type="button" id="imagePreviewRemove"
                     style="background:rgba(18,18,28,0.85);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:50%;width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:0.2s;"
-                    title="Remove image">✕</button>
+                    title="Remove image">Ã¢Å“â€¢</button>
                 </div>
               </div>
 
               <!-- URL / YouTube Ingestion -->
               <div style="display:flex;gap:8px;margin-bottom:12px;">
-                <input type="url" id="urlInput" placeholder="🔗 Or paste Web URL or YouTube link to auto-extract…" style="flex:1;background:var(--bg-panel-2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--ink);font-size:12.5px;outline:none;" />
-                <button type="button" id="urlFetchBtn" style="background:var(--violet-soft);border:1px solid var(--violet);color:var(--violet);padding:9px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:0.2s;">Fetch ↵</button>
+                <input type="url" id="urlInput" placeholder="Ã°Å¸â€â€” Or paste Web URL or YouTube link to auto-extractÃ¢â‚¬Â¦" style="flex:1;background:var(--bg-panel-2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--ink);font-size:12.5px;outline:none;" />
+                <button type="button" id="urlFetchBtn" style="background:var(--violet-soft);border:1px solid var(--violet);color:var(--violet);padding:9px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:0.2s;">Fetch Ã¢â€ Âµ</button>
               </div>
               <div id="urlBadge" style="display:none;margin-bottom:12px;background:rgba(63,227,208,0.08);border:1px solid rgba(63,227,208,0.3);color:var(--cyan);font-size:11.5px;padding:8px 12px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;">
                 <span id="urlBadgeText" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:85%;"></span>
-                <button type="button" id="urlBadgeClear" style="background:transparent;border:none;color:var(--ink-dim);cursor:pointer;font-size:12px;padding:0 4px;" title="Clear fetched URL">✕</button>
+                <button type="button" id="urlBadgeClear" style="background:transparent;border:none;color:var(--ink-dim);cursor:pointer;font-size:12px;padding:0 4px;" title="Clear fetched URL">Ã¢Å“â€¢</button>
               </div>
 
               <label class="sr-only" for="sourceText">Source content text</label>
               <textarea id="sourceText"
-                placeholder="Or paste your article, report, transcript, or notes here…"></textarea>
+                placeholder="Or paste your article, report, transcript, or notes hereÃ¢â‚¬Â¦"></textarea>
               <div class="char-count"><span id="charCount">0</span> characters</div>
 
               <div class="field-label" id="formatGridLabel">Output Formats</div>
@@ -3037,7 +2957,7 @@
               <div class="bv-row">
                 <label class="sr-only" for="profileSelect">Select saved brand voice profile</label>
                 <select id="profileSelect" aria-labelledby="bvLabel">
-                  <option value="">— None —</option>
+                  <option value="">Ã¢â‚¬â€ None Ã¢â‚¬â€</option>
                 </select>
                 <button type="button" class="icon-btn" id="deleteProfileBtn"
                   title="Delete selected profile">Delete</button>
@@ -3046,12 +2966,12 @@
               <input type="text" id="profileName" placeholder="Profile name (e.g. Acme Corp)" class="bv-input" />
               <label class="sr-only" for="profileNotes">Voice notes</label>
               <textarea id="profileNotes" class="bv-input bv-notes"
-                placeholder="Voice notes: vocabulary to use/avoid, example lines, reading level…"></textarea>
+                placeholder="Voice notes: vocabulary to use/avoid, example lines, reading levelÃ¢â‚¬Â¦"></textarea>
               <button type="button" class="icon-btn bv-save" id="saveProfileBtn">Save Profile</button>
 
               <button class="btn-generate" id="generateBtn" type="button">
                 <span class="spinner" aria-hidden="true"></span>
-                <span id="generateBtnText">Transform with AI →</span>
+                <span id="generateBtnText">Transform with AI Ã¢â€ â€™</span>
               </button>
               <div class="error-box" id="errorBox" role="alert"></div>
             </div>
@@ -3061,11 +2981,11 @@
               <div class="panel-title">
                 <span>Generated Output</span>
                 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-                  <button type="button" id="exportZipBtn" class="zip-btn" title="Download all outputs as a ZIP bundle" style="display:none;" onclick="exportAllZip(this)">📦 Export All as ZIP</button>
-                  <button type="button" id="shareBtn" class="clear-link-btn" title="Share this session" style="display:none;">🔗 Share</button>
-                  <button type="button" id="teamBtn" class="clear-link-btn" title="Team Workspace">👥 Team</button>
+
+                  <button type="button" id="shareBtn" class="clear-link-btn" title="Share this session" style="display:none;">Ã°Å¸â€â€” Share</button>
+                  <button type="button" id="teamBtn" class="clear-link-btn" title="Team Workspace">Ã°Å¸â€˜Â¥ Team</button>
                   <button type="button" id="resetResultsBtn" class="clear-link-btn"
-                    title="Clear and start a new transformation" style="display:none;">New Transformation ↺</button>
+                    title="Clear and start a new transformation" style="display:none;">New Transformation Ã¢â€ Âº</button>
                 </div>
               </div>
 
@@ -3075,13 +2995,13 @@
                   <circle cx="12" cy="12" r="9" />
                   <path d="M8 12h8M12 8v8" />
                 </svg>
-                <p>Add source content on the left, pick your formats, and generate to see results here — side by side,
+                <p>Add source content on the left, pick your formats, and generate to see results here Ã¢â‚¬â€ side by side,
                   ready to edit and export.</p>
               </div>
 
               <div class="processing-state" id="processingState" style="display:none;" role="status" aria-live="polite">
                 <div class="proc-core" aria-hidden="true"></div>
-                <div class="proc-line" id="procLine">UNDERSTANDING CONTEXT…</div>
+                <div class="proc-line" id="procLine">UNDERSTANDING CONTEXTÃ¢â‚¬Â¦</div>
                 <div class="proc-sub" id="procSub"></div>
                 <button type="button" class="proc-cancel" id="procCancelBtn">Cancel</button>
               </div>
@@ -3117,7 +3037,7 @@
               <div class="dash-sub" id="dashAccountLabel">this workspace</div>
             </div>
             <div class="dash-card">
-              <div class="dash-num" id="dashGroundedPct">—</div>
+              <div class="dash-num" id="dashGroundedPct">Ã¢â‚¬â€</div>
               <div class="dash-label">Fact-Check Pass Rate</div>
               <div class="dash-sub" id="dashGroundedSub">no data yet</div>
             </div>
@@ -3126,7 +3046,7 @@
             <div class="panel">
               <div class="panel-title">Generations by Format</div>
               <div id="dashFormatBars">
-                <div class="dash-empty">No generations yet — transform something to see stats here.</div>
+                <div class="dash-empty">No generations yet Ã¢â‚¬â€ transform something to see stats here.</div>
               </div>
             </div>
             <div class="panel">
@@ -3139,7 +3059,7 @@
         </div><!-- /panelDashboard -->
       </main>
 
-      <footer id="appFooter">GENAI · SIH26154 · Gen AI Platform for Automated Content Transformation</footer>
+      <footer id="appFooter">GENAI Ã‚Â· SIH26154 Ã‚Â· Gen AI Platform for Automated Content Transformation</footer>
     </div><!-- /#appMain -->
   </div><!-- /#appView -->
 
@@ -3386,8 +3306,8 @@
   </script>
 
   <script>
-    /* ================= WORKSPACE APP — powered by backend API ================= */
-    const API_BASE = ''; // same origin — backend serves this file
+    /* ================= WORKSPACE APP Ã¢â‚¬â€ powered by backend API ================= */
+    const API_BASE = ''; // same origin Ã¢â‚¬â€ backend serves this file
 
     const FORMAT_LABELS = {
       blog: 'Blog Post', linkedin: 'LinkedIn Post', twitter: 'X / Twitter Thread',
@@ -3398,7 +3318,7 @@
     };
     const FORMAT_INSTRUCTIONS = {
       blog: 'A well-structured blog post (400-700 words) with a compelling headline, an engaging intro, subheadings, and a clear conclusion.',
-      linkedin: 'A LinkedIn post (120-200 words) that opens with a hook, uses short punchy paragraphs and line breaks, and ends with a light call-to-action or question. No hashtags spam — 2-3 relevant ones max.',
+      linkedin: 'A LinkedIn post (120-200 words) that opens with a hook, uses short punchy paragraphs and line breaks, and ends with a light call-to-action or question. No hashtags spam Ã¢â‚¬â€ 2-3 relevant ones max.',
       twitter: 'A Twitter/X thread of 5-7 tweets. Number each tweet (1/, 2/, etc). First tweet is a strong hook under 240 characters.',
       summary: 'A concise summary in 3-5 sentences capturing the core argument and any key facts or figures, followed by 3-5 bullet-point key takeaways.',
       email: 'A short email newsletter with a subject line, a one-line preview text, a friendly intro, 2-3 short sections with subheadings, and a closing line.',
@@ -3408,7 +3328,7 @@
       slides: 'A presentation slide outline. Format each slide exactly as "Slide N: <title>" on its own line, followed by 3-5 short bullet points starting with "- ". Aim for 6-10 slides covering the source content in a logical order, ending with a closing/summary slide.',
       simplified: 'A simplified, plain-language rewrite of the full content at roughly a 6th-8th grade reading level: short sentences, common words, one idea per sentence, no jargon left unexplained. Preserve every fact and figure from the source.',
       captions: 'Caption/subtitle text in SRT format for a spoken-word version of this content: numbered cues, each with a timestamp range (start at 00:00:00,000, roughly 3-5 seconds per cue based on natural reading pace, format HH:MM:SS,mmm --> HH:MM:SS,mmm), and a short line of text per cue (under ~40 characters per line). Note in a comment that timestamps are estimated, not derived from real audio.',
-      alttext: 'A list of 4-6 suggested alt-text descriptions for visuals that would naturally accompany this content (e.g. a hero image, a chart, a diagram implied by the text) — each one a concise, concrete, screen-reader-friendly description (under 125 characters) grounded only in what the source content actually describes. Label each with what visual it is for.'
+      alttext: 'A list of 4-6 suggested alt-text descriptions for visuals that would naturally accompany this content (e.g. a hero image, a chart, a diagram implied by the text) Ã¢â‚¬â€ each one a concise, concrete, screen-reader-friendly description (under 125 characters) grounded only in what the source content actually describes. Label each with what visual it is for.'
     };
 
     const MAX_FILE_BYTES = 15 * 1024 * 1024; // FR-1.4: 15MB cap
@@ -3448,7 +3368,7 @@
       } catch (err) {
         clearTimeout(timer);
         if (err.message === 'userCancelled') throw new Error('Cancelled');
-        if (err.message === 'timeout') throw new Error('Request timed out — the engine took too long to respond.');
+        if (err.message === 'timeout') throw new Error('Request timed out Ã¢â‚¬â€ the engine took too long to respond.');
         setNetStatus('offline', 'Connection issue');
         throw err;
       } finally {
@@ -3456,7 +3376,7 @@
       }
     }
 
-    /* ---------- Brand voice profiles — backed by /api/profiles ---------- */
+    /* ---------- Brand voice profiles Ã¢â‚¬â€ backed by /api/profiles ---------- */
     async function initProfiles() {
       profiles = {};
       if (!currentUser) { refreshProfileSelect(); return; }
@@ -3466,13 +3386,13 @@
           const data = await res.json();
           (data.profiles || []).forEach(p => { profiles[p.name] = p; });
         }
-      } catch (e) { /* fall through — in-memory */ }
+      } catch (e) { /* fall through Ã¢â‚¬â€ in-memory */ }
       refreshProfileSelect();
     }
     function refreshProfileSelect() {
       const sel = document.getElementById('profileSelect');
       const current = sel.value;
-      sel.innerHTML = '<option value="">— None —</option>';
+      sel.innerHTML = '<option value="">Ã¢â‚¬â€ None Ã¢â‚¬â€</option>';
       Object.keys(profiles).sort().forEach(name => {
         const opt = document.createElement('option');
         opt.value = name; opt.textContent = name;
@@ -3505,7 +3425,7 @@
       refreshProfileSelect();
     }
 
-    /* ---------- Usage log storage (FR-4.3) — backed by /api/usage ---------- */
+    /* ---------- Usage log storage (FR-4.3) Ã¢â‚¬â€ backed by /api/usage ---------- */
     async function initUsage() {
       usageLog = [];
       if (!currentUser) { renderDashboard(); return; }
@@ -3533,7 +3453,7 @@
       renderDashboard();
     }
 
-    /* ================= ACCOUNTS — backed by /api/auth ================= */
+    /* ================= ACCOUNTS Ã¢â‚¬â€ backed by /api/auth ================= */
     async function listAccounts() {
       try {
         const res = await fetch(`${API_BASE}/api/auth/accounts`);
@@ -3573,11 +3493,11 @@
       const accountLabel = document.getElementById('accountLabel');
       const launchBtn = document.getElementById('navLaunchBtn');
       if (currentUser) {
-        if (launchBtn) launchBtn.textContent = `Continue as ${currentUser.name.split(' ')[0]} →`;
+        if (launchBtn) launchBtn.textContent = `Continue as ${currentUser.name.split(' ')[0]} Ã¢â€ â€™`;
         accountPill.style.display = 'flex';
         accountLabel.textContent = currentUser.name;
       } else {
-        if (launchBtn) launchBtn.textContent = 'Sign In / Launch Platform →';
+        if (launchBtn) launchBtn.textContent = 'Sign In / Launch Platform Ã¢â€ â€™';
         accountPill.style.display = 'none';
       }
     }
@@ -3671,7 +3591,7 @@
     });
 
     document.getElementById('signOutBtn').addEventListener('click', async () => {
-      collabToast('Signed out of workspace ✓');
+      collabToast('Signed out of workspace Ã¢Å“â€œ');
       currentUser = { name: 'Guest Creator', email: 'guest@genai.platform' };
       updateAccountUI();
     });
@@ -3740,7 +3660,7 @@
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }
 
-    /* Convert mammoth's HTML output into lightweight structured text — preserves headings/lists/sections */
+    /* Convert mammoth's HTML output into lightweight structured text Ã¢â‚¬â€ preserves headings/lists/sections */
     function htmlToStructuredText(html) {
       const root = document.createElement('div');
       root.innerHTML = html;
@@ -3800,7 +3720,7 @@
         }
 
         // bullet-ish lines
-        if (/^[-*•]\s+/.test(t)) { out.push('- ' + t.replace(/^[-*•]\s+/, '')); continue; }
+        if (/^[-*Ã¢â‚¬Â¢]\s+/.test(t)) { out.push('- ' + t.replace(/^[-*Ã¢â‚¬Â¢]\s+/, '')); continue; }
 
         out.push(t);
       }
@@ -3902,7 +3822,7 @@
       return htmlToStructuredText(result.value);
     }
 
-    /* FR-1.3: PDF structure detection — groups text items by font size per page;
+    /* FR-1.3: PDF structure detection Ã¢â‚¬â€ groups text items by font size per page;
        lines whose font size is meaningfully larger than the page's body-text size
        are treated as headings (largest -> #, next tier -> ##). Falls back to plain
        paragraph joining if font metrics are unavailable/uniform. */
@@ -3956,13 +3876,13 @@
       const ext = (file.name.match(/\.([a-z0-9]+)$/i) || [, ''])[1].toLowerCase();
       const supported = ['txt', 'md', 'docx', 'pdf', 'html', 'htm', 'csv', 'tsv', 'json', 'rtf', 'srt', 'vtt', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'bmp'];
       if (!supported.includes(ext)) {
-        showError('Unsupported file type — use images (.png, .jpg, etc.), .pdf, .docx, .txt, .md, .csv, .json, .html, or paste directly.');
+        showError('Unsupported file type Ã¢â‚¬â€ use images (.png, .jpg, etc.), .pdf, .docx, .txt, .md, .csv, .json, .html, or paste directly.');
         return;
       }
 
       // FR-1.4: file size limit
       if (file.size > MAX_FILE_BYTES) {
-        showError(`That file is ${formatBytes(file.size)} — the limit is ${formatBytes(MAX_FILE_BYTES)}. Try a shorter document or paste the text directly.`);
+        showError(`That file is ${formatBytes(file.size)} Ã¢â‚¬â€ the limit is ${formatBytes(MAX_FILE_BYTES)}. Try a shorter document or paste the text directly.`);
         return;
       }
       if (file.size === 0) {
@@ -3972,7 +3892,7 @@
 
       const dzText = document.getElementById('dropZoneText');
       const originalDzText = dzText.textContent;
-      dzText.textContent = 'Parsing ' + file.name + '…';
+      dzText.textContent = 'Parsing ' + file.name + 'Ã¢â‚¬Â¦';
       dropZone.classList.add('parsing');
 
       try {
@@ -4013,14 +3933,14 @@
           const raw = await file.text();
           text = parseRtfText(raw);
         } else if (ext === 'docx') {
-          if (!window.mammoth) throw new Error('DOCX parser did not load — check your connection and try again.');
+          if (!window.mammoth) throw new Error('DOCX parser did not load Ã¢â‚¬â€ check your connection and try again.');
           try {
             text = await parseDocxFile(file);
           } catch (parseErr) {
             throw new Error('This .docx file looks corrupted or isn\'t a valid Word document (' + (parseErr.message || 'parse error') + ').');
           }
         } else if (ext === 'pdf') {
-          if (!window.pdfjsLib) throw new Error('PDF parser did not load — check your connection and try again.');
+          if (!window.pdfjsLib) throw new Error('PDF parser did not load Ã¢â‚¬â€ check your connection and try again.');
           try {
             text = await parsePdfFile(file);
           } catch (parseErr) {
@@ -4029,7 +3949,7 @@
         } else if (ext === 'srt' || ext === 'vtt') {
           const raw = await file.text();
           text = parseSubtitleText(raw);
-          if (!text.trim()) throw new Error('No caption cues could be read from this file — check it\'s a valid ' + ext.toUpperCase() + ' file.');
+          if (!text.trim()) throw new Error('No caption cues could be read from this file Ã¢â‚¬â€ check it\'s a valid ' + ext.toUpperCase() + ' file.');
         }
 
         if (!text.trim() && !currentImage) {
@@ -4039,7 +3959,7 @@
 
         sourceText.value = text;
         updateCharCount();
-        fileChipName.textContent = file.name + ' · ' + formatBytes(file.size);
+        fileChipName.textContent = file.name + ' Ã‚Â· ' + formatBytes(file.size);
         fileChip.style.display = 'inline-flex';
       } catch (err) {
         showError('Could not read that file: ' + (err.message || 'unknown error'));
@@ -4085,7 +4005,7 @@
       document.getElementById('urlInput').value = '';
     });
 
-    // ── URL & YouTube Fetching ────────────────────────────────────────────────
+    // Ã¢â€â‚¬Ã¢â€â‚¬ URL & YouTube Fetching Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     async function fetchUrl(rawUrl) {
       const url = rawUrl.trim();
       if (!url) return;
@@ -4095,8 +4015,8 @@
       }
 
       const btn = document.getElementById('urlFetchBtn');
-      const origText = btn ? btn.textContent : 'Fetch ↵';
-      if (btn) { btn.textContent = 'Fetching…'; btn.disabled = true; }
+      const origText = btn ? btn.textContent : 'Fetch Ã¢â€ Âµ';
+      if (btn) { btn.textContent = 'FetchingÃ¢â‚¬Â¦'; btn.disabled = true; }
 
       try {
         const r = await fetch(`${API_BASE}/api/scrape`, {
@@ -4114,13 +4034,13 @@
         const badge = document.getElementById('urlBadge');
         const badgeText = document.getElementById('urlBadgeText');
         if (badge && badgeText) {
-          const icon = data.type === 'youtube' ? '▶️ YouTube Video' : '🌐 Web Page';
+          const icon = data.type === 'youtube' ? 'Ã¢â€“Â¶Ã¯Â¸Â YouTube Video' : 'Ã°Å¸Å’Â Web Page';
           badgeText.textContent = `${icon}: ${data.title}`;
           badge.style.display = 'flex';
         }
 
         if (typeof collabToast === 'function') {
-          collabToast(`Fetched: ${data.title.slice(0, 40)} ✓`);
+          collabToast(`Fetched: ${data.title.slice(0, 40)} Ã¢Å“â€œ`);
         }
       } catch (err) {
         showError(err.message || 'Failed to fetch content from URL.');
@@ -4145,7 +4065,7 @@
       const pasted = (e.clipboardData || window.clipboardData)?.getData('text')?.trim();
       if (pasted && /^https?:\/\/[^\s]+$/i.test(pasted) && sourceText.value.trim().length === 0) {
         setTimeout(() => {
-          if (confirm('🔗 Detected URL! Would you like to auto-extract the full article / YouTube video content?')) {
+          if (confirm('Ã°Å¸â€â€” Detected URL! Would you like to auto-extract the full article / YouTube video content?')) {
             document.getElementById('urlInput').value = pasted;
             fetchUrl(pasted);
           }
@@ -4183,7 +4103,7 @@
       saveProfile(name, tone, notes);
       const btn = document.getElementById('saveProfileBtn');
       const original = btn.textContent;
-      btn.textContent = 'Saved ✓';
+      btn.textContent = 'Saved Ã¢Å“â€œ';
       setTimeout(() => { btn.textContent = original; }, 1500);
     });
     document.getElementById('deleteProfileBtn').addEventListener('click', () => {
@@ -4213,19 +4133,19 @@
       }
     }
 
-    const PROC_STAGES = ['READING CONTENT…', 'UNDERSTANDING CONTEXT…', 'IDENTIFYING KEY INFORMATION…', 'GENERATING FORMATS…', 'FACT-CHECKING OUTPUT…'];
+    const PROC_STAGES = ['READING CONTENTÃ¢â‚¬Â¦', 'UNDERSTANDING CONTEXTÃ¢â‚¬Â¦', 'IDENTIFYING KEY INFORMATIONÃ¢â‚¬Â¦', 'GENERATING FORMATSÃ¢â‚¬Â¦', 'FACT-CHECKING OUTPUTÃ¢â‚¬Â¦'];
 
     function buildFormatBlocks(formats, translateLang) {
       return formats.map(f => {
         if (f === 'translation') {
-          return `### Translation (${translateLang})\nA faithful translation of the FULL source content into ${translateLang}, preserving meaning, structure, tone and any figures exactly — do not summarize or add content.`;
+          return `### Translation (${translateLang})\nA faithful translation of the FULL source content into ${translateLang}, preserving meaning, structure, tone and any figures exactly Ã¢â‚¬â€ do not summarize or add content.`;
         }
         return `### ${FORMAT_LABELS[f]}\n${FORMAT_INSTRUCTIONS[f]}`;
       }).join('\n\n');
     }
 
     async function callClaude(srcText, formats, tone, brandNotes, translateLang) {
-      // Calls the secure backend proxy — no API key needed in the browser
+      // Calls the secure backend proxy Ã¢â‚¬â€ no API key needed in the browser
       const payload = { sourceText: srcText, formats, tone, brandNotes, translateLang };
       if (typeof currentImage !== 'undefined' && currentImage) {
         payload.imageBase64 = currentImage.base64Url;
@@ -4273,18 +4193,18 @@
       const translateLang = document.getElementById('translateSelect').value;
       const brandNotes = document.getElementById('profileNotes').value.trim();
 
-      if (!text && typeof currentImage === 'undefined') { showError('Add some source content first — paste text or drop a file/image.'); return; }
-      if (!text && !currentImage) { showError('Add some source content first — paste text or drop a file/image.'); return; }
-      if ((typeof currentImage === 'undefined' || !currentImage) && text.length < 40) { showError('That source looks pretty short — add a bit more content for a meaningful transformation.'); return; }
+      if (!text && typeof currentImage === 'undefined') { showError('Add some source content first Ã¢â‚¬â€ paste text or drop a file/image.'); return; }
+      if (!text && !currentImage) { showError('Add some source content first Ã¢â‚¬â€ paste text or drop a file/image.'); return; }
+      if ((typeof currentImage === 'undefined' || !currentImage) && text.length < 40) { showError('That source looks pretty short Ã¢â‚¬â€ add a bit more content for a meaningful transformation.'); return; }
       if (translateLang !== 'none') formats = [...formats, 'translation'];
       if (!formats.length) { showError('Select at least one output format.'); return; }
 
-      if (!navigator.onLine) { showError('You appear to be offline — reconnect and try again.', { retry: runGenerate }); return; }
+      if (!navigator.onLine) { showError('You appear to be offline Ã¢â‚¬â€ reconnect and try again.', { retry: runGenerate }); return; }
 
       sourceContent = text;
       generateBtn.disabled = true;
       generateBtn.classList.add('loading');
-      generateBtnText.textContent = 'Generating…';
+      generateBtnText.textContent = 'GeneratingÃ¢â‚¬Â¦';
       emptyState.style.display = 'none';
       resultsWrap.style.display = 'none';
       processingState.style.display = 'flex';
@@ -4296,14 +4216,14 @@
         stageI = (stageI + 1) % PROC_STAGES.length;
         procLine.textContent = PROC_STAGES[stageI];
       }, 1400);
-      const slowTimer = setTimeout(() => { procSub.textContent = 'This is taking longer than usual — still working…'; }, 9000);
+      const slowTimer = setTimeout(() => { procSub.textContent = 'This is taking longer than usual Ã¢â‚¬â€ still workingÃ¢â‚¬Â¦'; }, 9000);
 
       try {
         const results = await callClaude(text, formats, tone, brandNotes, translateLang);
         currentResults = results;
         currentApproval = {};
         formats.forEach(f => { currentApproval[f] = 'draft'; });
-        procLine.textContent = 'FACT-CHECKING OUTPUT…';
+        procLine.textContent = 'FACT-CHECKING OUTPUTÃ¢â‚¬Â¦';
         currentGrounding = await checkGrounding(text, formats, results);
         clearInterval(stageTimer); clearTimeout(slowTimer);
         processingState.style.display = 'none';
@@ -4316,20 +4236,20 @@
         clearInterval(stageTimer); clearTimeout(slowTimer);
         processingState.style.display = 'none';
         emptyState.style.display = 'flex';
-        const msg = err.message === 'Cancelled' ? 'Generation cancelled.' : (err.message || 'Generation failed — please try again.');
+        const msg = err.message === 'Cancelled' ? 'Generation cancelled.' : (err.message || 'Generation failed Ã¢â‚¬â€ please try again.');
         showError(msg, { retry: runGenerate, sticky: true });
       } finally {
         generateBtn.disabled = false;
         generateBtn.classList.remove('loading');
-        generateBtnText.textContent = 'Transform with AI →';
+        generateBtnText.textContent = 'Transform with AI Ã¢â€ â€™';
       }
     }
 
     function groundingBadge(fmt) {
       const g = currentGrounding[fmt];
-      if (!g || !g.status) return '<span class="ground-badge unknown" title="Not fact-checked">— Not checked</span>';
-      if (g.status === 'grounded') return '<span class="ground-badge ok" title="All claims match the source">✓ Grounded</span>';
-      return `<span class="ground-badge warn" title="${(g.note || 'Review this output against the source').replace(/"/g, '&quot;')}">⚠ Review</span>`;
+      if (!g || !g.status) return '<span class="ground-badge unknown" title="Not fact-checked">Ã¢â‚¬â€ Not checked</span>';
+      if (g.status === 'grounded') return '<span class="ground-badge ok" title="All claims match the source">Ã¢Å“â€œ Grounded</span>';
+      return `<span class="ground-badge warn" title="${(g.note || 'Review this output against the source').replace(/"/g, '&quot;')}">Ã¢Å¡Â  Review</span>`;
     }
 
     const APPROVAL_STATES = [
@@ -4376,10 +4296,10 @@
         const fmtText = typeof rawFmtVal === 'string' ? rawFmtVal : (rawFmtVal !== null && typeof rawFmtVal === 'object' ? JSON.stringify(rawFmtVal, null, 2) : String(rawFmtVal || 'No content generated for this format.'));
         body.innerHTML = `
       <div class="result-toolbar">
-        <div class="result-meta">${fmtText.length.toLocaleString()} characters &nbsp;·&nbsp; ${groundingBadge(fmt)}</div>
+        <div class="result-meta">${fmtText.length.toLocaleString()} characters &nbsp;Ã‚Â·&nbsp; ${groundingBadge(fmt)}</div>
         <div class="result-actions">
           <button class="icon-btn" data-action="regen" data-fmt="${fmt}" type="button">Regenerate</button>
-          <button class="icon-btn" data-action="listen" data-fmt="${fmt}" type="button" title="Read aloud with AI voiceover">🔊 Listen</button>
+
           <button class="icon-btn" data-action="txt" data-fmt="${fmt}" data-label="${label.replace(/"/g, '&quot;')}" type="button">Export .txt</button>
           <button class="icon-btn" data-action="docx" data-fmt="${fmt}" data-label="${label.replace(/"/g, '&quot;')}" type="button">Export .docx</button>
           <button class="icon-btn" data-action="pdf" data-fmt="${fmt}" data-label="${label.replace(/"/g, '&quot;')}" type="button">Export .pdf</button>
@@ -4401,10 +4321,10 @@
         </div>
         <div class="sbs-col">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <div class="sbs-label" id="sbsGenLabel-${fmt}">Generated — ${label}</div>
+            <div class="sbs-label" id="sbsGenLabel-${fmt}">Generated Ã¢â‚¬â€ ${label}</div>
             <div style="display:flex;gap:4px;">
-              <button type="button" class="mockup-toggle-btn active" data-action="toggle-editor" data-fmt="${fmt}">📝 Editor</button>
-              <button type="button" class="mockup-toggle-btn" data-action="toggle-mockup" data-fmt="${fmt}">👁️ Mockup</button>
+              <button type="button" class="mockup-toggle-btn active" data-action="toggle-editor" data-fmt="${fmt}">Ã°Å¸â€œÂ Editor</button>
+              <button type="button" class="mockup-toggle-btn" data-action="toggle-mockup" data-fmt="${fmt}">Ã°Å¸â€˜ÂÃ¯Â¸Â Mockup</button>
             </div>
           </div>
           <label class="sr-only" for="text-${fmt}">Generated ${label} text, editable</label>
@@ -4414,7 +4334,7 @@
       </div>
       <div class="feedback-row">
         <label class="sr-only" for="feedback-${fmt}">Feedback for regeneration</label>
-        <input type="text" class="feedback-input" id="feedback-${fmt}" placeholder="Optional: tell it what to change (e.g. &quot;make this punchier&quot;, &quot;cut it in half&quot;) — regenerates from your current edited text" />
+        <input type="text" class="feedback-input" id="feedback-${fmt}" placeholder="Optional: tell it what to change (e.g. &quot;make this punchier&quot;, &quot;cut it in half&quot;) Ã¢â‚¬â€ regenerates from your current edited text" />
       </div>
       <div class="approval-row" role="group" aria-label="Review status for ${label}">
         ${stateBtns}
@@ -4432,7 +4352,7 @@
           const fmt = btn.dataset.fmt;
           const val = document.getElementById('text-' + fmt).value;
           navigator.clipboard.writeText(val).then(() => {
-            btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+            btn.textContent = 'Copied Ã¢Å“â€œ'; btn.classList.add('copied');
             setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
           });
         });
@@ -4495,13 +4415,6 @@
 
       const shareBtn = document.getElementById('shareBtn');
       if (shareBtn) shareBtn.style.display = 'inline-block';
-      const zipBtn = document.getElementById('exportZipBtn');
-      if (zipBtn) zipBtn.style.display = 'flex';
-
-      // Wire up 🔊 Listen buttons
-      resultBodies.querySelectorAll('[data-action="listen"]').forEach(btn => {
-        btn.addEventListener('click', () => openTtsStudio(btn.dataset.fmt));
-      });
 
       // Auto-save versions for each format
       formats.forEach(fmt => {
@@ -4528,9 +4441,9 @@
 
     async function exportDocx(fmt, label, btn) {
       const val = document.getElementById('text-' + fmt).value;
-      if (!window.docx) { showError('Export library did not load — check your connection and try again.', { retry: () => exportDocx(fmt, label, btn) }); return; }
+      if (!window.docx) { showError('Export library did not load Ã¢â‚¬â€ check your connection and try again.', { retry: () => exportDocx(fmt, label, btn) }); return; }
       const original = btn.textContent;
-      btn.textContent = 'Building…'; btn.disabled = true;
+      btn.textContent = 'BuildingÃ¢â‚¬Â¦'; btn.disabled = true;
       try {
         const { Document, Packer, Paragraph, HeadingLevel } = window.docx;
         const paragraphs = [
@@ -4550,9 +4463,9 @@
     async function exportPdf(fmt, label, btn) {
       const val = document.getElementById('text-' + fmt).value;
       const jsPDFCtor = window.jspdf && window.jspdf.jsPDF;
-      if (!jsPDFCtor) { showError('PDF export library did not load — check your connection and try again.', { retry: () => exportPdf(fmt, label, btn) }); return; }
+      if (!jsPDFCtor) { showError('PDF export library did not load Ã¢â‚¬â€ check your connection and try again.', { retry: () => exportPdf(fmt, label, btn) }); return; }
       const original = btn.textContent;
-      btn.textContent = 'Building…'; btn.disabled = true;
+      btn.textContent = 'BuildingÃ¢â‚¬Â¦'; btn.disabled = true;
       try {
         const doc = new jsPDFCtor({ unit: 'pt', format: 'a4' });
         const marginX = 48, marginTop = 56, maxWidth = 500, lineHeight = 16;
@@ -4622,9 +4535,9 @@
     async function exportPptx(fmt, label, btn) {
       const val = document.getElementById('text-' + fmt).value;
       const PptxCtor = window.pptxgen;
-      if (!PptxCtor) { showError('PPTX export library did not load — check your connection and try again.', { retry: () => exportPptx(fmt, label, btn) }); return; }
+      if (!PptxCtor) { showError('PPTX export library did not load Ã¢â‚¬â€ check your connection and try again.', { retry: () => exportPptx(fmt, label, btn) }); return; }
       const original = btn.textContent;
-      btn.textContent = 'Building…'; btn.disabled = true;
+      btn.textContent = 'BuildingÃ¢â‚¬Â¦'; btn.disabled = true;
       try {
         const slideData = (fmt === 'slides')
           ? (parseSlideOutline(val).length ? parseSlideOutline(val) : chunkTextToSlides(val, label))
@@ -4640,7 +4553,7 @@
         // Title slide
         const titleSlide = pptx.addSlide({ masterName: 'GENAI_MASTER' });
         titleSlide.addText(label, { x: 0.6, y: 2.2, w: 8.8, h: 1.2, fontSize: 32, bold: true, color: 'F2F2F6', fontFace: 'Arial' });
-        titleSlide.addText('Generated by GENAI · SIH26154', { x: 0.6, y: 3.3, w: 8.8, h: 0.5, fontSize: 13, color: '9B6BFF', fontFace: 'Arial' });
+        titleSlide.addText('Generated by GENAI Ã‚Â· SIH26154', { x: 0.6, y: 3.3, w: 8.8, h: 0.5, fontSize: 13, color: '9B6BFF', fontFace: 'Arial' });
 
         slideData.forEach(s => {
           const slide = pptx.addSlide({ masterName: 'GENAI_MASTER' });
@@ -4691,7 +4604,7 @@
       const feedbackInput = document.getElementById('feedback-' + fmt);
       const feedback = feedbackInput ? feedbackInput.value.trim() : '';
 
-      btn.textContent = 'Working…'; btn.disabled = true;
+      btn.textContent = 'WorkingÃ¢â‚¬Â¦'; btn.disabled = true;
       try {
         let newText;
         if (feedback) {
@@ -4706,7 +4619,7 @@
         const grounding = await checkGrounding(sourceContent, [fmt], { [fmt]: newText });
         currentGrounding[fmt] = grounding[fmt] || currentGrounding[fmt];
         const toolbar = ta.closest('.result-body').querySelector('.result-toolbar .result-meta');
-        toolbar.innerHTML = `${ta.value.length.toLocaleString()} characters &nbsp;·&nbsp; ${groundingBadge(fmt)}`;
+        toolbar.innerHTML = `${ta.value.length.toLocaleString()} characters &nbsp;Ã‚Â·&nbsp; ${groundingBadge(fmt)}`;
         logUsage({ formats: [fmt], outputCount: 1, regenerated: true });
       } catch (err) {
         showError('Regeneration failed: ' + (err.message || 'unknown error'), { retry: () => regenerateOne(fmt, btn, translateLang) });
@@ -4717,7 +4630,7 @@
     }
 
     function pushHistory(text, formats) {
-      const preview = text.slice(0, 60) + (text.length > 60 ? '…' : '');
+      const preview = text.slice(0, 60) + (text.length > 60 ? 'Ã¢â‚¬Â¦' : '');
       history.unshift({ preview, formats, time: new Date().toLocaleTimeString() });
       history = history.slice(0, 6);
       historyStrip.style.display = 'block';
@@ -4725,7 +4638,7 @@
       history.forEach(h => {
         const item = document.createElement('div');
         item.className = 'history-item';
-        item.innerHTML = `<div><div>${h.preview}</div><div class="h-formats">${h.formats.map(f => FORMAT_LABELS[f]).join(' · ')}</div></div><div>${h.time}</div>`;
+        item.innerHTML = `<div><div>${h.preview}</div><div class="h-formats">${h.formats.map(f => FORMAT_LABELS[f]).join(' Ã‚Â· ')}</div></div><div>${h.time}</div>`;
         historyList.appendChild(item);
       });
       // Persist to backend
@@ -4767,7 +4680,7 @@
         document.getElementById('dashGroundedPct').textContent = pct + '%';
         document.getElementById('dashGroundedSub').textContent = totalChecked + ' outputs fact-checked';
       } else {
-        document.getElementById('dashGroundedPct').textContent = '—';
+        document.getElementById('dashGroundedPct').textContent = 'Ã¢â‚¬â€';
         document.getElementById('dashGroundedSub').textContent = 'no data yet';
       }
 
@@ -4777,7 +4690,7 @@
       const barsWrap = document.getElementById('dashFormatBars');
       const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
       if (!entries.length) {
-        barsWrap.innerHTML = '<div class="dash-empty">No generations yet — transform something to see stats here.</div>';
+        barsWrap.innerHTML = '<div class="dash-empty">No generations yet Ã¢â‚¬â€ transform something to see stats here.</div>';
       } else {
         const max = entries[0][1];
         barsWrap.innerHTML = entries.map(([f, c]) => `
@@ -4803,9 +4716,9 @@
       }
     }
 
-    /* ═══════════════════════════════════════════════════════
+    /* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
        LIVE PLATFORM MOCKUP GENERATORS
-    ═══════════════════════════════════════════════════════ */
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
     const slideState = {};
 
     function generateMockupHtml(fmt, text) {
@@ -4832,28 +4745,28 @@
             <div class="ml-header">
               <div class="ml-avatar">${authorName.slice(0, 2).toUpperCase()}</div>
               <div>
-                <div class="ml-name">${authorName} <span class="ml-deg">• 1st</span></div>
+                <div class="ml-name">${authorName} <span class="ml-deg">Ã¢â‚¬Â¢ 1st</span></div>
                 <div class="ml-title">AI Content &amp; Transformation Specialist</div>
-                <div class="ml-time">Just now · 🌐 Public</div>
+                <div class="ml-time">Just now Ã‚Â· Ã°Å¸Å’Â Public</div>
               </div>
             </div>
             <div class="ml-body">${formatted}</div>
             <div class="ml-stats">
-              <span id="mlLikeCount">👍 ❤️ 💡 <b id="mlLikeNum">${state.likes}</b> reactions</span>
-              <span><b id="mlCommentCount">${state.comments.length}</b> comments • <b id="mlRepostNum">${state.reposts}</b> reposts</span>
+              <span id="mlLikeCount">Ã°Å¸â€˜Â Ã¢ÂÂ¤Ã¯Â¸Â Ã°Å¸â€™Â¡ <b id="mlLikeNum">${state.likes}</b> reactions</span>
+              <span><b id="mlCommentCount">${state.comments.length}</b> comments Ã¢â‚¬Â¢ <b id="mlRepostNum">${state.reposts}</b> reposts</span>
             </div>
             <div class="ml-actions">
               <button type="button" class="ml-action-btn ${state.liked ? 'active' : ''}" id="mlLikeBtn" onclick="handleLinkedInLike()">
-                <span>👍</span> <span id="mlLikeLabel">${state.liked ? 'Liked' : 'Like'}</span>
+                <span>Ã°Å¸â€˜Â</span> <span id="mlLikeLabel">${state.liked ? 'Liked' : 'Like'}</span>
               </button>
               <button type="button" class="ml-action-btn" onclick="toggleLinkedInCommentBox()">
-                <span>💬</span> Comment
+                <span>Ã°Å¸â€™Â¬</span> Comment
               </button>
               <button type="button" class="ml-action-btn" onclick="handleLinkedInRepost()">
-                <span>🔁</span> Repost
+                <span>Ã°Å¸â€Â</span> Repost
               </button>
               <button type="button" class="ml-action-btn" onclick="handleLinkedInSend()">
-                <span>🚀</span> Share to LinkedIn
+                <span>Ã°Å¸Å¡â‚¬</span> Share to LinkedIn
               </button>
             </div>
 
@@ -4861,7 +4774,7 @@
             <div class="ml-comments-section" id="mlCommentsSection">
               <div class="ml-comment-box" id="mlCommentInputRow">
                 <div class="ml-avatar" style="width:32px;height:32px;font-size:11px;">${authorName.slice(0, 2).toUpperCase()}</div>
-                <input type="text" class="ml-comment-input" id="mlCommentInput" placeholder="Add a comment…" onkeydown="if(event.key==='Enter') submitLinkedInComment()" />
+                <input type="text" class="ml-comment-input" id="mlCommentInput" placeholder="Add a commentÃ¢â‚¬Â¦" onkeydown="if(event.key==='Enter') submitLinkedInComment()" />
                 <button type="button" class="ml-comment-post-btn" onclick="submitLinkedInComment()">Post</button>
               </div>
               <div id="mlCommentsList">
@@ -4869,7 +4782,7 @@
                   <div class="ml-comment-item">
                     <div class="ml-avatar" style="width:28px;height:28px;font-size:10px;background:#607080;">${c.author.slice(0, 2).toUpperCase()}</div>
                     <div class="ml-comment-bubble">
-                      <div class="ml-comment-name">${c.author} <span style="font-size:10px;color:#8c9fae;font-weight:400;">· ${c.time}</span></div>
+                      <div class="ml-comment-name">${c.author} <span style="font-size:10px;color:#8c9fae;font-weight:400;">Ã‚Â· ${c.time}</span></div>
                       <div class="ml-comment-text">${c.text}</div>
                     </div>
                   </div>
@@ -4889,21 +4802,21 @@
           <div class="mock-twitter">
             <div style="display:flex;justify-content:flex-end;margin-bottom:10px;">
               <button type="button" onclick="publishTwitterThread()" style="background:#1d9bf0;color:#fff;border:none;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.15s;">
-                <span>𝕏</span> Post Thread to X
+                <span>Ã°Ââ€¢Â</span> Post Thread to X
               </button>
             </div>
             ${tweets.map((tw, idx) => `
               <div class="tw-card">
                 <div class="tw-avatar">${authorName.slice(0, 2).toUpperCase()}</div>
                 <div class="tw-body">
-                  <div class="tw-user"><b>${authorName}</b> <span>@${authorName.toLowerCase().replace(/[^a-z0-9]/g, '')} · ${idx + 1}m</span></div>
+                  <div class="tw-user"><b>${authorName}</b> <span>@${authorName.toLowerCase().replace(/[^a-z0-9]/g, '')} Ã‚Â· ${idx + 1}m</span></div>
                   <div class="tw-text">${tw.replace(/\n/g, '<br>')}</div>
                   <div class="tw-actions">
-                    <span style="cursor:pointer;" onclick="this.innerHTML='💬 19'">💬 18</span>
-                    <span style="cursor:pointer;" onclick="this.innerHTML='🔁 43'">🔁 42</span>
-                    <span style="cursor:pointer;color:#f91880;" onclick="this.innerHTML='❤️ 313'">❤️ 312</span>
-                    <span>📊 4.2K</span>
-                    <span style="cursor:pointer;" onclick="collabToast('Tweet bookmarked ✓')">🔖</span>
+                    <span style="cursor:pointer;" onclick="this.innerHTML='Ã°Å¸â€™Â¬ 19'">Ã°Å¸â€™Â¬ 18</span>
+                    <span style="cursor:pointer;" onclick="this.innerHTML='Ã°Å¸â€Â 43'">Ã°Å¸â€Â 42</span>
+                    <span style="cursor:pointer;color:#f91880;" onclick="this.innerHTML='Ã¢ÂÂ¤Ã¯Â¸Â 313'">Ã¢ÂÂ¤Ã¯Â¸Â 312</span>
+                    <span>Ã°Å¸â€œÅ  4.2K</span>
+                    <span style="cursor:pointer;" onclick="collabToast('Tweet bookmarked Ã¢Å“â€œ')">Ã°Å¸â€â€“</span>
                   </div>
                 </div>
               </div>
@@ -4921,8 +4834,8 @@
             <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#11111d;border-bottom:1px solid rgba(255,255,255,0.08);">
               <div class="me-dots"><span></span><span></span><span></span></div>
               <div style="display:flex;gap:6px;">
-                <button type="button" class="icon-btn" onclick="sendEmailDraft('${encodeURIComponent(subject)}')" style="font-size:11px;">📧 Open in Mail Client</button>
-                <button type="button" class="icon-btn" onclick="copyEmailHtml()" style="font-size:11px;">📋 Copy HTML</button>
+                <button type="button" class="icon-btn" onclick="sendEmailDraft('${encodeURIComponent(subject)}')" style="font-size:11px;">Ã°Å¸â€œÂ§ Open in Mail Client</button>
+                <button type="button" class="icon-btn" onclick="copyEmailHtml()" style="font-size:11px;">Ã°Å¸â€œâ€¹ Copy HTML</button>
               </div>
             </div>
             <div class="me-meta">
@@ -4951,7 +4864,7 @@
             <div style="width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
               <span style="font-family:var(--font-mono);font-size:11px;color:var(--ink-dim);">PRESENTATION PREVIEW</span>
               <div style="display:flex;gap:6px;">
-                <button type="button" class="icon-btn" onclick="presentSlideFullscreen('${fmt}')" style="font-size:11px;">🖥️ Fullscreen Mode</button>
+                <button type="button" class="icon-btn" onclick="presentSlideFullscreen('${fmt}')" style="font-size:11px;">Ã°Å¸â€“Â¥Ã¯Â¸Â Fullscreen Mode</button>
               </div>
             </div>
             <div class="ms-canvas" id="slideCanvasEl-${fmt}">
@@ -4962,11 +4875,11 @@
               </ul>
             </div>
             <div class="ms-controls">
-              <button type="button" class="ms-btn" id="msPrev-${fmt}" onclick="stepSlide('${fmt}', -1)" disabled>◀ Previous</button>
+              <button type="button" class="ms-btn" id="msPrev-${fmt}" onclick="stepSlide('${fmt}', -1)" disabled>Ã¢â€”â‚¬ Previous</button>
               <div style="display:flex;gap:4px;" id="msDots-${fmt}">
                 ${slideState[fmt].slides.map((_, i) => `<span onclick="jumpSlide('${fmt}', ${i})" style="width:8px;height:8px;border-radius:50%;background:${i===0?'var(--violet)':'rgba(255,255,255,0.2)'};cursor:pointer;display:inline-block;"></span>`).join('')}
               </div>
-              <button type="button" class="ms-btn" id="msNext-${fmt}" onclick="stepSlide('${fmt}', 1)" ${slideState[fmt].slides.length <= 1 ? 'disabled' : ''}>Next ▶</button>
+              <button type="button" class="ms-btn" id="msNext-${fmt}" onclick="stepSlide('${fmt}', 1)" ${slideState[fmt].slides.length <= 1 ? 'disabled' : ''}>Next Ã¢â€“Â¶</button>
             </div>
           </div>
         `;
@@ -4983,23 +4896,23 @@
         return `
           <div class="mock-blog">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-              <div class="mb-pill">LONG READ · ⏱️ ${readTime} MIN READ</div>
+              <div class="mb-pill">LONG READ Ã‚Â· Ã¢ÂÂ±Ã¯Â¸Â ${readTime} MIN READ</div>
               <div style="display:flex;gap:6px;">
-                <button type="button" class="icon-btn" onclick="copyBlogMarkdown()" style="font-size:11px;">📋 Copy Markdown</button>
-                <button type="button" class="icon-btn" onclick="window.print()" style="font-size:11px;">🖨️ Print View</button>
+                <button type="button" class="icon-btn" onclick="copyBlogMarkdown()" style="font-size:11px;">Ã°Å¸â€œâ€¹ Copy Markdown</button>
+                <button type="button" class="icon-btn" onclick="window.print()" style="font-size:11px;">Ã°Å¸â€“Â¨Ã¯Â¸Â Print View</button>
               </div>
             </div>
             <h1 class="mb-title">${title}</h1>
             <div class="mb-byline">
               <div class="mb-avatar">${authorName.slice(0, 2).toUpperCase()}</div>
-              <div><b>${authorName}</b> in <i>AI &amp; Innovation Dispatch</i><br><small>Published Today · Staff Pick ★</small></div>
+              <div><b>${authorName}</b> in <i>AI &amp; Innovation Dispatch</i><br><small>Published Today Ã‚Â· Staff Pick Ã¢Ëœâ€¦</small></div>
             </div>
             <div class="mb-body">${bodyText}</div>
             <div style="margin-top:28px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
               <button type="button" onclick="handleMediumClap()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 16px;border-radius:100px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.15s;">
-                <span>👏</span> <b id="blogClapNum">${claps}</b> claps
+                <span>Ã°Å¸â€˜Â</span> <b id="blogClapNum">${claps}</b> claps
               </button>
-              <span style="font-size:12px;color:var(--ink-dim);">💬 18 responses • 🔖 45 saves</span>
+              <span style="font-size:12px;color:var(--ink-dim);">Ã°Å¸â€™Â¬ 18 responses Ã¢â‚¬Â¢ Ã°Å¸â€â€“ 45 saves</span>
             </div>
           </div>
         `;
@@ -5016,15 +4929,15 @@
           <div class="mock-seo">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;">
               <span style="font-size:11px;font-family:var(--font-mono);color:#8ab4f8;">GOOGLE SEARCH ENGINE SNIPPET</span>
-              <button type="button" class="icon-btn" onclick="copySeoMetaTags()" style="font-size:11px;">📋 Copy Meta Tags</button>
+              <button type="button" class="icon-btn" onclick="copySeoMetaTags()" style="font-size:11px;">Ã°Å¸â€œâ€¹ Copy Meta Tags</button>
             </div>
-            <div class="seo-url">https://www.example.com › content › transformation</div>
+            <div class="seo-url">https://www.example.com Ã¢â‚¬Âº content Ã¢â‚¬Âº transformation</div>
             <div class="seo-title" onclick="collabToast('Clicked search link preview')">${title}</div>
             <div class="seo-desc">${desc}</div>
             
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;padding:10px;background:rgba(0,0,0,0.25);border-radius:8px;font-size:11.5px;font-family:var(--font-mono);">
-              <div>Title Length: <b style="color:${titleLen <= 60 ? '#3fe3d0':'#ff6464'};">${titleLen}/60 chars</b> (${titleLen <= 60 ? 'Optimal ✓' : 'Too Long ⚠'})</div>
-              <div>Desc Length: <b style="color:${descLen <= 160 ? '#3fe3d0':'#ff6464'};">${descLen}/160 chars</b> (${descLen <= 160 ? 'Optimal ✓' : 'Too Long ⚠'})</div>
+              <div>Title Length: <b style="color:${titleLen <= 60 ? '#3fe3d0':'#ff6464'};">${titleLen}/60 chars</b> (${titleLen <= 60 ? 'Optimal Ã¢Å“â€œ' : 'Too Long Ã¢Å¡Â '})</div>
+              <div>Desc Length: <b style="color:${descLen <= 160 ? '#3fe3d0':'#ff6464'};">${descLen}/160 chars</b> (${descLen <= 160 ? 'Optimal Ã¢Å“â€œ' : 'Too Long Ã¢Å¡Â '})</div>
             </div>
 
             <div class="seo-keywords-wrap" style="margin-top:12px;">
@@ -5060,14 +4973,14 @@
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
               <span style="font-size:11px;font-family:var(--font-mono);color:var(--ink-dim);">${pairs.length} QUESTIONS ANSWERED</span>
               <div style="display:flex;gap:6px;">
-                <button type="button" class="icon-btn" onclick="toggleAllFaq()" style="font-size:11px;">📂 Toggle All</button>
-                <button type="button" class="icon-btn" onclick="copyFaqSchema()" style="font-size:11px;">📋 Copy Schema.org JSON</button>
+                <button type="button" class="icon-btn" onclick="toggleAllFaq()" style="font-size:11px;">Ã°Å¸â€œâ€š Toggle All</button>
+                <button type="button" class="icon-btn" onclick="copyFaqSchema()" style="font-size:11px;">Ã°Å¸â€œâ€¹ Copy Schema.org JSON</button>
               </div>
             </div>
             ${pairs.map((p, i) => `
               <div class="faq-acc" id="faqAcc-${i}">
                 <div class="faq-q" onclick="document.getElementById('faqAcc-${i}').querySelector('.faq-a').classList.toggle('hidden-faq')">
-                  <span>❓ ${p.q}</span><span>▾</span>
+                  <span>Ã¢Ââ€œ ${p.q}</span><span>Ã¢â€“Â¾</span>
                 </div>
                 <div class="faq-a">${p.a.replace(/\n/g, '<br>')}</div>
               </div>
@@ -5085,10 +4998,10 @@
           <div style="background:#141424;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:24px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:12px;">
               <div>
-                <span style="font-family:var(--font-mono);font-size:11px;color:#ff5f56;text-transform:uppercase;">🎬 VIDEO PRODUCTION SCRIPT</span>
-                <div style="font-size:11.5px;color:var(--ink-dim);margin-top:3px;">⏱️ Est. Run Time: <b>${mins}m ${secs}s</b> (${wordCount} words at 140 wpm)</div>
+                <span style="font-family:var(--font-mono);font-size:11px;color:#ff5f56;text-transform:uppercase;">Ã°Å¸Å½Â¬ VIDEO PRODUCTION SCRIPT</span>
+                <div style="font-size:11.5px;color:var(--ink-dim);margin-top:3px;">Ã¢ÂÂ±Ã¯Â¸Â Est. Run Time: <b>${mins}m ${secs}s</b> (${wordCount} words at 140 wpm)</div>
               </div>
-              <button type="button" class="icon-btn" onclick="openTeleprompter()" style="background:var(--violet-soft);border-color:var(--violet);color:#fff;font-size:11.5px;font-weight:600;">📜 Teleprompter View</button>
+              <button type="button" class="icon-btn" onclick="openTeleprompter()" style="background:var(--violet-soft);border-color:var(--violet);color:#fff;font-size:11.5px;font-weight:600;">Ã°Å¸â€œÅ“ Teleprompter View</button>
             </div>
             <div style="font-size:14px;line-height:1.85;color:#e8e8f8;white-space:pre-wrap;font-family:var(--font-mono);">${clean}</div>
           </div>
@@ -5123,7 +5036,7 @@
       if (nextBtn) nextBtn.disabled = state.current === state.slides.length - 1;
     }
 
-    /* ── LinkedIn & Twitter Mockup Action Handlers ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ LinkedIn & Twitter Mockup Action Handlers Ã¢â€â‚¬Ã¢â€â‚¬ */
     function handleLinkedInLike() {
       const state = window.linkedinMockState || { likes: 248, liked: false, reposts: 12, comments: [] };
       state.liked = !state.liked;
@@ -5135,7 +5048,7 @@
       if (numEl) numEl.textContent = state.likes;
       if (labelEl) labelEl.textContent = state.liked ? 'Liked' : 'Like';
       if (btn) btn.classList.toggle('active', state.liked);
-      collabToast(state.liked ? '👍 Liked post!' : 'Unliked');
+      collabToast(state.liked ? 'Ã°Å¸â€˜Â Liked post!' : 'Unliked');
     }
 
     function toggleLinkedInCommentBox() {
@@ -5162,7 +5075,7 @@
         item.innerHTML = `
           <div class="ml-avatar" style="width:28px;height:28px;font-size:10px;background:#0077b5;">${authorName.slice(0, 2).toUpperCase()}</div>
           <div class="ml-comment-bubble">
-            <div class="ml-comment-name">${authorName} <span style="font-size:10px;color:#8c9fae;font-weight:400;">· Just now</span></div>
+            <div class="ml-comment-name">${authorName} <span style="font-size:10px;color:#8c9fae;font-weight:400;">Ã‚Â· Just now</span></div>
             <div class="ml-comment-text">${text}</div>
           </div>
         `;
@@ -5171,7 +5084,7 @@
       const countEl = document.getElementById('mlCommentCount');
       if (countEl) countEl.textContent = state.comments.length;
       if (input) input.value = '';
-      collabToast('Comment published to mock feed ✓');
+      collabToast('Comment published to mock feed Ã¢Å“â€œ');
     }
 
     function handleLinkedInRepost() {
@@ -5180,14 +5093,14 @@
       window.linkedinMockState = state;
       const numEl = document.getElementById('mlRepostNum');
       if (numEl) numEl.textContent = state.reposts;
-      collabToast('🔁 Reposted to your LinkedIn mock feed ✓');
+      collabToast('Ã°Å¸â€Â Reposted to your LinkedIn mock feed Ã¢Å“â€œ');
     }
 
     function handleLinkedInSend() {
       const ta = document.getElementById('text-linkedin');
       const text = ta ? ta.value : '';
       navigator.clipboard.writeText(text).then(() => {
-        collabToast('📋 Post copied! Opening LinkedIn feed…');
+        collabToast('Ã°Å¸â€œâ€¹ Post copied! Opening LinkedIn feedÃ¢â‚¬Â¦');
         setTimeout(() => {
           window.open('https://www.linkedin.com/feed/', '_blank');
         }, 600);
@@ -5202,24 +5115,24 @@
       window.open(url, '_blank');
     }
 
-    /* ── Email Actions ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ Email Actions Ã¢â€â‚¬Ã¢â€â‚¬ */
     function sendEmailDraft(encodedSubject) {
       const sub = decodeURIComponent(encodedSubject);
       const ta = document.getElementById('text-email');
       const body = ta ? ta.value : '';
       const mailto = `mailto:?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body.slice(0, 1500))}`;
       window.open(mailto, '_blank');
-      collabToast('Opened in default email client ✉️');
+      collabToast('Opened in default email client Ã¢Å“â€°Ã¯Â¸Â');
     }
 
     function copyEmailHtml() {
       const bodyHtml = document.getElementById('emBodyHtml')?.innerHTML || '';
       const sub = document.getElementById('emSubject')?.textContent || 'Newsletter';
       const fullHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${sub}</title></head><body style="font-family:sans-serif;line-height:1.6;color:#333;max-width:600px;margin:0 auto;padding:20px;"><h2>${sub}</h2>${bodyHtml}</body></html>`;
-      navigator.clipboard.writeText(fullHtml).then(() => collabToast('📋 Email HTML template copied to clipboard ✓'));
+      navigator.clipboard.writeText(fullHtml).then(() => collabToast('Ã°Å¸â€œâ€¹ Email HTML template copied to clipboard Ã¢Å“â€œ'));
     }
 
-    /* ── Slide Carousel Actions ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ Slide Carousel Actions Ã¢â€â‚¬Ã¢â€â‚¬ */
     function jumpSlide(fmt, index) {
       if (!slideState[fmt]) return;
       slideState[fmt].current = index;
@@ -5237,24 +5150,24 @@
       if (!el) return;
       if (el.requestFullscreen) el.requestFullscreen();
       else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-      collabToast('Entered presentation mode (Press Esc to exit) 🖥️');
+      collabToast('Entered presentation mode (Press Esc to exit) Ã°Å¸â€“Â¥Ã¯Â¸Â');
     }
 
-    /* ── Blog Actions ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ Blog Actions Ã¢â€â‚¬Ã¢â€â‚¬ */
     function handleMediumClap() {
       window.blogClapCount = (window.blogClapCount || 142) + 1;
       const el = document.getElementById('blogClapNum');
       if (el) el.textContent = window.blogClapCount;
-      collabToast('👏 Clapped for article!');
+      collabToast('Ã°Å¸â€˜Â Clapped for article!');
     }
 
     function copyBlogMarkdown() {
       const ta = document.getElementById('text-blog');
       const text = ta ? ta.value : '';
-      navigator.clipboard.writeText(text).then(() => collabToast('📋 Markdown copied to clipboard ✓'));
+      navigator.clipboard.writeText(text).then(() => collabToast('Ã°Å¸â€œâ€¹ Markdown copied to clipboard Ã¢Å“â€œ'));
     }
 
-    /* ── SEO Actions ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ SEO Actions Ã¢â€â‚¬Ã¢â€â‚¬ */
     function copySeoMetaTags() {
       const ta = document.getElementById('text-seo');
       const text = ta ? ta.value : '';
@@ -5263,10 +5176,10 @@
       const title = titleMatch ? titleMatch[1] : 'Page Title';
       const desc = descMatch ? descMatch[1] : 'Meta Description';
       const tags = `<title>${title}</title>\n<meta name="description" content="${desc}" />`;
-      navigator.clipboard.writeText(tags).then(() => collabToast('📋 HTML <meta> tags copied to clipboard ✓'));
+      navigator.clipboard.writeText(tags).then(() => collabToast('Ã°Å¸â€œâ€¹ HTML <meta> tags copied to clipboard Ã¢Å“â€œ'));
     }
 
-    /* ── FAQ Actions ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ FAQ Actions Ã¢â€â‚¬Ã¢â€â‚¬ */
     function toggleAllFaq() {
       const accs = document.querySelectorAll('.faq-acc .faq-a');
       const anyOpen = Array.from(accs).some(a => !a.classList.contains('hidden-faq'));
@@ -5286,10 +5199,10 @@
           "acceptedAnswer": { "@type": "Answer", "text": text.slice(0, 500) }
         }]
       };
-      navigator.clipboard.writeText(JSON.stringify(schema, null, 2)).then(() => collabToast('📋 Schema.org FAQ JSON-LD copied ✓'));
+      navigator.clipboard.writeText(JSON.stringify(schema, null, 2)).then(() => collabToast('Ã°Å¸â€œâ€¹ Schema.org FAQ JSON-LD copied Ã¢Å“â€œ'));
     }
 
-    /* ── Video Teleprompter ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ Video Teleprompter Ã¢â€â‚¬Ã¢â€â‚¬ */
     function openTeleprompter() {
       const ta = document.getElementById('text-video');
       const text = ta ? ta.value : '';
@@ -5303,7 +5216,7 @@
           button { background:#8b5cf6; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-size:14px; cursor:pointer; font-weight:600; }
         </style></head><body>
         <div id="controls">
-          <button onclick="toggleScroll()" id="pBtn">▶ Start Scroll</button>
+          <button onclick="toggleScroll()" id="pBtn">Ã¢â€“Â¶ Start Scroll</button>
           <button onclick="speed(1)">1x</button>
           <button onclick="speed(2)">2x</button>
           <button onclick="speed(3)">3x</button>
@@ -5313,7 +5226,7 @@
           let scrolling = false; let scrollSpeed = 1.5; let timer;
           function toggleScroll() {
             scrolling = !scrolling;
-            document.getElementById('pBtn').textContent = scrolling ? '⏸ Pause' : '▶ Start Scroll';
+            document.getElementById('pBtn').textContent = scrolling ? 'Ã¢ÂÂ¸ Pause' : 'Ã¢â€“Â¶ Start Scroll';
             if (scrolling) {
               timer = setInterval(() => { window.scrollBy(0, scrollSpeed); }, 30);
             } else { clearInterval(timer); }
@@ -5322,12 +5235,12 @@
         <\/script></body></html>
       `);
       win.document.close();
-      collabToast('🎬 Teleprompter window launched!');
+      collabToast('Ã°Å¸Å½Â¬ Teleprompter window launched!');
     }
 
-    /* ═══════════════════════════════════════════════════════
+    /* Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â
        COLLABORATION SUITE
-    ═══════════════════════════════════════════════════════ */
+    Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â */
 
     // Shared state
     let currentShareUrl = '';
@@ -5341,7 +5254,7 @@
       setTimeout(() => { t.style.opacity = '0'; }, duration);
     }
 
-    // ── CSS helper for overlay show/hide ──────────────────────────────────────
+    // Ã¢â€â‚¬Ã¢â€â‚¬ CSS helper for overlay show/hide Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     const overlayStyle = document.createElement('style');
     overlayStyle.textContent = `
       .collab-overlay { display:flex!important; }
@@ -5349,7 +5262,7 @@
     `;
     document.head.appendChild(overlayStyle);
 
-    // ── SHARE LINK ────────────────────────────────────────────────────────────
+    // Ã¢â€â‚¬Ã¢â€â‚¬ SHARE LINK Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     document.getElementById('shareBtn').addEventListener('click', () => {
       document.getElementById('shareModal').classList.remove('hidden');
       document.getElementById('shareLinkInput').value = '';
@@ -5362,7 +5275,7 @@
       if (!Object.keys(currentResults).length) { collabToast('Generate content first!'); return; }
 
       const linkInput = document.getElementById('shareLinkInput');
-      linkInput.value = 'Creating…';
+      linkInput.value = 'CreatingÃ¢â‚¬Â¦';
 
       try {
         const r = await fetch(`${API_BASE}/api/collab/share`, {
@@ -5382,18 +5295,18 @@
         linkInput.value = currentShareUrl;
         document.getElementById('shareOpenBtn').style.display = 'block';
       } catch {
-        linkInput.value = 'Error — try again';
+        linkInput.value = 'Error Ã¢â‚¬â€ try again';
       }
     }
 
     function copyShareLink() {
       const val = document.getElementById('shareLinkInput').value;
-      if (!val || val === 'Creating…' || val === 'Error — try again') return;
+      if (!val || val === 'CreatingÃ¢â‚¬Â¦' || val === 'Error Ã¢â‚¬â€ try again') return;
       navigator.clipboard.writeText(val).then(() => {
         const btn = document.getElementById('copyShareBtn');
-        btn.textContent = 'Copied ✓';
+        btn.textContent = 'Copied Ã¢Å“â€œ';
         setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
-        collabToast('Link copied to clipboard ✓');
+        collabToast('Link copied to clipboard Ã¢Å“â€œ');
       });
     }
 
@@ -5401,7 +5314,7 @@
       if (currentShareUrl) window.open(currentShareUrl, '_blank');
     }
 
-    // ── VERSION HISTORY ────────────────────────────────────────────────────────
+    // Ã¢â€â‚¬Ã¢â€â‚¬ VERSION HISTORY Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     let versionDrawerFmt = null;
 
     function openVersionDrawer(fmt, label) {
@@ -5428,7 +5341,7 @@
 
     async function loadVersions(fmt) {
       const list = document.getElementById('versionList');
-      list.innerHTML = '<div style="color:#9090b0;font-size:13px;text-align:center;padding:20px;">Loading…</div>';
+      list.innerHTML = '<div style="color:#9090b0;font-size:13px;text-align:center;padding:20px;">LoadingÃ¢â‚¬Â¦</div>';
       try {
         const r = await fetch(`${API_BASE}/api/collab/version/${currentSessionId}/${fmt}`);
         const data = await r.json();
@@ -5439,10 +5352,10 @@
         }
         list.innerHTML = versions.map((v, i) => `
           <div style="background:#1a1a2e;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px;">
-            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#8b5cf6;margin-bottom:4px;">${i === 0 ? '● LATEST' : `v${versions.length - i}`} · ${new Date(v.createdAt).toLocaleString()}</div>
+            <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#8b5cf6;margin-bottom:4px;">${i === 0 ? 'Ã¢â€”Â LATEST' : `v${versions.length - i}`} Ã‚Â· ${new Date(v.createdAt).toLocaleString()}</div>
             <div style="font-size:11px;color:#9090b0;margin-bottom:10px;">${v.label}</div>
-            <div style="font-size:12.5px;color:#c0c0d8;line-height:1.6;max-height:80px;overflow:hidden;white-space:pre-wrap;">${v.text.slice(0, 180)}${v.text.length > 180 ? '…' : ''}</div>
-            ${i === 0 ? '' : `<button onclick="restoreVersion('${v.id}', '${fmt}', this)" style="margin-top:10px;background:transparent;border:1px solid rgba(139,92,246,.4);color:#8b5cf6;padding:6px 14px;border-radius:100px;font-size:11px;cursor:pointer;transition:.15s;" onmouseover="this.style.background='rgba(139,92,246,.15)'" onmouseout="this.style.background='transparent'">↩ Restore</button>`}
+            <div style="font-size:12.5px;color:#c0c0d8;line-height:1.6;max-height:80px;overflow:hidden;white-space:pre-wrap;">${v.text.slice(0, 180)}${v.text.length > 180 ? 'Ã¢â‚¬Â¦' : ''}</div>
+            ${i === 0 ? '' : `<button onclick="restoreVersion('${v.id}', '${fmt}', this)" style="margin-top:10px;background:transparent;border:1px solid rgba(139,92,246,.4);color:#8b5cf6;padding:6px 14px;border-radius:100px;font-size:11px;cursor:pointer;transition:.15s;" onmouseover="this.style.background='rgba(139,92,246,.15)'" onmouseout="this.style.background='transparent'">Ã¢â€ Â© Restore</button>`}
           </div>`).join('');
       } catch {
         list.innerHTML = '<div style="color:#9090b0;text-align:center;padding:20px;">Could not load versions.</div>';
@@ -5450,7 +5363,7 @@
     }
 
     async function restoreVersion(versionId, fmt, btn) {
-      btn.textContent = 'Restoring…'; btn.disabled = true;
+      btn.textContent = 'RestoringÃ¢â‚¬Â¦'; btn.disabled = true;
       try {
         const r = await fetch(`${API_BASE}/api/collab/version/${currentSessionId}/${fmt}`);
         const data = await r.json();
@@ -5459,16 +5372,16 @@
         const ta = document.getElementById('text-' + fmt);
         if (ta) {
           ta.value = v.text;
-          await saveVersion(fmt, v.text, 'Restored · ' + new Date().toLocaleTimeString());
-          collabToast('Version restored ✓');
+          await saveVersion(fmt, v.text, 'Restored Ã‚Â· ' + new Date().toLocaleTimeString());
+          collabToast('Version restored Ã¢Å“â€œ');
           closeVersionDrawer();
         }
       } catch { collabToast('Restore failed'); }
-      finally { btn.textContent = '↩ Restore'; btn.disabled = false; }
+      finally { btn.textContent = 'Ã¢â€ Â© Restore'; btn.disabled = false; }
     }
 
     // Inject "History" button into each result toolbar after render
-    // ── TEAM WORKSPACE ────────────────────────────────────────────────────────
+    // Ã¢â€â‚¬Ã¢â€â‚¬ TEAM WORKSPACE Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     let teamProfiles = [];
 
     document.getElementById('teamBtn').addEventListener('click', () => {
@@ -5496,7 +5409,7 @@
           <div style="flex:1;min-width:0;">
             <div style="font-weight:600;font-size:14px;margin-bottom:3px;">${p.name}</div>
             <div style="font-size:11px;color:#3fe3d0;font-family:'JetBrains Mono',monospace;margin-bottom:4px;">${p.tone}</div>
-            ${p.notes ? `<div style="font-size:12px;color:#9090b0;line-height:1.5;white-space:pre-wrap;">${p.notes.slice(0,120)}${p.notes.length>120?'…':''}</div>` : ''}
+            ${p.notes ? `<div style="font-size:12px;color:#9090b0;line-height:1.5;white-space:pre-wrap;">${p.notes.slice(0,120)}${p.notes.length>120?'Ã¢â‚¬Â¦':''}</div>` : ''}
             <div style="font-size:10px;color:#606080;margin-top:6px;">by ${p.createdBy || 'Anonymous'}</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
@@ -5524,7 +5437,7 @@
         document.getElementById('tpName').value = '';
         document.getElementById('tpNotes').value = '';
         document.getElementById('tpAuthor').value = '';
-        collabToast('Team profile saved ✓');
+        collabToast('Team profile saved Ã¢Å“â€œ');
       } catch { collabToast('Could not save profile'); }
     }
 
@@ -5544,10 +5457,10 @@
       document.getElementById('profileNotes').value = p.notes || '';
       if (p.tone) document.getElementById('toneSelect').value = p.tone;
       document.getElementById('teamModal').classList.add('hidden');
-      collabToast(`Applied "${p.name}" ✓`);
+      collabToast(`Applied "${p.name}" Ã¢Å“â€œ`);
     }
 
-    // ── Wire up Version History buttons into result bodies ────────────────────
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Wire up Version History buttons into result bodies Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     const _origResultBodiesWireup = resultBodies;
     // Patch: after renderResults, inject History btn into each card
     const _patchObserver = new MutationObserver(() => {
@@ -5558,7 +5471,7 @@
           hBtn.className = 'icon-btn';
           hBtn.dataset.action = 'history';
           hBtn.dataset.fmt = fmt;
-          hBtn.textContent = '🕐 History';
+          hBtn.textContent = 'Ã°Å¸â€¢Â History';
           hBtn.type = 'button';
           hBtn.addEventListener('click', () => {
             const label = FORMAT_LABELS[fmt] || fmt;
@@ -5573,293 +5486,4 @@
     // Initial team profile load
     loadTeamProfiles();
   </script>
-
-  <!-- JSZip for ZIP export -->
-  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-
-  <script>
-    /* ═══════════════════════════════════════════════════════════════
-       🔊 AUDIO VOICEOVER STUDIO  (Web Speech API)
-    ═══════════════════════════════════════════════════════════════ */
-
-    let _ttsUtterance = null;
-    let _ttsSpeaking = false;
-    let _ttsPaused = false;
-    let _ttsText = '';
-    let _ttsCharIndex = 0;
-    let _ttsVoices = [];
-
-    function _ttsLoadVoices() {
-      _ttsVoices = window.speechSynthesis.getVoices();
-      const sel = document.getElementById('ttsVoiceSelect');
-      if (!sel || !_ttsVoices.length) return;
-      sel.innerHTML = '';
-      // Prioritise English voices
-      const eng = _ttsVoices.filter(v => v.lang.startsWith('en'));
-      const rest = _ttsVoices.filter(v => !v.lang.startsWith('en'));
-      [...eng, ...rest].forEach((v, i) => {
-        const opt = document.createElement('option');
-        opt.value = i;
-        opt.textContent = `${v.name} (${v.lang})`;
-        sel.appendChild(opt);
-      });
-    }
-
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = _ttsLoadVoices;
-      _ttsLoadVoices();
-    }
-
-    function openTtsStudio(fmt) {
-      const ta = document.getElementById('text-' + fmt);
-      if (!ta) return;
-      _ttsText = ta.value.trim();
-      _ttsCharIndex = 0;
-      window.speechSynthesis.cancel();
-      _ttsSpeaking = false;
-      _ttsPaused = false;
-
-      const snip = document.getElementById('ttsSnippet');
-      if (snip) snip.textContent = _ttsText.slice(0, 180) + (_ttsText.length > 180 ? '…' : '');
-
-      const bar = document.getElementById('ttsBar');
-      if (bar) bar.style.width = '0%';
-      const wd = document.getElementById('ttsWordDisplay');
-      if (wd) wd.textContent = '';
-      const pb = document.getElementById('ttsPlayBtn');
-      if (pb) pb.textContent = '▶ Play';
-
-      _ttsLoadVoices();
-
-      const studio = document.getElementById('ttsStudio');
-      studio.classList.add('open');
-    }
-
-    function closeTtsStudio() {
-      window.speechSynthesis.cancel();
-      _ttsSpeaking = false;
-      _ttsPaused = false;
-      const pb = document.getElementById('ttsPlayBtn');
-      if (pb) pb.textContent = '▶ Play';
-      document.getElementById('ttsStudio').classList.remove('open');
-    }
-
-    function _buildUtterance(fromChar) {
-      const text = _ttsText.slice(fromChar);
-      const u = new SpeechSynthesisUtterance(text);
-      const sel = document.getElementById('ttsVoiceSelect');
-      if (sel && _ttsVoices[sel.value]) u.voice = _ttsVoices[sel.value];
-      u.rate = parseFloat(document.getElementById('ttsSpeedSlider')?.value || 1);
-      u.pitch = parseFloat(document.getElementById('ttsPitchSlider')?.value || 1);
-
-      u.onboundary = (e) => {
-        if (e.name === 'word') {
-          _ttsCharIndex = fromChar + e.charIndex;
-          const progress = Math.min(100, (_ttsCharIndex / _ttsText.length) * 100);
-          const bar = document.getElementById('ttsBar');
-          if (bar) bar.style.width = progress + '%';
-          const word = _ttsText.substr(_ttsCharIndex, e.charLength || 10).trim();
-          const wd = document.getElementById('ttsWordDisplay');
-          if (wd) wd.textContent = word;
-        }
-      };
-
-      u.onend = () => {
-        _ttsSpeaking = false;
-        _ttsPaused = false;
-        const bar = document.getElementById('ttsBar');
-        if (bar) bar.style.width = '100%';
-        const pb = document.getElementById('ttsPlayBtn');
-        if (pb) pb.textContent = '▶ Play';
-        const wd = document.getElementById('ttsWordDisplay');
-        if (wd) wd.textContent = '✓ Finished';
-      };
-
-      u.onerror = (e) => { if (e.error !== 'interrupted') collabToast('TTS error: ' + e.error); };
-      return u;
-    }
-
-    function ttsTogglePlay() {
-      if (!('speechSynthesis' in window)) {
-        collabToast('Your browser does not support Text-to-Speech 😔');
-        return;
-      }
-      const pb = document.getElementById('ttsPlayBtn');
-
-      if (_ttsPaused) {
-        window.speechSynthesis.resume();
-        _ttsPaused = false;
-        _ttsSpeaking = true;
-        if (pb) pb.textContent = '⏸ Pause';
-        return;
-      }
-
-      if (_ttsSpeaking) {
-        window.speechSynthesis.pause();
-        _ttsPaused = true;
-        _ttsSpeaking = false;
-        if (pb) pb.textContent = '▶ Resume';
-        return;
-      }
-
-      // Start fresh from current char index
-      window.speechSynthesis.cancel();
-      _ttsUtterance = _buildUtterance(_ttsCharIndex);
-      window.speechSynthesis.speak(_ttsUtterance);
-      _ttsSpeaking = true;
-      if (pb) pb.textContent = '⏸ Pause';
-    }
-
-    function ttsStop() {
-      window.speechSynthesis.cancel();
-      _ttsSpeaking = false;
-      _ttsPaused = false;
-      _ttsCharIndex = 0;
-      const bar = document.getElementById('ttsBar');
-      if (bar) bar.style.width = '0%';
-      const pb = document.getElementById('ttsPlayBtn');
-      if (pb) pb.textContent = '▶ Play';
-      const wd = document.getElementById('ttsWordDisplay');
-      if (wd) wd.textContent = '';
-    }
-
-    function ttsSkipBack() {
-      const wasPlaying = _ttsSpeaking;
-      window.speechSynthesis.cancel();
-      _ttsSpeaking = false;
-      _ttsPaused = false;
-      // Estimate char skip: ~14 chars/sec at rate=1
-      const rate = parseFloat(document.getElementById('ttsSpeedSlider')?.value || 1);
-      const charBack = Math.round(10 * 14 * rate);
-      _ttsCharIndex = Math.max(0, _ttsCharIndex - charBack);
-      const progress = Math.min(100, (_ttsCharIndex / _ttsText.length) * 100);
-      const bar = document.getElementById('ttsBar');
-      if (bar) bar.style.width = progress + '%';
-      if (wasPlaying) {
-        _ttsUtterance = _buildUtterance(_ttsCharIndex);
-        window.speechSynthesis.speak(_ttsUtterance);
-        _ttsSpeaking = true;
-        const pb = document.getElementById('ttsPlayBtn');
-        if (pb) pb.textContent = '⏸ Pause';
-      }
-    }
-
-    function ttsApplyVoice() {
-      if (_ttsSpeaking || _ttsPaused) {
-        window.speechSynthesis.cancel();
-        _ttsSpeaking = false; _ttsPaused = false;
-        _ttsUtterance = _buildUtterance(_ttsCharIndex);
-        window.speechSynthesis.speak(_ttsUtterance);
-        _ttsSpeaking = true;
-        document.getElementById('ttsPlayBtn').textContent = '⏸ Pause';
-      }
-    }
-
-    function ttsApplyRate() {
-      const v = parseFloat(document.getElementById('ttsSpeedSlider').value);
-      document.getElementById('ttsSpeedVal').textContent = v + '×';
-      if (_ttsUtterance) _ttsUtterance.rate = v;
-    }
-
-    function ttsApplyPitch() {
-      const v = parseFloat(document.getElementById('ttsPitchSlider').value);
-      document.getElementById('ttsPitchVal').textContent = v.toFixed(1);
-      if (_ttsUtterance) _ttsUtterance.pitch = v;
-    }
-
-    /* ═══════════════════════════════════════════════════════════════
-       📦 EXPORT ALL AS ZIP
-    ═══════════════════════════════════════════════════════════════ */
-
-    async function exportAllZip(btn) {
-      if (typeof JSZip === 'undefined') {
-        collabToast('JSZip is loading… please try again in a moment.');
-        return;
-      }
-      btn.classList.add('loading');
-      btn.innerHTML = '⏳ Building ZIP…';
-
-      try {
-        const zip = new JSZip();
-        const meta = {
-          exportedAt: new Date().toISOString(),
-          tool: 'GenAI Content Platform',
-          formats: []
-        };
-
-        const FORMAT_FILENAMES = {
-          blog: 'blog_post.txt',
-          linkedin: 'linkedin_post.txt',
-          twitter: 'twitter_thread.txt',
-          summary: 'executive_summary.txt',
-          email: 'email_newsletter.txt',
-          video: 'video_script.txt',
-          seo: 'seo_meta_tags.html',
-          faq: 'faq_section.txt',
-          slides: 'presentation_outline.txt',
-          simplified: 'simplified_reading.txt',
-          captions: 'captions.srt',
-          alttext: 'alt_text_suggestions.txt'
-        };
-
-        let hasContent = false;
-
-        // Collect all generated format text areas
-        document.querySelectorAll('[id^="text-"]').forEach(ta => {
-          const fmt = ta.id.replace('text-', '');
-          const text = ta.value.trim();
-          if (!text || text === 'No content generated for this format.') return;
-
-          const filename = FORMAT_FILENAMES[fmt] || (fmt + '.txt');
-          let content = text;
-
-          // Special handling: wrap SEO in proper HTML
-          if (fmt === 'seo') {
-            const titleM = text.match(/Title:\s*(.+)$/im);
-            const descM = text.match(/Description:\s*(.+)$/im);
-            const title = titleM ? titleM[1] : 'Page Title';
-            const desc = descM ? descM[1] : text;
-            content = `<!-- SEO Meta Tags generated by GenAI Platform -->\n<title>${title}</title>\n<meta name="description" content="${desc}" />\n<meta name="robots" content="index, follow" />\n\n<!-- Full SEO Output -->\n${text}`;
-          }
-
-          zip.file(filename, content);
-          meta.formats.push({ fmt, filename, chars: text.length });
-          hasContent = true;
-        });
-
-        if (!hasContent) {
-          collabToast('No generated content found to export.');
-          btn.classList.remove('loading');
-          btn.innerHTML = '📦 Export All as ZIP';
-          return;
-        }
-
-        // Add metadata
-        zip.file('metadata.json', JSON.stringify(meta, null, 2));
-
-        // Add a README
-        const readme = `# GenAI Content Export\n\nExported: ${new Date().toLocaleString()}\n\n## Files\n${meta.formats.map(f => `- **${f.filename}** (${f.chars.toLocaleString()} chars)`).join('\n')}\n\n---\n_Generated by GenAI Content Platform_`;
-        zip.file('README.md', readme);
-
-        const blob = await zip.generateAsync({
-          type: 'blob',
-          compression: 'DEFLATE',
-          compressionOptions: { level: 6 }
-        });
-
-        const dateStr = new Date().toISOString().slice(0, 10);
-        downloadBlob(blob, `genai-content-export-${dateStr}.zip`);
-        collabToast(`📦 ZIP downloaded with ${meta.formats.length} files ✓`);
-
-      } catch (err) {
-        collabToast('ZIP export failed: ' + err.message);
-        console.error(err);
-      } finally {
-        btn.classList.remove('loading');
-        btn.innerHTML = '📦 Export All as ZIP';
-      }
-    }
-  </script>
-</body>
-
 </html>
