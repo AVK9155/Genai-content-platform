@@ -18,52 +18,51 @@ app.use("/api/generate", generateRouter);
 app.use("/api/collab", collabRouter);
 app.use("/api/scrape", scrapeRouter);
 
-// Lightweight Fallback for auth/profiles/usage/history (in-memory for serverless)
+// In-memory user store (serverless — no DB on this deployment)
 const memoryUsers: Map<string, { id: string; name: string; email: string; role: string }> = new Map();
 const memoryProfiles: Record<string, any>[] = [];
 const memoryHistory: Record<string, any>[] = [];
 
-// Seed default user
-memoryUsers.set("damubalaji144@gmail.com", {
-  id: "user-1",
-  name: "Damu Balaji",
-  email: "damubalaji144@gmail.com",
-  role: "CREATOR"
-});
-
-app.get("/api/auth/me", (_req: Request, res: Response) => {
-  res.json({ user: { id: "demo-user", email: "damubalaji144@gmail.com", name: "Damu Balaji", role: "CREATOR" } });
-});
-
+// POST /api/auth/signin — look up user by email, reject if not found
 app.post("/api/auth/signin", (req: Request, res: Response) => {
   const email = (req.body.email || "").toLowerCase().trim();
-  let user = memoryUsers.get(email);
+  if (!email) return res.status(400).json({ error: "Email is required." });
+
+  const user = memoryUsers.get(email);
   if (!user) {
-    const name = email ? (email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1)) : "Creator";
-    user = { id: "user-" + Date.now(), name, email: email || "damubalaji144@gmail.com", role: "CREATOR" };
-    memoryUsers.set(email, user);
+    return res.status(404).json({
+      error: "No account found for that email. Please register first."
+    });
   }
   res.json({ user, token: "session-token" });
 });
 
-app.post("/api/auth/login", (req: Request, res: Response) => {
-  const email = (req.body.email || "damubalaji144@gmail.com").toLowerCase().trim();
-  let user = memoryUsers.get(email) || { id: "user-" + Date.now(), name: "Damu Balaji", email, role: "CREATOR" };
-  res.json({ user, token: "session-token" });
-});
-
+// POST /api/auth/register — create a new user (name + email required)
 app.post("/api/auth/register", (req: Request, res: Response) => {
-  const email = (req.body.email || "damubalaji144@gmail.com").toLowerCase().trim();
-  const name = (req.body.name || "Damu Balaji").trim();
+  const email = (req.body.email || "").toLowerCase().trim();
+  const name = (req.body.name || "").trim();
+
+  if (!email || !name) {
+    return res.status(400).json({ error: "Name and email are required." });
+  }
+
+  // If user already exists with this email, return them (idempotent)
+  const existing = memoryUsers.get(email);
+  if (existing) {
+    return res.json({ user: existing, token: "session-token" });
+  }
+
   const user = { id: "user-" + Date.now(), name, email, role: "CREATOR" };
   memoryUsers.set(email, user);
-  res.json({ user, token: "session-token" });
+  res.status(201).json({ user, token: "session-token" });
 });
 
+// POST /api/auth/logout
 app.post("/api/auth/logout", (_req: Request, res: Response) => {
   res.json({ ok: true });
 });
 
+// Profiles
 app.get("/api/profiles", (_req: Request, res: Response) => {
   res.json({ profiles: memoryProfiles });
 });
@@ -78,6 +77,7 @@ app.delete("/api/profiles/:id", (req: Request, res: Response) => {
   res.json({ ok: true });
 });
 
+// History
 app.get("/api/history", (_req: Request, res: Response) => {
   res.json({ history: memoryHistory });
 });
@@ -88,12 +88,13 @@ app.post("/api/history", (req: Request, res: Response) => {
   res.status(201).json({ entry });
 });
 
+// Usage stats
 app.get("/api/usage", (_req: Request, res: Response) => {
   res.json({
-    totalGenerations: 24,
-    totalTokens: 18420,
-    groundingAccuracy: 98.4,
-    formatBreakdown: { blog: 8, linkedin: 12, twitter: 7, email: 5, video: 4, slides: 3, seo: 9, faq: 6 }
+    totalGenerations: 0,
+    totalTokens: 0,
+    groundingAccuracy: 0,
+    formatBreakdown: {}
   });
 });
 

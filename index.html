@@ -3489,48 +3489,59 @@
       const name = document.getElementById('authName').value.trim();
       const email = document.getElementById('authEmail').value.trim();
       const errBox = document.getElementById('authError');
+      const btn = document.getElementById('authContinueBtn');
       errBox.style.display = 'none';
-      if (!name) { errBox.textContent = 'Add your name to label this workspace.'; errBox.style.display = 'block'; return; }
+      if (!name) { errBox.textContent = 'Please enter your name.'; errBox.style.display = 'block'; return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = 'Enter a valid email address.'; errBox.style.display = 'block'; return; }
+      btn.textContent = 'Creating account…'; btn.disabled = true;
       try {
         const res = await fetch(`${API_BASE}/api/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email: email.toLowerCase().trim() }),
         });
-        if (res.ok) {
-          const data = await res.json();
-          await enterWorkspaceAs(data.user || { name, email });
+        const data = await res.json();
+        if (res.ok && data.user) {
+          await enterWorkspaceAs(data.user);
           return;
         }
+        errBox.textContent = data.error || 'Registration failed. Please try again.';
+        errBox.style.display = 'block';
       } catch (err) {
-        console.warn('Backend register offline fallback');
+        errBox.textContent = 'Could not connect to the server. Please try again.';
+        errBox.style.display = 'block';
+      } finally {
+        btn.textContent = 'Create Workspace →'; btn.disabled = false;
       }
-      await enterWorkspaceAs({ name, email: email.toLowerCase().trim() });
     });
 
     document.getElementById('authSignInBtn').addEventListener('click', async () => {
       const email = document.getElementById('authSignInEmail').value.trim();
       const errBox = document.getElementById('authError');
+      const btn = document.getElementById('authSignInBtn');
       errBox.style.display = 'none';
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = 'Enter a valid email address.'; errBox.style.display = 'block'; return; }
+      btn.textContent = 'Signing in…'; btn.disabled = true;
       try {
         const res = await fetch(`${API_BASE}/api/auth/signin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email.toLowerCase().trim() }),
         });
-        if (res.ok) {
-          const data = await res.json();
-          await enterWorkspaceAs(data.user || { name: email.split('@')[0], email });
+        const data = await res.json();
+        if (res.ok && data.user) {
+          await enterWorkspaceAs(data.user);
           return;
         }
+        // Show the server's error message (e.g. "No account found — please register")
+        errBox.textContent = data.error || 'Sign-in failed. Please check your email or register.';
+        errBox.style.display = 'block';
       } catch (err) {
-        console.warn('Backend signin fallback');
+        errBox.textContent = 'Could not connect to the server. Please try again.';
+        errBox.style.display = 'block';
+      } finally {
+        btn.textContent = 'Continue →'; btn.disabled = false;
       }
-      // Resilient fallback: auto-sign in
-      const defaultName = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
-      await enterWorkspaceAs({ name: defaultName, email: email.toLowerCase().trim() });
     });
 
     document.getElementById('signOutBtn').addEventListener('click', async () => {
