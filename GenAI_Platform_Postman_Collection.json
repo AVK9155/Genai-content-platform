@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "genai-content-platform-collection",
+    "name": "GenAI Content Transformation Platform API",
+    "description": "Complete API collection for GenAI Content Transformation Platform (Live on Vercel & Localhost).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://genai-content-platform.vercel.app",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. System Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "2. Generate Multi-Format Content",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sourceText\": \"Product,Category,Q1 Revenue,Growth Rate,Payback Period\\nHeliosGrid-4,Clean Energy Autonomous Units,$14.2M,+38%,2.1 Years\\nLuminaFlow AI,Productivity Workspace SaaS,$8.6M,+112%,0.8 Years\\nSparseCross-ViT,Medical Imaging Diagnostics,$5.1M,+74%,1.4 Years\\nQuantumSync Edge,Distributed Database Nodes,$19.8M,+45%,1.9 Years\",\n  \"formats\": [\"summary\", \"linkedin\", \"blog\", \"twitter\"],\n  \"tone\": \"professional\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate"]
+        }
+      }
+    },
+    {
+      "name": "3. Fact-Checking & Grounding Check",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sourceText\": \"Product,Category,Q1 Revenue,Growth Rate,Payback Period\\nHeliosGrid-4,Clean Energy Autonomous Units,$14.2M,+38%,2.1 Years\",\n  \"formats\": [\"summary\"],\n  \"results\": {\n    \"summary\": \"HeliosGrid-4 generated $14.2M in revenue with 38% growth in Q1.\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/generate/check-grounding",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "generate", "check-grounding"]
+        }
+      }
+    },
+    {
+      "name": "4. Scrape URL or YouTube Video",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://en.wikipedia.org/wiki/Artificial_intelligence\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/scrape",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "scrape"]
+        }
+      }
+    },
+    {
+      "name": "5. Create Public Share Link",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"source\": \"Sample meeting notes.\",\n  \"results\": {\n    \"summary\": \"Executive summary draft.\",\n    \"linkedin\": \"LinkedIn announcement post.\"\n  },\n  \"formats\": [\"summary\", \"linkedin\"],\n  \"tone\": \"professional\",\n  \"author\": \"Damu Balaji\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/collab/share",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collab", "share"]
+        }
+      }
+    },
+    {
+      "name": "6. Get Shared Snapshot by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/collab/share/10b049e76d5d8efa",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collab", "share", "10b049e76d5d8efa"]
+        }
+      }
+    },
+    {
+      "name": "7. Post Inline Feedback Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"shareId\": \"10b049e76d5d8efa\",\n  \"fmt\": \"summary\",\n  \"paraIndex\": 0,\n  \"text\": \"Looks great, let's emphasize the 112% SaaS growth more!\",\n  \"author\": \"Sarah (Marketing Lead)\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/collab/comment",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collab", "comment"]
+        }
+      }
+    }
+  ]
+}
