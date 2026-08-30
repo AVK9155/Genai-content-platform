@@ -77,20 +77,22 @@ app.get("/shared/:id", (_req, res) => {
   });
 });
 
-// ─── Start ───────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log("\n🚀 GENAI Backend is running!");
-  console.log(`   App:    http://localhost:${PORT}`);
-  console.log(`   Health: http://localhost:${PORT}/api/health`);
+// ─── Start (local server only) ────────────────────────────────────────────────
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log("\n🚀 GENAI Backend is running!");
+    console.log(`   App:    http://localhost:${PORT}`);
+    console.log(`   Health: http://localhost:${PORT}/api/health`);
 
-  const hasKey = !!process.env.GEMINI_API_KEY;
-
-  if (!hasKey) {
-    console.warn("\n⚠  WARNING: OPENROUTER_API_KEY is not set.");
-    console.warn("   Add your key to backend-genai/.env and restart.\n");
-  } else {
-    console.log("   OpenRouter API key: ✓ configured\n");
-  }
-});
+    const hasKey = !!process.env.GEMINI_API_KEY;
+    if (!hasKey) {
+      console.warn("\n⚠  WARNING: GEMINI_API_KEY is not set.");
+      console.warn("   Add your key to backend-genai/.env and restart.\n");
+    } else {
+      console.log("   Google Gemini API key: ✓ configured\n");
+    }
+  });
+}
 
 export default app;
+
