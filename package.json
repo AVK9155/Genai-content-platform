@@ -4,9 +4,7 @@
   "description": "One Input. Infinite Content. — GenAI Content Transformation Platform",
   "private": true,
   "scripts": {
-    "dev": "cd backend-genai && npm run dev",
-    "build": "cd backend-genai && npm run build",
-    "start": "cd backend-genai && npm start"
+    "build": "echo 'Building static and serverless assets...'"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.0",
