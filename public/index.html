@@ -4056,12 +4056,7 @@
     const PROC_STAGES = ['READING CONTENT…', 'UNDERSTANDING CONTEXT…', 'IDENTIFYING KEY INFORMATION…', 'GENERATING FORMATS…', 'FACT-CHECKING OUTPUT…'];
 
     function buildFormatBlocks(formats) {
-      return formats.map(f => {
-        if (f === 'translation') {
-          return `
-        }
-        return `### ${FORMAT_LABELS[f]}\n${FORMAT_INSTRUCTIONS[f]}`;
-      }).join('\n\n');
+      return formats.map(f => `### ${FORMAT_LABELS[f]}\n${FORMAT_INSTRUCTIONS[f]}`).join('\n\n');
     }
 
     async function callClaude(srcText, formats, tone, brandNotes) {
@@ -5136,7 +5131,7 @@
           <button onclick="speed(3)">3x</button>
         </div>
         <div id="script" style="margin-top:60px;">${text.replace(/\n/g, '<br><br>')}</div>
-        <script>
+        <' + 'script>
           let scrolling = false; let scrollSpeed = 1.5; let timer;
           function toggleScroll() {
             scrolling = !scrolling;
@@ -5146,7 +5141,7 @@
             } else { clearInterval(timer); }
           }
           function speed(s) { scrollSpeed = s * 1.5; }
-        <\/script></body></html>
+        <' + '/script></body></html>
       `);
       win.document.close();
       collabToast('🎬 Teleprompter window launched!');
