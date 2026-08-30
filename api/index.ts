@@ -19,18 +19,47 @@ app.use("/api/collab", collabRouter);
 app.use("/api/scrape", scrapeRouter);
 
 // Lightweight Fallback for auth/profiles/usage/history (in-memory for serverless)
+const memoryUsers: Map<string, { id: string; name: string; email: string; role: string }> = new Map();
 const memoryProfiles: Record<string, any>[] = [];
 const memoryHistory: Record<string, any>[] = [];
 
+// Seed default user
+memoryUsers.set("damubalaji144@gmail.com", {
+  id: "user-1",
+  name: "Damu Balaji",
+  email: "damubalaji144@gmail.com",
+  role: "CREATOR"
+});
+
 app.get("/api/auth/me", (_req: Request, res: Response) => {
-  res.json({ user: { id: "demo-user", email: "demo@genai.platform", name: "GenAI Creator", role: "CREATOR" } });
+  res.json({ user: { id: "demo-user", email: "damubalaji144@gmail.com", name: "Damu Balaji", role: "CREATOR" } });
 });
+
+app.post("/api/auth/signin", (req: Request, res: Response) => {
+  const email = (req.body.email || "").toLowerCase().trim();
+  let user = memoryUsers.get(email);
+  if (!user) {
+    const name = email ? (email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1)) : "Creator";
+    user = { id: "user-" + Date.now(), name, email: email || "damubalaji144@gmail.com", role: "CREATOR" };
+    memoryUsers.set(email, user);
+  }
+  res.json({ user, token: "session-token" });
+});
+
 app.post("/api/auth/login", (req: Request, res: Response) => {
-  res.json({ user: { id: "demo-user", email: req.body.email || "demo@genai.platform", name: "GenAI Creator", role: "CREATOR" }, token: "demo-token" });
+  const email = (req.body.email || "damubalaji144@gmail.com").toLowerCase().trim();
+  let user = memoryUsers.get(email) || { id: "user-" + Date.now(), name: "Damu Balaji", email, role: "CREATOR" };
+  res.json({ user, token: "session-token" });
 });
+
 app.post("/api/auth/register", (req: Request, res: Response) => {
-  res.json({ user: { id: "demo-user", email: req.body.email || "demo@genai.platform", name: req.body.name || "GenAI Creator", role: "CREATOR" }, token: "demo-token" });
+  const email = (req.body.email || "damubalaji144@gmail.com").toLowerCase().trim();
+  const name = (req.body.name || "Damu Balaji").trim();
+  const user = { id: "user-" + Date.now(), name, email, role: "CREATOR" };
+  memoryUsers.set(email, user);
+  res.json({ user, token: "session-token" });
 });
+
 app.post("/api/auth/logout", (_req: Request, res: Response) => {
   res.json({ ok: true });
 });
