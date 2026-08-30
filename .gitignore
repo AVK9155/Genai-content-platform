@@ -43,5 +43,11 @@ desktop.ini
 .tmp/
 tmp/
 
+# ─── Legacy Folders ──────────────────────────────
+frontend/
+backend/
+HAckathon/
+Gen-AI-Platform-for-Automated-Content-Transformation-main*/
+
 # ─── Data stores (auto-created) ──────────────────
 backend-genai/data/*.json

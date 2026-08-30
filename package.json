@@ -1,18 +1,11 @@
 {
-  "name": "jal-suraksha",
+  "name": "genai-content-platform",
   "version": "1.0.0",
-  "description": "Water-Borne Disease Early Warning System for Northeast India",
+  "description": "One Input. Infinite Content. — GenAI Content Transformation Platform",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:frontend": "cd frontend && npm run dev",
-    "db:generate": "cd backend && npx prisma generate",
-    "db:push": "cd backend && npx prisma db push",
-    "db:seed": "cd backend && npm run seed",
-    "db:reset": "cd backend && npx prisma db push --force-reset && npm run seed"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
+    "dev": "cd backend-genai && npm run dev",
+    "build": "cd backend-genai && npm install && npm run build",
+    "start": "cd backend-genai && npm start"
   }
 }
