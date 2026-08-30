@@ -2482,6 +2482,7 @@
         <button type="button" class="nav-jump" data-target="use-cases">Use Cases</button>
       </div>
       <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <button class="nav-signout" id="navSignOutBtn" type="button" style="display:none;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:12px;padding:7px 14px;border-radius:8px;cursor:pointer;font-family:inherit;letter-spacing:0.05em;transition:all 0.2s;">Sign Out</button>
         <button class="nav-cta" id="navLaunchBtn" type="button">Sign In / Launch Platform →</button>
       </div>
     </nav>
@@ -3390,13 +3391,16 @@
       const accountPill = document.getElementById('accountPill');
       const accountLabel = document.getElementById('accountLabel');
       const launchBtn = document.getElementById('navLaunchBtn');
+      const signOutBtn = document.getElementById('navSignOutBtn');
       if (currentUser) {
         if (launchBtn) launchBtn.textContent = `Continue as ${currentUser.name.split(' ')[0]} →`;
-        accountPill.style.display = 'flex';
-        accountLabel.textContent = currentUser.name;
+        if (signOutBtn) signOutBtn.style.display = 'block';
+        if (accountPill) accountPill.style.display = 'flex';
+        if (accountLabel) accountLabel.textContent = currentUser.name;
       } else {
         if (launchBtn) launchBtn.textContent = 'Sign In / Launch Platform →';
-        accountPill.style.display = 'none';
+        if (signOutBtn) signOutBtn.style.display = 'none';
+        if (accountPill) accountPill.style.display = 'none';
       }
     }
 
@@ -3420,7 +3424,8 @@
     }
 
     async function enterWorkspaceAs(user) {
-      await setSession(user);
+      // Mark this as a real (user-initiated) login, not the old auto-login
+      await setSession({ ...user, verifiedLogin: true });
       history = [];
       document.getElementById('historyStrip').style.display = 'none';
       await initProfiles();
@@ -3534,14 +3539,34 @@
     });
 
     async function initAuth() {
-      // Restore session from sessionStorage (survives page refresh, cleared on tab close)
+      // Restore session — but purge any stale session created by old auto-login bug
       try {
         const stored = sessionStorage.getItem('genai:session');
-        if (stored) currentUser = JSON.parse(stored);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          // If this session has the old hardcoded email, wipe it
+          if (parsed && parsed.email === 'damubalaji144@gmail.com' && !parsed.verifiedLogin) {
+            sessionStorage.removeItem('genai:session');
+            currentUser = null;
+          } else {
+            currentUser = parsed;
+          }
+        }
       } catch (e) { currentUser = null; }
       updateAccountUI();
     }
     initAuth();
+
+    // Wire up the navbar Sign Out button
+    const navSignOutBtn = document.getElementById('navSignOutBtn');
+    if (navSignOutBtn) {
+      navSignOutBtn.addEventListener('click', async () => {
+        await clearSessionStorage();
+        updateAccountUI();
+      });
+      navSignOutBtn.addEventListener('mouseenter', () => { navSignOutBtn.style.borderColor = 'rgba(255,255,255,0.5)'; navSignOutBtn.style.color = '#fff'; });
+      navSignOutBtn.addEventListener('mouseleave', () => { navSignOutBtn.style.borderColor = 'rgba(255,255,255,0.2)'; navSignOutBtn.style.color = 'rgba(255,255,255,0.6)'; });
+    }
 
     /* ---------------- workspace section tabs (Transform / Dashboard) ---------------- */
     const pageTabs = document.querySelectorAll('.page-tab:not(.auth-tab)');
