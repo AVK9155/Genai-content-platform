@@ -3464,11 +3464,13 @@
     }
 
     async function requireWorkspace() {
-      showApp();
       if (!currentUser) {
-        currentUser = { name: 'Damu Balaji', email: 'damubalaji144@gmail.com' };
-        await setSession(currentUser);
+        // No session — show login/register gate instead of auto-logging in
+        showApp();
+        showAuthGate();
+        return;
       }
+      showApp();
       updateAccountUI();
       document.getElementById('authGate').style.display = 'none';
       document.getElementById('appMain').style.display = 'block';
@@ -4644,7 +4646,7 @@
     const slideState = {};
 
     function generateMockupHtml(fmt, text) {
-      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Damu Balaji';
+      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Creator';
       const clean = (text || '').trim();
 
       if (fmt === 'linkedin') {
@@ -4985,7 +4987,7 @@
       const input = document.getElementById('mlCommentInput');
       const text = input ? input.value.trim() : '';
       if (!text) return;
-      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Damu Balaji';
+      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Creator';
       const state = window.linkedinMockState || { likes: 248, liked: false, reposts: 12, comments: [] };
       state.comments.push({ author: authorName, title: 'Creator', text, time: 'Just now' });
       window.linkedinMockState = state;
