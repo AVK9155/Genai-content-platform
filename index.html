@@ -3173,8 +3173,8 @@
         showApp();
         const gate = document.getElementById('authGate');
         const main = document.getElementById('appMain');
-        if (gate) gate.style.display = 'none';
-        if (main) main.style.display = 'block';
+        if (gate) gate.style.display = 'flex';
+        if (main) main.style.display = 'none';
       }
     }
 
@@ -3242,7 +3242,7 @@
     let currentUser = null; // {id, name, email}
     let usageLog = []; // FR-4.3: {time, user, formats[], grounded, reviewFlagged}
     let activeCancelReject = null;
-    const SESSION_VERSION = 'v2'; // bump to force-logout all existing sessions
+    const SESSION_VERSION = 'v3'; // bump to force-logout all existing sessions
 
     /* ---------- Network status ---------- */
     function setNetStatus(mode, label) {
@@ -3462,9 +3462,11 @@
     function showAuthGate() {
       document.getElementById('authGate').style.display = 'flex';
       document.getElementById('appMain').style.display = 'none';
-      document.getElementById('authSignInEmail').value = currentUser ? currentUser.email : '';
-      document.getElementById('authName').value = currentUser ? currentUser.name : '';
-      document.getElementById('authEmail').value = currentUser ? currentUser.email : '';
+      document.getElementById('authSignInEmail').value = '';
+      document.getElementById('authName').value = '';
+      document.getElementById('authEmail').value = '';
+      const errBox = document.getElementById('authError');
+      if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
       switchAuthTab('authTabSignIn');
       renderAccountList();
     }

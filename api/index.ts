@@ -57,6 +57,12 @@ app.post("/api/auth/register", (req: Request, res: Response) => {
   res.status(201).json({ user, token: "session-token" });
 });
 
+// GET /api/auth/accounts — list registered workspaces
+app.get("/api/auth/accounts", (_req: Request, res: Response) => {
+  const accounts = Array.from(memoryUsers.values()).map(u => ({ id: u.id, name: u.name, email: u.email }));
+  res.json({ accounts });
+});
+
 // POST /api/auth/logout
 app.post("/api/auth/logout", (_req: Request, res: Response) => {
   res.json({ ok: true });
