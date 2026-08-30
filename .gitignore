@@ -38,10 +38,14 @@ desktop.ini
 # ─── Zip Archives (large test files) ─────────────
 *.zip
 
-# ─── Temp / Cache ────────────────────────────────
+# ─── Temp / Cache / Dev Tools ────────────────────
+.freebuff/
 .cache/
 .tmp/
 tmp/
+login.json
+*.pdf
+*.xlsx
 
 # ─── Legacy Folders ──────────────────────────────
 frontend/

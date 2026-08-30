@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=UTF-8/>
+<meta name=viewport content=width=device-width,initial-scale=1/>
+<title>Shared Content — GENAI Platform</title>
+<link rel=preconnect href=https://fonts.googleapis.com/>
+<link href=https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap rel=stylesheet/>
+<style>
+  :root{--bg:#0c0c18;--bg2:#12121f;--bg3:#1a1a2e;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.13);--ink:#e8e8f0;--ink-dim:#9090b0;--violet:#8b5cf6;--violet-soft:rgba(139,92,246,.35);--cyan:#3fe3d0;--warn:#ffc16b;--font:Inter,system-ui,sans-serif;--mono:JetBrains Mono,monospace;--display:Space Grotesk,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);min-height:100vh}
+  .bg-fixed{position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% -10%,rgba(139,92,246,.15),transparent),radial-gradient(ellipse 60% 40% at 80% 110%,rgba(63,227,208,.1),transparent);pointer-events:none}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid var(--line);background:rgba(12,12,24,.85);backdrop-filter:blur(16px)}
+  .logo{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
+  .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--violet);box-shadow:0 0 10px var(--violet)}
+  .nav-badge{background:var(--violet-soft);border:1px solid var(--violet);color:var(--violet);font-size:11px;font-family:var(--mono);padding:3px 10px;border-radius:100px;letter-spacing:.06em}
+  .nav-open{background:var(--violet);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:.2s}
+  .nav-open:hover{opacity:.85;transform:translateY(-1px)}
+  /* HERO */
+  .hero-bar{padding:40px 32px 24px;max-width:1100px;margin:0 auto}
+  .share-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:20px}
+  .share-badge{background:rgba(63,227,208,.1);border:1px solid rgba(63,227,208,.3);color:var(--cyan);font-size:11px;font-family:var(--mono);padding:4px 12px;border-radius:100px}
+  .share-title{font-family:var(--display);font-size:clamp(22px,4vw,36px);font-weight:700;line-height:1.2}
+  .share-sub{color:var(--ink-dim);font-size:13.5px;margin-top:6px}
+  .format-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .fmt-pill{background:var(--bg3);border:1px solid var(--line2);color:var(--ink-dim);font-size:11.5px;font-family:var(--mono);padding:4px 12px;border-radius:100px;cursor:pointer;transition:.18s;letter-spacing:.04em}
+  .fmt-pill:hover,.fmt-pill.active{border-color:var(--violet);color:var(--violet);background:var(--violet-soft)}
+  /* MAIN LAYOUT */
+  .content-wrap{max-width:1100px;margin:0 auto;padding:0 32px 80px;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+  @media(max-width:860px){.content-wrap{grid-template-columns:1fr}}
+  /* RESULT CARDS */
+  .result-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;display:none}
+  .result-card.active{display:block}
+  .card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--bg3)}
+  .card-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim)}
+  .card-actions{display:flex;gap:8px}
+  .icon-btn{background:transparent;border:1px solid var(--line2);color:var(--ink-dim);font-size:11px;padding:5px 12px;border-radius:100px;cursor:pointer;font-family:var(--mono);letter-spacing:.05em;transition:.15s}
+  .icon-btn:hover{border-color:var(--violet);color:var(--violet)}
+  .card-body{padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.8;color:var(--ink);max-height:500px;overflow-y:auto}
+  .card-body p{position:relative;padding:4px 0;border-radius:4px;transition:.15s;cursor:pointer}
+  .card-body p:hover{background:rgba(139,92,246,.06)}
+  .card-body p:hover::after{content:💬;position:absolute;right:8px;top:4px;font-size:12px;opacity:.6}
+  /* COMMENT SIDEBAR */
+  .sidebar{position:sticky;top:80px}
+  .comment-box{background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .cb-header{padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim);display:flex;justify-content:space-between;align-items:center}
+  .comment-list{padding:12px;max-height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+  .comment-item{background:var(--bg3);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .comment-author{font-size:11px;font-family:var(--mono);color:var(--violet);margin-bottom:4px}
+  .comment-fmt{font-size:10px;color:var(--ink-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+  .comment-text{font-size:13px;line-height:1.6;color:var(--ink)}
+  .comment-time{font-size:10px;color:var(--ink-dim);margin-top:6px;font-family:var(--mono)}
+  .no-comments{text-align:center;color:var(--ink-dim);font-size:13px;padding:24px 12px}
+  /* ADD COMMENT */
+  .add-comment{padding:14px;border-top:1px solid var(--line)}
+  .add-comment input,.add-comment textarea{width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:8px;padding:9px 12px;color:var(--ink);font-size:12.5px;outline:none;font-family:var(--font);margin-bottom:8px;transition:.15s}
+  .add-comment input:focus,.add-comment textarea:focus{border-color:var(--violet)}
+  .add-comment textarea{resize:none;height:72px}
+  .btn-comment{width:100%;background:var(--violet);color:#fff;border:none;padding:10px;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s;letter-spacing:.04em}
+  .btn-comment:hover{opacity:.85}
+  /* SOURCE PANE */
+  .source-card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:20px}
+  .source-label{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-dim);margin-bottom:10px}
+  .source-text{font-size:13px;line-height:1.75;color:var(--ink-dim);white-space:pre-wrap;max-height:180px;overflow:auto}
+  /* LOADING / ERROR */
+  .loader{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;text-align:center}
+  .loader-ring{width:48px;height:48px;border:3px solid rgba(139,92,246,.3);border-top-color:var(--violet);border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loader-text{color:var(--ink-dim);font-family:var(--mono);font-size:13px;letter-spacing:.08em}
+  .error-state{text-align:center;padding:60px 20px;color:var(--ink-dim)}
+  .error-state h2{font-family:var(--display);font-size:24px;color:var(--ink);margin-bottom:12px}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--violet);color:#fff;padding:11px 22px;border-radius:100px;font-size:13px;font-weight:500;opacity:0;transition:.3s;pointer-events:none;z-index:999}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class=bg-fixed></div>
+
+<nav>
+  <div class=logo><span class=logo-dot></span>GENAI</div>
+  <span class=nav-badge id=navBadge>SHARED VIEW</span>
+  <button class=nav-open onclick=window.open(&apos;/&apos;,&apos;_blank&apos;)>Open Platform →</button>
+</nav>
+
+<div id=loadingState class=loader>
+  <div class=loader-ring></div>
+  <div class=loader-text>LOADING SHARED CONTENT…</div>
+</div>
+
+<div id=errorState class=error-state style=display:none>
+  <h2>Link Not Found</h2>
+  <p>This share link may have expired or is invalid.</p>
+  <button class=nav-open style=margin-top:20px onclick=window.location.href=&apos;/&apos;>Go to Platform</button>
+</div>
+
+<div id=mainContent style=display:none>
+  <div class=hero-bar>
+    <div class=share-meta>
+      <span class=share-badge>🔗 SHARED SESSION</span>
+      <span id=shareAuthor class=share-badge style=background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.3);color:var(--violet)></span>
+      <span id=shareDate class=share-badge style=background:transparent;border-color:var(--line);color:var(--ink-dim)></span>
+    </div>
+    <div class=share-title>AI-Generated Content Suite</div>
+    <div class=share-sub id=shareSub></div>
+    <div class=format-pills id=fmtPills></div>
+  </div>
+
+  <div class=content-wrap>
+    <div id=resultsCol>
+      <div class=source-card id=sourceCard style=display:none>
+        <div class=source-label>Source Content</div>
+        <div class=source-text id=sourceText></div>
+      </div>
+      <div id=resultCards></div>
+    </div>
+
+    <div class=sidebar>
+      <div class=comment-box>
+        <div class=cb-header>
+          <span>💬 Comments</span>
+          <span id=commentCount style=color:var(--violet);font-size:12px>0</span>
+        </div>
+        <div class=comment-list id=commentList>
+          <div class=no-comments>No comments yet — be the first!</div>
+        </div>
+        <div class=add-comment>
+          <input type=text id=commentAuthor placeholder=Your name (optional) maxlength=80/>
+          <select id=commentFmt style=width:100%;background:var(--bg3);border:1px solid var(--line2);border-radius:8px;padding:9px 12px;color:var(--ink);font-size:12.5px;outline:none;margin-bottom:8px;font-family:var(--font)>
+            <option value=">Select format to comment on…</option>
+ </select>
+ <textarea id=commentText placeholder=Leave a comment or feedback… maxlength=2000></textarea>
+ <button class=btn-comment onclick=postComment()>Post Comment</button>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<div class=toast id=toast></div>
+
+<script>
+ const shareId = location.pathname.split(/shared/)[1];
+ const API = ;
+ let shareData = null;
+ let allComments = [];
+
+ const FORMAT_LABELS = {
+ blog:Blog Post,linkedin:LinkedIn Post,twitter:X / Twitter Thread,
+ summary:Summary,email:Email Newsletter,video:Video Script,
+ seo:SEO Meta Description,faq:FAQ Section,slides:Slide Outline,
+ simplified:Simplified Reading Level,captions:Captions (SRT),
+ alttext:Alt Text Suggestions,translation:Translation
+ };
+
+ async function load() {
+ try {
+ const r = await fetch(${API}/api/collab/share/);
+ if (!r.ok) throw new Error(not found);
+ const data = await r.json();
+ shareData = data.share;
+ allComments = data.comments || [];
+ render();
+ } catch {
+ document.getElementById(loadingState).style.display = none;
+ document.getElementById(errorState).style.display = block;
+ }
+ }
+
+ function render() {
+ document.getElementById(loadingState).style.display = none;
+ document.getElementById(mainContent).style.display = block;
+
+ document.getElementById(shareAuthor).textContent = 👤  + (shareData.author || Anonymous);
+ document.getElementById(shareDate).textContent = new Date(shareData.createdAt).toLocaleString();
+ document.getElementById(shareSub).textContent = ${shareData.formats.length} formats generated · Tone: ;
+
+ if (shareData.source && shareData.source.trim()) {
+ document.getElementById(sourceCard).style.display = block;
+ document.getElementById(sourceText).textContent = shareData.source;
+ }
+
+ const pills = document.getElementById(fmtPills);
+ const cards = document.getElementById(resultCards);
+ const fmtSelect = document.getElementById(commentFmt);
+
+ shareData.formats.forEach((fmt, i) => {
+ const label = FORMAT_LABELS[fmt] || fmt;
+ const pill = document.createElement(button);
+ pill.className = fmt-pill + (i === 0 ?  active : );
+ pill.textContent = label;
+ pill.onclick = () => switchFmt(fmt);
+ pill.dataset.fmt = fmt;
+ pills.appendChild(pill);
+
+ const card = document.createElement(div);
+ card.className = result-card + (i === 0 ?  active : );
+ card.id = card- + fmt;
+ card.innerHTML = 
+ <div class=card-header>
+ <span class=card-label></span>
+ <div class=card-actions>
+ <button class=icon-btn onclick=copyFmt(&apos;&apos;)>Copy</button>
+ </div>
+ </div>
+ <div class=card-body id=body-></div>;
+ cards.appendChild(card);
+
+ const para = document.createElement(div);
+ const bodyEl = card.querySelector(#body- + fmt);
+ const text = shareData.results[fmt] || ;
+ text.split(\n\n).forEach((block, pi) => {
+ if (!block.trim()) return;
+ const p = document.createElement(p);
+ p.textContent = block;
+ p.dataset.para = pi;
+ p.dataset.fmt = fmt;
+ bodyEl.appendChild(p);
+ });
+
+ const opt = document.createElement(option);
+ opt.value = fmt; opt.textContent = label;
+ fmtSelect.appendChild(opt);
+ });
+
+ renderComments();
+ }
+
+ function switchFmt(fmt) {
+ document.querySelectorAll(.fmt-pill).forEach(p => p.classList.toggle(active, p.dataset.fmt === fmt));
+ document.querySelectorAll(.result-card).forEach(c => c.classList.toggle(active, c.id === card- + fmt));
+ }
+
+ function copyFmt(fmt) {
+ const text = shareData.results[fmt] || ;
+ navigator.clipboard.writeText(text).then(() => showToast(Copied ✓));
+ }
+
+ function renderComments() {
+ const list = document.getElementById(commentList);
+ document.getElementById(commentCount).textContent = allComments.length;
+ if (!allComments.length) {
+ list.innerHTML = <div class="no-comments">No comments yet — be the first!</div>;
+ return;
+ }
+ list.innerHTML = allComments.map(c => 
+ <div class=comment-item>
+ <div class=comment-author></div>
+ <div class=comment-fmt></div>
+ <div class=comment-text></div>
+ <div class=comment-time></div>
+ </div>).join();
+ }
+
+ async function postComment() {
+ const author = document.getElementById(commentAuthor).value.trim() || Anonymous;
+ const fmt = document.getElementById(commentFmt).value;
+ const text = document.getElementById(commentText).value.trim();
+ if (!fmt) { showToast(Pick a format to comment on); return; }
+ if (!text) { showToast(Write something first!); return; }
+
+ const r = await fetch(${API}/api/collab/comment, {
+ method: POST,
+ headers: {Content-Type:application/json},
+ body: JSON.stringify({ shareId, fmt, paraIndex: 0, text, author })
+ });
+ if (!r.ok) { showToast(Could not post comment); return; }
+ const data = await r.json();
+ allComments.push(data.comment);
+ renderComments();
+ document.getElementById(commentText).value = ;
+ showToast(Comment posted ✓);
+ }
+
+ function escHtml(s) { return s.replace(/&/g,&amp;).replace(/</g,&lt;).replace(/>/g,&gt;); }
+
+ function showToast(msg) {
+ const t = document.getElementById(toast);
+ t.textContent = msg;
+ t.classList.add(show);
+ setTimeout(() => t.classList.remove(show), 2200);
+ }
+
+ load();
+</script>
+</body>
+</html>

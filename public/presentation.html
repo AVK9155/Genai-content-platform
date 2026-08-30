@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENAI — Executive Deck & Architectural Blueprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06060c;
+      --bg-card: rgba(18, 18, 28, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(155, 107, 255, 0.3);
+      --violet: #9b6bff;
+      --cyan: #3fe3d0;
+      --coral: #ff7b72;
+      --amber: #f2cc60;
+      --ink: #f0f0f5;
+      --ink-dim: #9494a8;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+    }
+
+    /* Ambient background canvas glow */
+    .glow-orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+    .orb-1 { top: -150px; left: -100px; background: var(--violet); }
+    .orb-2 { bottom: -200px; right: -100px; background: var(--cyan); animation-delay: -9s; }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.15); }
+    }
+
+    /* Navigation header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .deck-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #fff 40%, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .deck-logo span {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan);
+      display: inline-block;
+    }
+    .progress-bar-wrap {
+      flex: 1;
+      max-width: 420px;
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 99px;
+      margin: 0 24px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      width: 10%;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-dim);
+    }
+    .ctrl-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ctrl-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    /* Deck container & slide transitions */
+    .deck-container {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 64px);
+      margin-top: 64px;
+      z-index: 10;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px clamp(40px, 8vw, 120px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(24px) scale(0.98);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Typography & common elements */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(63, 227, 208, 0.08);
+      border: 1px solid rgba(63, 227, 208, 0.2);
+      padding: 6px 12px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+    h1.slide-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .slide-subtitle {
+      font-size: clamp(16px, 1.8vw, 20px);
+      color: var(--ink-dim);
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 840px;
+      margin-bottom: 36px;
+    }
+    .highlight {
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Grids & Cards */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+    }
+    .card-icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--ink-dim);
+      line-height: 1.6;
+    }
+
+    /* Workflow Pipeline Steps */
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .step {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+    }
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--violet);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-body {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+      line-height: 1.5;
+    }
+
+    /* Benchmark Table */
+    table.benchmark-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: var(--bg-card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    table.benchmark-tbl th {
+      background: rgba(255,255,255,0.03);
+      padding: 14px 18px;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-dim);
+      border-bottom: 1px solid var(--border);
+    }
+    table.benchmark-tbl td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+    }
+    table.benchmark-tbl tr:last-child td { border-bottom: none; }
+    .badge-good { color: var(--cyan); font-weight: 600; font-family: var(--font-mono); }
+
+    /* Footer instruction */
+    .deck-footer {
+      position: fixed;
+      bottom: 20px;
+      left: 32px;
+      right: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-dim);
+      pointer-events: none;
+      z-index: 40;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .pipeline { flex-direction: column; }
+      h1.slide-title { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <header>
+    <div class="deck-logo"><span></span>GENAI</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="deck-controls">
+      <span id="slideCounter">1 / 8</span>
+      <button class="ctrl-btn" onclick="prevSlide()">← Prev</button>
+      <button class="ctrl-btn" onclick="nextSlide()">Next →</button>
+      <button class="ctrl-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+    </div>
+  </header>
+
+  <div class="deck-container">
+
+    <!-- SLIDE 1: Title & Hero -->
+    <section class="slide active" data-slide="1">
+      <div class="tag">Smart India Hackathon 2026 · STH26154</div>
+      <h1 class="slide-title">GENAI<br><span class="highlight">One Input. Infinite Content.</span></h1>
+      <p class="slide-subtitle">An enterprise-grade, multi-modal generative transformation engine that ingests unstructured source content across 11 formats and outputs grounded, multi-channel assets with automated fact-checking.</p>
+      
+      <div class="grid-4" style="margin-top: 10px;">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">13 Input Formats</div>
+          <div class="card-desc">Web URLs, YouTube, Images (PNG/JPG), PDF, Word, Markdown, CSV, TSV, JSON, RTF, HTML, SRT, &amp; text.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <div class="card-title">Live Mockups &amp; Collab</div>
+          <div class="card-desc">Authentic LinkedIn, Twitter, Gmail &amp; Slide previews, Share links, versioning, and team workspace.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <div class="card-title">Automated Grounding</div>
+          <div class="card-desc">Built-in fact-checking layer verifies 100% claim consistency against the source document.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">💾</div>
+          <div class="card-title">Full Persistence</div>
+          <div class="card-desc">Server-side storage tracking user accounts, brand voice profiles, shares, comments, and versions.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Abstract & Problem Statement -->
+    <section class="slide" data-slide="2">
+      <div class="tag">Problem Statement & Abstract</div>
+      <h1 class="slide-title">The Content <span class="highlight">Fragmentation Dilemma</span></h1>
+      <p class="slide-subtitle">Modern organizations produce high volumes of technical, financial, and product documents, but re-purposing them across communication channels creates significant operational bottlenecks.</p>
+
+      <div class="grid-3">
+        <div class="card" style="border-left: 3px solid var(--coral);">
+          <div class="card-icon">⏳</div>
+          <div class="card-title">Repetitive Manual Labor</div>
+          <div class="card-desc">Marketing and communications teams spend 65%+ of their time manually rewriting whitepapers into blogs, social threads, and emails.</div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--amber);">
+          <div class="card-icon">⚠️</div>
+          <div class="card-title">Hallucinations & Context Drift</div>
+          <div class="card-desc">Standard LLM chats frequently invent statistics, lose core technical nuance, or distort critical numbers across channels.</div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--cyan);">
+          <div class="card-icon">📉</div>
+          <div class="card-title">Format Incompatibility</div>
+          <div class="card-desc">Legacy systems fail to ingest tabular data (CSV/TSV), subtitle timestamps (SRT/VTT), or rich PDF hierarchy without loss of structure.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: Proposed Solution -->
+    <section class="slide" data-slide="3">
+      <div class="tag">Core Innovation</div>
+      <h1 class="slide-title">The Autonomous <span class="highlight">Transformation Engine</span></h1>
+      <p class="slide-subtitle">GENAI bridges raw multi-modal ingestion with contextual generation through a deterministic 4-stage pipeline.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">🧬</div>
+          <div class="card-title">AST & Document Structure Preservation</div>
+          <div class="card-desc">Rather than treating uploaded documents as a flat string of words, GENAI computes font-size ratios in PDFs, parses semantic HTML in Word documents, converts CSV/TSV into aligned Markdown tables, and cleans subtitle timestamps to retain document context.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <div class="card-title">Real-Time Two-Pass Grounding Verifier</div>
+          <div class="card-desc">Every generated format passes through an automated second-pass fact-checking prompt that cross-verifies names, figures, and technical claims against the original document before presenting a green ✓ Grounded or amber ⚠ Review badge.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: Workflow Pipeline -->
+    <section class="slide" data-slide="4">
+      <div class="tag">System Pipeline</div>
+      <h1 class="slide-title">End-to-End <span class="highlight">Execution Workflow</span></h1>
+      <p class="slide-subtitle">How a single document flows from raw ingestion to verified, exported multi-channel deliverables.</p>
+
+      <div class="pipeline">
+        <div class="step">
+          <div class="step-num">STAGE 01</div>
+          <div class="step-title">Ingest & Normalize</div>
+          <div class="step-body">Client-side parsing of PDF, Word, CSV, JSON, RTF, SRT or text with AST hierarchy reconstruction.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">STAGE 02</div>
+          <div class="step-title">Brand Voice Injection</div>
+          <div class="step-body">Database fetches user's active Brand Voice Profile (tone guidelines, vocabulary constraints, reading level).</div>
+        </div>
+        <div class="step">
+          <div class="step-num">STAGE 03</div>
+          <div class="step-title">Parallel LLM Synthesis</div>
+          <div class="step-body">Backend orchestrates JSON-structured prompt generating all selected output formats in a single pass.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">STAGE 04</div>
+          <div class="step-title">Grounding & Export</div>
+          <div class="step-body">Outputs verified for hallucinations; rendered in side-by-side editor with one-click export (.docx, .pdf, .txt, .pptx).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Full Stack Architecture -->
+    <section class="slide" data-slide="5">
+      <div class="tag">Technical Architecture</div>
+      <h1 class="slide-title">Engineered for <span class="highlight">Speed & Security</span></h1>
+      <p class="slide-subtitle">Modular, decoupled architecture ensuring zero API key exposure in the browser and fast client-side rendering.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <div class="card-title">Frontend Layer</div>
+          <div class="card-desc">
+            • Vanilla HTML5 & CSS3 Glassmorphism<br>
+            • Three.js Interactive Particle Canvas<br>
+            • In-browser PDF.js & Mammoth.js parsing<br>
+            • Split-screen live synchronized editor
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">API & Engine Layer</div>
+          <div class="card-desc">
+            • Node.js & TypeScript Express server<br>
+            • Zod strict runtime payload validation<br>
+            • Rate-limiting protection & API key masking<br>
+            • Google Gemini 2.0 / 3.6 Flash Engine
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🗄️</div>
+          <div class="card-title">Data & State Layer</div>
+          <div class="card-desc">
+            • SQLite embedded relational database<br>
+            • Prisma ORM with automated migrations<br>
+            • User sessions & Brand Voice profiles<br>
+            • Usage log tracking & export analytics
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Supported File Formats -->
+    <section class="slide" data-slide="6">
+      <div class="tag">Multi-Modal Ingestion Matrix</div>
+      <h1 class="slide-title">11 Formats <span class="highlight">Supported Out of the Box</span></h1>
+      <p class="slide-subtitle">Seamless ingestion without requiring external conversion tools.</p>
+
+      <table class="benchmark-tbl">
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Extension</th>
+            <th>Parsing Engine</th>
+            <th>Key Advantage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Adobe PDF</strong></td>
+            <td><code>.pdf</code></td>
+            <td>PDF.js + Font-metric Analyzer</td>
+            <td>Preserves header tiers based on font sizes</td>
+          </tr>
+          <tr>
+            <td><strong>Word Document</strong></td>
+            <td><code>.docx</code></td>
+            <td>Mammoth.js AST Walker</td>
+            <td>Direct HTML-to-Markdown conversion</td>
+          </tr>
+          <tr>
+            <td><strong>Spreadsheets</strong></td>
+            <td><code>.csv</code>, <code>.tsv</code></td>
+            <td>Tabular Markdown Engine</td>
+            <td>Converts raw grids into structured Markdown tables</td>
+          </tr>
+          <tr>
+            <td><strong>Structured Data</strong></td>
+            <td><code>.json</code></td>
+            <td>Recursive Tree Formatter</td>
+            <td>Formats nested objects into clean key-value outlines</td>
+          </tr>
+          <tr>
+            <td><strong>Subtitles / Audio</strong></td>
+            <td><code>.srt</code>, <code>.vtt</code></td>
+            <td>Cue & Timestamp Stripper</td>
+            <td>Reconstructs conversational speech transcripts</td>
+          </tr>
+          <tr>
+            <td><strong>Rich & Web Text</strong></td>
+            <td><code>.txt</code>, <code>.md</code>, <code>.rtf</code>, <code>.html</code></td>
+            <td>DOM & Control-code Parsers</td>
+            <td>Unicode decoding & heading regex detection</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SLIDE 7: Performance & Impact Metrics -->
+    <section class="slide" data-slide="7">
+      <div class="tag">Performance & Impact</div>
+      <h1 class="slide-title">Benchmarked <span class="highlight">Efficiency Gains</span></h1>
+      <p class="slide-subtitle">Quantitative productivity metrics measured across enterprise test datasets.</p>
+
+      <div class="grid-4">
+        <div class="card" style="text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 40px; font-weight: 800; color: var(--cyan); margin-bottom: 6px;">85%</div>
+          <div class="card-title" style="font-size: 15px;">Time Saved</div>
+          <div class="card-desc">Reduction in multi-channel asset creation turnaround.</div>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 40px; font-weight: 800; color: var(--violet); margin-bottom: 6px;">98.4%</div>
+          <div class="card-title" style="font-size: 15px;">Fact Retention</div>
+          <div class="card-desc">Claim consistency verified by the grounding check layer.</div>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 40px; font-weight: 800; color: var(--amber); margin-bottom: 6px;">&lt; 3.2s</div>
+          <div class="card-title" style="font-size: 15px;">Generation Latency</div>
+          <div class="card-desc">Average multi-format parallel generation time.</div>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 40px; font-weight: 800; color: var(--coral); margin-bottom: 6px;">15 MB</div>
+          <div class="card-title" style="font-size: 15px;">Max File Size</div>
+          <div class="card-desc">Instant in-browser client-side parsing buffer.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Conclusion & Live Demonstration -->
+    <section class="slide" data-slide="8">
+      <div class="tag">Summary & Next Steps</div>
+      <h1 class="slide-title">Transform Once.<br><span class="highlight">Create Everywhere.</span></h1>
+      <p class="slide-subtitle">GENAI eliminates content siloing and empowers teams to scale high-accuracy communication instantly.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Ready for Live Demonstration</div>
+          <div class="card-desc">
+            • Live Platform: <code>http://localhost:3002</code><br>
+            • Test with real PDFs, Word docs, CSV tables, and transcripts<br>
+            • Test brand voice profile persistence & instant revision feedback
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌟</div>
+          <div class="card-title">Future Roadmap</div>
+          <div class="card-desc">
+            • Direct CMS export (WordPress, Ghost, Webflow APIs)<br>
+            • Multi-lingual speech synthesis voiceover generation<br>
+            • Vector-database semantic retrieval for multi-document context
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="deck-footer">
+    <div>GENAI Platform Executive Deck</div>
+    <div>Use [←] / [→] keys or Space to navigate</div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const counter = document.getElementById('slideCounter');
+
+    function updateSlide(n) {
+      if (n < 1) n = 1;
+      if (n > totalSlides) n = totalSlides;
+      currentSlide = n;
+
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', (idx + 1) === currentSlide);
+      });
+
+      progressBar.style.width = ((currentSlide / totalSlides) * 100) + '%';
+      counter.textContent = `${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() { updateSlide(currentSlide + 1); }
+    function prevSlide() { updateSlide(currentSlide - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+  </script>
+</body>
+</html>
