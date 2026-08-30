@@ -3242,6 +3242,7 @@
     let currentUser = null; // {id, name, email}
     let usageLog = []; // FR-4.3: {time, user, formats[], grounded, reviewFlagged}
     let activeCancelReject = null;
+    const SESSION_VERSION = 'v2'; // bump to force-logout all existing sessions
 
     /* ---------- Network status ---------- */
     function setNetStatus(mode, label) {
@@ -3424,8 +3425,8 @@
     }
 
     async function enterWorkspaceAs(user) {
-      // Mark this as a real (user-initiated) login, not the old auto-login
-      await setSession({ ...user, verifiedLogin: true });
+      // Mark as real user-initiated login with current session version
+      await setSession({ ...user, verifiedLogin: true, _v: SESSION_VERSION });
       history = [];
       document.getElementById('historyStrip').style.display = 'none';
       await initProfiles();
@@ -3539,23 +3540,40 @@
     });
 
     async function initAuth() {
-      // Restore session — but purge any stale session created by old auto-login bug
+      // Nuke legacy sessions: anything without verifiedLogin OR wrong version is wiped
       try {
+        // Clear both storage types to be thorough
         const stored = sessionStorage.getItem('genai:session');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          // If this session has the old hardcoded email, wipe it
-          if (parsed && parsed.email === 'damubalaji144@gmail.com' && !parsed.verifiedLogin) {
-            sessionStorage.removeItem('genai:session');
-            currentUser = null;
-          } else {
-            currentUser = parsed;
-          }
+        const localStored = localStorage.getItem('genai:session');
+
+        const purge = (raw) => {
+          if (!raw) return null;
+          try {
+            const parsed = JSON.parse(raw);
+            // Keep session only if it was created via real login AND matches current version
+            if (parsed && parsed.verifiedLogin === true && parsed._v === SESSION_VERSION) {
+              return parsed;
+            }
+          } catch (e) {}
+          return null;
+        };
+
+        // Clear localStorage unconditionally (old code used it, new code uses sessionStorage only)
+        localStorage.removeItem('genai:session');
+
+        const fromSession = purge(stored);
+        if (fromSession) {
+          currentUser = fromSession;
+        } else {
+          // Wipe the stale/invalid session
+          sessionStorage.removeItem('genai:session');
+          currentUser = null;
         }
       } catch (e) { currentUser = null; }
       updateAccountUI();
     }
     initAuth();
+
 
     // Wire up the navbar Sign Out button
     const navSignOutBtn = document.getElementById('navSignOutBtn');
