@@ -3165,10 +3165,22 @@
       }
     }
 
-    document.getElementById('heroStartBtn').addEventListener('click', () => requireWorkspace());
-    document.getElementById('navLaunchBtn').addEventListener('click', () => requireWorkspace());
+    function launchWorkspace() {
+      if (typeof window.requireWorkspace === 'function') {
+        window.requireWorkspace();
+      } else {
+        showApp();
+        const gate = document.getElementById('authGate');
+        const main = document.getElementById('appMain');
+        if (gate) gate.style.display = 'none';
+        if (main) main.style.display = 'block';
+      }
+    }
+
+    document.getElementById('heroStartBtn').addEventListener('click', () => launchWorkspace());
+    document.getElementById('navLaunchBtn').addEventListener('click', () => launchWorkspace());
     document.getElementById('backToSiteBtn').addEventListener('click', () => showLanding());
-    document.querySelectorAll('.footer-launch').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); requireWorkspace(); }));
+    document.querySelectorAll('.footer-launch').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); launchWorkspace(); }));
     document.querySelectorAll('.foot-placeholder').forEach(el => {
       const original = el.textContent;
       el.addEventListener('click', () => {
@@ -3463,6 +3475,7 @@
       await initProfiles();
       await initUsage();
     }
+    window.requireWorkspace = requireWorkspace;
 
     document.getElementById('authContinueBtn').addEventListener('click', async () => {
       const name = document.getElementById('authName').value.trim();
