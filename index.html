@@ -1327,42 +1327,8 @@
       color: var(--ink-dim);
       background: transparent;
       border: none;
-    /* ── User Account Badge & Sign Out ── */
-    .account-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 12.5px;
-      color: var(--ink);
-      font-weight: 500;
-    }
-    .account-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #3fe3d0;
-      box-shadow: 0 0 8px #3fe3d0;
-      display: inline-block;
-    }
-    .account-signout {
-      background: transparent;
-      border: none;
-      color: var(--ink-dim);
-      font-size: 11.5px;
-      margin-left: 6px;
-      padding: 2px 0 2px 8px;
-      border-left: 1px solid rgba(255, 255, 255, 0.15);
-      cursor: pointer;
-      font-family: inherit;
-      transition: color 0.15s;
-    }
-    .account-signout:hover {
-      color: #ff6b6b;
-      text-decoration: underline;
+      border-bottom: 2px solid transparent;
+      transition: .18s;
     }
 
     .page-tab.active {
@@ -1967,16 +1933,7 @@
       font-weight: 300;
     }
 
-    select#translateSelect {
-      width: 100%;
-      background: var(--bg-panel-2);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 11px 12px;
-      color: var(--ink);
-      font-size: 13px;
-      outline: none;
-    }
+    
 
     .bv-row {
       display: flex;
@@ -2488,6 +2445,10 @@
     .faq-q { padding: 14px 18px; font-weight: 600; font-size: 13.5px; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); }
     .faq-q:hover { background: rgba(255,255,255,0.05); }
     .faq-a { padding: 14px 18px; font-size: 13px; line-height: 1.7; color: var(--ink-dim); border-top: 1px solid var(--line); white-space: pre-wrap; }
+
+    
+
+    
   </style>
 </head>
 
@@ -2498,7 +2459,38 @@
   <div class="glow-a"></div>
   <div class="glow-b"></div>
 
+  
+    <div class="tts-word" id="ttsWordDisplay"></div>
 
+    <div class="tts-controls">
+      <button class="tts-ctrl-btn" onclick="ttsSkipBack()" title="Skip back 10s">⏮ −10s</button>
+      <button class="tts-ctrl-btn primary" id="ttsPlayBtn" onclick="ttsTogglePlay()">▶ Play</button>
+      <button class="tts-ctrl-btn" onclick="ttsStop()" title="Stop">⏹ Stop</button>
+    </div>
+
+    <div>
+      <div class="tts-label">Voice</div>
+      <select class="tts-select" id="ttsVoiceSelect" onchange="ttsApplyVoice()">
+        <option value="">Loading voices…</option>
+      </select>
+    </div>
+
+    <div>
+      <div class="tts-slider-row">
+        <span>Speed</span>
+        <input type="range" id="ttsSpeedSlider" min="0.5" max="2" step="0.25" value="1" oninput="ttsApplyRate()">
+        <span id="ttsSpeedVal" style="min-width:30px;">1×</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="tts-slider-row">
+        <span>Pitch</span>
+        <input type="range" id="ttsPitchSlider" min="0.5" max="2" step="0.1" value="1" oninput="ttsApplyPitch()">
+        <span id="ttsPitchVal" style="min-width:30px;">1.0</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══ COLLABORATION MODALS ═══════════════════════════════════════════ -->
 
@@ -2938,18 +2930,7 @@
                 <option value="technical">Technical</option>
               </select>
 
-              <div class="field-label"><label for="translateSelect">Translate To <span class="field-hint">(adds a
-                    translated version)</span></label></div>
-              <select id="translateSelect">
-                <option value="none">No translation</option>
-                <option value="Spanish">Spanish</option>
-                <option value="French">French</option>
-                <option value="German">German</option>
-                <option value="Hindi">Hindi</option>
-                <option value="Portuguese">Portuguese</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Simplified Chinese">Simplified Chinese</option>
-              </select>
+              
 
               <div class="field-label" id="bvLabel">Brand Voice Profile <span class="field-hint">(optional)</span></div>
               <div class="bv-row">
@@ -2979,6 +2960,7 @@
               <div class="panel-title">
                 <span>Generated Output</span>
                 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                  
                   <button type="button" id="shareBtn" class="clear-link-btn" title="Share this session" style="display:none;">🔗 Share</button>
                   <button type="button" id="teamBtn" class="clear-link-btn" title="Team Workspace">👥 Team</button>
                   <button type="button" id="resetResultsBtn" class="clear-link-btn"
@@ -3566,41 +3548,68 @@
       showApp();
       if (!currentUser) {
         currentUser = { name: 'Damu Balaji', email: 'damubalaji144@gmail.com' };
+        saveCurrentUser();
       }
+      updateUserBadge();
       document.getElementById('authGate').style.display = 'none';
       document.getElementById('appMain').style.display = 'block';
-      updateAccountUI();
       await initProfiles();
       await initUsage();
     }
 
     document.getElementById('authContinueBtn').addEventListener('click', async () => {
-      const name = document.getElementById('authName').value.trim() || 'Creator';
-      const email = document.getElementById('authEmail').value.trim() || 'creator@genai.platform';
-      currentUser = { name, email };
-      await enterWorkspaceAs(currentUser);
+      const name = document.getElementById('authName').value.trim();
+      const email = document.getElementById('authEmail').value.trim();
+      const errBox = document.getElementById('authError');
+      errBox.style.display = 'none';
+      if (!name) { errBox.textContent = 'Add your name to label this workspace.'; errBox.style.display = 'block'; return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = 'Enter a valid email address.'; errBox.style.display = 'block'; return; }
+      try {
+        const rec = await upsertAccount(name, email);
+        await enterWorkspaceAs(rec);
+      } catch (err) {
+        errBox.textContent = err.message || 'Could not create workspace — is the backend running?';
+        errBox.style.display = 'block';
+      }
     });
 
     document.getElementById('authSignInBtn').addEventListener('click', async () => {
-      const email = document.getElementById('authSignInEmail').value.trim() || 'creator@genai.platform';
-      currentUser = { name: 'Damu Balaji', email };
-      await enterWorkspaceAs(currentUser);
+      const email = document.getElementById('authSignInEmail').value.trim();
+      const errBox = document.getElementById('authError');
+      errBox.style.display = 'none';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = 'Enter a valid email address.'; errBox.style.display = 'block'; return; }
+      try {
+        const res = await fetch(`${API_BASE}/api/auth/signin`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email.toLowerCase().trim() }),
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          errBox.textContent = err.error || 'No workspace found for that email — switch to Register to create one.';
+          errBox.style.display = 'block';
+          return;
+        }
+        const data = await res.json();
+        await enterWorkspaceAs(data.user);
+      } catch (err) {
+        errBox.textContent = 'Could not reach backend — is the server running?';
+        errBox.style.display = 'block';
+      }
     });
 
     document.getElementById('signOutBtn').addEventListener('click', async () => {
-      collabToast('Signed out of workspace ✓');
-      currentUser = { name: 'Guest Creator', email: 'guest@genai.platform' };
+      await clearSessionStorage();
       updateAccountUI();
+      showAuthGate();
     });
 
     async function initAuth() {
+      // Restore session from sessionStorage (survives page refresh, cleared on tab close)
       try {
         const stored = sessionStorage.getItem('genai:session');
         if (stored) currentUser = JSON.parse(stored);
-        else currentUser = { name: 'Damu Balaji', email: 'damubalaji144@gmail.com' };
-      } catch (e) {
-        currentUser = { name: 'Damu Balaji', email: 'damubalaji144@gmail.com' };
-      }
+      } catch (e) { currentUser = null; }
       updateAccountUI();
     }
     initAuth();
@@ -4132,18 +4141,18 @@
 
     const PROC_STAGES = ['READING CONTENT…', 'UNDERSTANDING CONTEXT…', 'IDENTIFYING KEY INFORMATION…', 'GENERATING FORMATS…', 'FACT-CHECKING OUTPUT…'];
 
-    function buildFormatBlocks(formats, translateLang) {
+    function buildFormatBlocks(formats) {
       return formats.map(f => {
         if (f === 'translation') {
-          return `### Translation (${translateLang})\nA faithful translation of the FULL source content into ${translateLang}, preserving meaning, structure, tone and any figures exactly — do not summarize or add content.`;
+          return `
         }
         return `### ${FORMAT_LABELS[f]}\n${FORMAT_INSTRUCTIONS[f]}`;
       }).join('\n\n');
     }
 
-    async function callClaude(srcText, formats, tone, brandNotes, translateLang) {
+    async function callClaude(srcText, formats, tone, brandNotes) {
       // Calls the secure backend proxy — no API key needed in the browser
-      const payload = { sourceText: srcText, formats, tone, brandNotes, translateLang };
+      const payload = { sourceText: srcText, formats, tone, brandNotes };
       if (typeof currentImage !== 'undefined' && currentImage) {
         payload.imageBase64 = currentImage.base64Url;
         payload.imageMimeType = currentImage.mimeType;
@@ -4187,13 +4196,11 @@
       const text = sourceText.value.trim();
       let formats = getSelectedFormats();
       const tone = document.getElementById('toneSelect').value;
-      const translateLang = document.getElementById('translateSelect').value;
       const brandNotes = document.getElementById('profileNotes').value.trim();
 
       if (!text && typeof currentImage === 'undefined') { showError('Add some source content first — paste text or drop a file/image.'); return; }
       if (!text && !currentImage) { showError('Add some source content first — paste text or drop a file/image.'); return; }
       if ((typeof currentImage === 'undefined' || !currentImage) && text.length < 40) { showError('That source looks pretty short — add a bit more content for a meaningful transformation.'); return; }
-      if (translateLang !== 'none') formats = [...formats, 'translation'];
       if (!formats.length) { showError('Select at least one output format.'); return; }
 
       if (!navigator.onLine) { showError('You appear to be offline — reconnect and try again.', { retry: runGenerate }); return; }
@@ -4216,7 +4223,7 @@
       const slowTimer = setTimeout(() => { procSub.textContent = 'This is taking longer than usual — still working…'; }, 9000);
 
       try {
-        const results = await callClaude(text, formats, tone, brandNotes, translateLang);
+        const results = await callClaude(text, formats, tone, brandNotes);
         currentResults = results;
         currentApproval = {};
         formats.forEach(f => { currentApproval[f] = 'draft'; });
@@ -4224,7 +4231,7 @@
         currentGrounding = await checkGrounding(text, formats, results);
         clearInterval(stageTimer); clearTimeout(slowTimer);
         processingState.style.display = 'none';
-        renderResults(formats, results, translateLang);
+        renderResults(formats, results);
         pushHistory(text, formats);
         const groundedCount = formats.filter(f => f !== 'translation' && currentGrounding[f] && currentGrounding[f].status === 'grounded').length;
         const checkedCount = formats.filter(f => f !== 'translation' && currentGrounding[f] && currentGrounding[f].status).length;
@@ -4255,7 +4262,7 @@
       { key: 'approved', label: 'Approved' }
     ];
 
-    function renderResults(formats, results, translateLang) {
+    function renderResults(formats, results) {
       resultTabs.innerHTML = '';
       resultBodies.innerHTML = '';
       formats.forEach((fmt, i) => {
@@ -4354,7 +4361,7 @@
         });
       });
       resultBodies.querySelectorAll('[data-action="regen"]').forEach(btn => {
-        btn.addEventListener('click', () => regenerateOne(btn.dataset.fmt, btn, translateLang));
+        btn.addEventListener('click', () => regenerateOne(btn.dataset.fmt, btn));
       });
       resultBodies.querySelectorAll('.feedback-input').forEach(input => {
         const fmt = input.id.replace('feedback-', '');
@@ -4411,6 +4418,7 @@
 
       const shareBtn = document.getElementById('shareBtn');
       if (shareBtn) shareBtn.style.display = 'inline-block';
+      
 
       // Auto-save versions for each format
       formats.forEach(fmt => {
@@ -4578,11 +4586,11 @@
       resultBodies.querySelectorAll('.result-body').forEach(b => b.classList.toggle('active', b.id === 'body-' + fmt));
     }
 
-    async function reviseOutput(srcText, fmt, label, currentText, feedback, tone, brandNotes, translateLang) {
+    async function reviseOutput(srcText, fmt, label, currentText, feedback, tone, brandNotes) {
       const response = await fetchWithTimeoutRetry(`${API_BASE}/api/generate/revise`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sourceText: srcText, fmt, label, currentText, feedback, tone, brandNotes, translateLang }),
+        body: JSON.stringify({ sourceText: srcText, fmt, label, currentText, feedback, tone, brandNotes }),
       });
       if (!response.ok) {
         const errData = await response.json().catch(() => ({}));
@@ -4592,10 +4600,10 @@
       return data.text;
     }
 
-    async function regenerateOne(fmt, btn, translateLang) {
+    async function regenerateOne(fmt, btn) {
       const tone = document.getElementById('toneSelect').value;
       const brandNotes = document.getElementById('profileNotes').value.trim();
-      const label = fmt === 'translation' ? `Translation (${translateLang || document.getElementById('translateSelect').value})` : FORMAT_LABELS[fmt];
+      const label = FORMAT_LABELS[fmt];
       const ta = document.getElementById('text-' + fmt);
       const feedbackInput = document.getElementById('feedback-' + fmt);
       const feedback = feedbackInput ? feedbackInput.value.trim() : '';
@@ -4604,9 +4612,9 @@
       try {
         let newText;
         if (feedback) {
-          newText = await reviseOutput(sourceContent, fmt, label, ta.value, feedback, tone, brandNotes, translateLang || document.getElementById('translateSelect').value);
+          newText = await reviseOutput(sourceContent, fmt, label, ta.value, feedback, tone, brandNotes);
         } else {
-          const results = await callClaude(sourceContent, [fmt], tone, brandNotes, translateLang || document.getElementById('translateSelect').value);
+          const results = await callClaude(sourceContent, [fmt], tone, brandNotes);
           const resVal = results[fmt];
           newText = typeof resVal === 'string' ? resVal : (resVal !== null && typeof resVal === 'object' ? JSON.stringify(resVal, null, 2) : (resVal || ta.value));
         }
@@ -4618,7 +4626,7 @@
         toolbar.innerHTML = `${ta.value.length.toLocaleString()} characters &nbsp;·&nbsp; ${groundingBadge(fmt)}`;
         logUsage({ formats: [fmt], outputCount: 1, regenerated: true });
       } catch (err) {
-        showError('Regeneration failed: ' + (err.message || 'unknown error'), { retry: () => regenerateOne(fmt, btn, translateLang) });
+        showError('Regeneration failed: ' + (err.message || 'unknown error'), { retry: () => regenerateOne(fmt, btn) });
       } finally {
         btn.textContent = feedbackInput && feedbackInput.value.trim() ? 'Apply Feedback' : 'Regenerate';
         btn.disabled = false;
@@ -5482,6 +5490,7 @@
     // Initial team profile load
     loadTeamProfiles();
   </script>
-</body>
+
+  </body>
 
 </html>
