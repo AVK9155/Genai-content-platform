@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  # ── GenAI App (backend + frontend) ──────────────────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: genai-platform
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - AI_MODEL=${AI_MODEL:-gemini-3.1-flash-lite}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3002}
+      - DATABASE_URL=file:./prisma/dev.db
+    volumes:
+      # Persist JSON data stores across container restarts
+      - genai_data:/app/backend-genai/data
+      # Persist SQLite DB
+      - genai_db:/app/backend-genai/prisma
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3002/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  genai_data:
+    driver: local
+  genai_db:
+    driver: local

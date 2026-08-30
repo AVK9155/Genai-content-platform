@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "name": "genai-content-platform",
+  "buildCommand": "cd backend-genai && npm install && npm run build",
+  "installCommand": "cd backend-genai && npm install",
+  "outputDirectory": "backend-genai/dist",
+  "functions": {
+    "api/index.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/shared/(.*)",
+      "dest": "/shared.html"
+    },
+    {
+      "src": "/presentation",
+      "dest": "/presentation.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, DELETE, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
+    }
+  ]
+}
