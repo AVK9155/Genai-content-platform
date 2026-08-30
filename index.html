@@ -1327,8 +1327,42 @@
       color: var(--ink-dim);
       background: transparent;
       border: none;
-      border-bottom: 2px solid transparent;
-      transition: .18s;
+    /* ── User Account Badge & Sign Out ── */
+    .account-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .account-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3fe3d0;
+      box-shadow: 0 0 8px #3fe3d0;
+      display: inline-block;
+    }
+    .account-signout {
+      background: transparent;
+      border: none;
+      color: var(--ink-dim);
+      font-size: 11.5px;
+      margin-left: 6px;
+      padding: 2px 0 2px 8px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+    .account-signout:hover {
+      color: #ff6b6b;
+      text-decoration: underline;
     }
 
     .page-tab.active {
