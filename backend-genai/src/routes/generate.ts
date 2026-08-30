@@ -7,8 +7,8 @@ export const generateRouter = Router();
 // ─── Config ───────────────────────────────────────────────────────────────────
 function getConfig() {
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) throw new Error("GEMINI_API_KEY is not set in backend-genai/.env — get a free key at aistudio.google.com/apikey");
-  const model = process.env.AI_MODEL || "gemini-2.0-flash";
+  if (!apiKey) throw new Error("GEMINI_API_KEY is not set — get a free key at aistudio.google.com/apikey");
+  const model = process.env.AI_MODEL || "gemini-3.1-flash-lite";
   return { apiKey, model };
 }
 
