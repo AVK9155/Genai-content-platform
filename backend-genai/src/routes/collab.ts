@@ -6,20 +6,29 @@ import crypto from "crypto";
 
 export const collabRouter = Router();
 
-// Data store helpers
+// Data store helpers (with in-memory fallback for serverless)
+const memStores: Record<string, any[]> = {};
 const DATA_DIR = path.join(__dirname, "../../data");
 
 function readStore<T>(file: string): T[] {
+  if (memStores[file]) return memStores[file] as T[];
   try {
     const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-    return JSON.parse(raw) as T[];
+    memStores[file] = JSON.parse(raw) as T[];
+    return memStores[file] as T[];
   } catch {
-    return [];
+    return memStores[file] || [];
   }
 }
 
 function writeStore<T>(file: string, data: T[]): void {
-  fs.writeFileSync(path.join(DATA_DIR, file), JSON.stringify(data, null, 2), "utf8");
+  memStores[file] = data;
+  try {
+    if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+    fs.writeFileSync(path.join(DATA_DIR, file), JSON.stringify(data, null, 2), "utf8");
+  } catch {
+    // Read-only filesystem in serverless environments — in-memory store persists during execution
+  }
 }
 
 function uid(): string {
