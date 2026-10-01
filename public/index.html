@@ -1249,6 +1249,213 @@
       padding-top: 16px;
     }
 
+    /* ─── Reworked Auth Modal & Step Flow ─── */
+    .auth-steps-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0 16px 0;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 11.5px;
+    }
+    .auth-step-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-dimmer);
+      font-weight: 400;
+      transition: color .2s;
+    }
+    .auth-step-pill.active {
+      color: #fff;
+      font-weight: 600;
+    }
+    .auth-step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--ink-dim);
+      transition: all .2s ease;
+    }
+    .auth-step-pill.active .auth-step-num {
+      background: var(--violet-soft);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(124, 58, 237, 0.45);
+    }
+    .auth-step-arrow {
+      color: var(--ink-dimmer);
+      font-size: 11px;
+    }
+    .auth-inline-switch {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--ink-dim);
+      text-align: center;
+    }
+    .auth-inline-switch a {
+      color: var(--violet-soft);
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 4px;
+      cursor: pointer;
+    }
+    .auth-inline-switch a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+    .auth-banner-success {
+      background: rgba(46, 213, 115, 0.1);
+      border: 1px solid rgba(46, 213, 115, 0.35);
+      color: #2ed573;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.45;
+    }
+    .auth-inline-action-btn {
+      background: var(--violet-soft);
+      color: #fff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 6px;
+      display: inline-block;
+      transition: opacity .15s, transform .15s;
+    }
+    .auth-inline-action-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    .auth-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 9, 14, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 20px;
+      animation: authFadeIn 0.2s ease-out;
+    }
+    @keyframes authFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .auth-modal-card {
+      width: min(440px, 100%);
+      background: #111219;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      padding: 34px 28px 28px 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(124, 58, 237, 0.15);
+      text-align: center;
+      position: relative;
+      animation: authScaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes authScaleUp {
+      from { transform: scale(0.94); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .auth-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      color: var(--ink-dim);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: color .15s, background .15s;
+    }
+    .auth-modal-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .auth-modal-icon-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      background: rgba(255, 171, 0, 0.12);
+      border: 1px solid rgba(255, 171, 0, 0.3);
+      box-shadow: 0 0 20px rgba(255, 171, 0, 0.15);
+    }
+    .auth-modal-icon-wrap.success {
+      background: rgba(46, 213, 115, 0.12);
+      border-color: rgba(46, 213, 115, 0.35);
+      box-shadow: 0 0 20px rgba(46, 213, 115, 0.18);
+    }
+    .auth-modal-icon-wrap.error {
+      background: rgba(255, 71, 87, 0.12);
+      border-color: rgba(255, 71, 87, 0.35);
+      box-shadow: 0 0 20px rgba(255, 71, 87, 0.18);
+    }
+    .auth-modal-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.01em;
+    }
+    .auth-modal-msg {
+      font-size: 13.5px;
+      color: var(--ink-dim);
+      line-height: 1.55;
+      margin: 0 0 24px 0;
+    }
+    .auth-modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .auth-modal-actions .btn-generate {
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 13.5px;
+      margin-top: 0;
+    }
+    .auth-modal-actions .btn-ghost {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink-dim);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .15s;
+    }
+    .auth-modal-actions .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
+
     .nav-auth {
       display: flex;
       align-items: center;
@@ -2482,6 +2689,7 @@
         <button type="button" class="nav-jump" data-target="use-cases">Use Cases</button>
       </div>
       <div class="nav-actions" style="display:flex;align-items:center;gap:12px;">
+        <button class="nav-signout" id="navSignOutBtn" type="button" style="display:none;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:12px;padding:7px 14px;border-radius:8px;cursor:pointer;font-family:inherit;letter-spacing:0.05em;transition:all 0.2s;">Sign Out</button>
         <button class="nav-cta" id="navLaunchBtn" type="button">Sign In / Launch Platform →</button>
       </div>
     </nav>
@@ -2699,21 +2907,59 @@
     <div id="authGate" class="auth-gate">
       <div class="auth-card">
         <div class="eyebrow">Workspace Access</div>
-        <h2 id="authHeading">Sign in to your workspace</h2>
-        <p class="auth-sub" id="authSubText">Look up your workspace by email, or register a new one.</p>
+        <h2 id="authHeading">Register your workspace account</h2>
+        <p class="auth-sub" id="authSubText">First-time creator? Register your username and email to get started.</p>
 
-        <div class="page-tabs" role="tablist" aria-label="Sign in or register" style="margin-top:20px;">
-          <button type="button" class="page-tab auth-tab active" id="authTabSignIn" role="tab" aria-selected="true"
-            aria-controls="authPanelSignIn" data-panel="authPanelSignIn">Sign In</button>
-          <button type="button" class="page-tab auth-tab" id="authTabRegister" role="tab" aria-selected="false"
-            aria-controls="authPanelRegister" data-panel="authPanelRegister">Register</button>
+        <!-- 2-Step Sequential Flow Indicator -->
+        <div class="auth-steps-flow" aria-hidden="true">
+          <div class="auth-step-pill active" id="authStepPillRegister">
+            <span class="auth-step-num">1</span>
+            <span>Register First</span>
+          </div>
+          <span class="auth-step-arrow">→</span>
+          <div class="auth-step-pill" id="authStepPillSignIn">
+            <span class="auth-step-num">2</span>
+            <span>Sign In</span>
+          </div>
         </div>
 
-        <div class="page-panel auth-panel active" id="authPanelSignIn" role="tabpanel" aria-labelledby="authTabSignIn">
-          <div class="field-label" style="margin-top:16px;"><label for="authSignInEmail">Email</label></div>
-          <input type="email" id="authSignInEmail" class="bv-input" placeholder="you@example.com"
-            autocomplete="email" />
-          <button type="button" class="btn-generate" id="authSignInBtn">Continue →</button>
+        <div class="page-tabs" role="tablist" aria-label="Sign in or register" style="margin-top:14px;">
+          <button type="button" class="page-tab auth-tab active" id="authTabRegister" role="tab" aria-selected="true"
+            aria-controls="authPanelRegister" data-panel="authPanelRegister">1. Register</button>
+          <button type="button" class="page-tab auth-tab" id="authTabSignIn" role="tab" aria-selected="false"
+            aria-controls="authPanelSignIn" data-panel="authPanelSignIn">2. Sign In</button>
+        </div>
+
+        <!-- Panel 1: Register (Step 1) -->
+        <div class="page-panel auth-panel active" id="authPanelRegister" role="tabpanel" aria-labelledby="authTabRegister">
+          <div class="field-label" style="margin-top:16px;"><label for="authName">Username / Full Name</label></div>
+          <input type="text" id="authName" class="bv-input" placeholder="e.g. Aisha Verma or aisha_v" autocomplete="username" />
+
+          <div class="field-label"><label for="authEmail">Email Address</label></div>
+          <input type="email" id="authEmail" class="bv-input" placeholder="you@example.com" autocomplete="email" />
+
+          <button type="button" class="btn-generate" id="authContinueBtn">Register Workspace →</button>
+
+          <div class="auth-inline-switch">
+            Already registered? <a href="javascript:void(0)" id="authLinkToSignIn">Sign in here →</a>
+          </div>
+        </div>
+
+        <!-- Panel 2: Sign In (Step 2) -->
+        <div class="page-panel auth-panel" id="authPanelSignIn" role="tabpanel" aria-labelledby="authTabSignIn">
+          <div id="authSignInSuccessBanner" class="auth-banner-success" style="display:none;" role="status">
+            <span>✓</span>
+            <span id="authSignInSuccessMsg">Registration complete! Sign in with your email or username to continue.</span>
+          </div>
+
+          <div class="field-label" style="margin-top:16px;"><label for="authSignInEmail">Email Address or Username</label></div>
+          <input type="text" id="authSignInEmail" class="bv-input" placeholder="Enter your registered email or username"
+            autocomplete="username" />
+          <button type="button" class="btn-generate" id="authSignInBtn">Sign In to Workspace →</button>
+
+          <div class="auth-inline-switch">
+            Haven't registered yet? <a href="javascript:void(0)" id="authLinkToRegister">Register first →</a>
+          </div>
 
           <div class="auth-existing" id="authExisting" style="display:none;">
             <div class="field-label" id="authExistingLabel">Or select a recent workspace</div>
@@ -2721,21 +2967,26 @@
           </div>
         </div>
 
-        <div class="page-panel auth-panel" id="authPanelRegister" role="tabpanel" aria-labelledby="authTabRegister">
-          <div class="field-label" style="margin-top:16px;"><label for="authName">Your name</label></div>
-          <input type="text" id="authName" class="bv-input" placeholder="e.g. Aisha Verma" autocomplete="name" />
+        <div class="error-box" id="authError" role="alert" style="display:none;"></div>
 
-          <div class="field-label"><label for="authEmail">Email</label></div>
-          <input type="email" id="authEmail" class="bv-input" placeholder="you@example.com" autocomplete="email" />
-
-          <button type="button" class="btn-generate" id="authContinueBtn">Create Workspace →</button>
-        </div>
-
-        <div class="error-box" id="authError" role="alert"></div>
-
-        <p class="auth-disclaimer">⚠ Demo account only — no password required and nothing here is securely
-          authenticated. This just labels a workspace so profiles and history don't mix between people testing the demo.
+        <p class="auth-disclaimer">⚠ Workspace authentication: Register first to establish your creator account, then sign in to access your brand voice profiles and generation history.
         </p>
+      </div>
+    </div>
+
+    <!-- Dedicated Auth Popup Modal for "Register First" / "Username Found" / "Success" -->
+    <div id="authPopupModal" class="auth-modal-backdrop" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+      <div class="auth-modal-card">
+        <button type="button" class="auth-modal-close" id="authModalCloseBtn" aria-label="Close modal">&times;</button>
+        <div class="auth-modal-icon-wrap" id="authModalIconWrap">
+          <span id="authModalIcon">⚠️</span>
+        </div>
+        <h3 class="auth-modal-title" id="authModalTitle">Register First</h3>
+        <p class="auth-modal-msg" id="authModalMsg">No workspace found for this email. Please register first before logging in.</p>
+        <div class="auth-modal-actions">
+          <button type="button" class="btn-generate" id="authModalPrimaryBtn">Go to Registration Page →</button>
+          <button type="button" class="btn-ghost" id="authModalSecondaryBtn">Close</button>
+        </div>
       </div>
     </div>
 
@@ -3172,8 +3423,8 @@
         showApp();
         const gate = document.getElementById('authGate');
         const main = document.getElementById('appMain');
-        if (gate) gate.style.display = 'none';
-        if (main) main.style.display = 'block';
+        if (gate) gate.style.display = 'flex';
+        if (main) main.style.display = 'none';
       }
     }
 
@@ -3241,6 +3492,7 @@
     let currentUser = null; // {id, name, email}
     let usageLog = []; // FR-4.3: {time, user, formats[], grounded, reviewFlagged}
     let activeCancelReject = null;
+    const SESSION_VERSION = 'v3'; // bump to force-logout all existing sessions
 
     /* ---------- Network status ---------- */
     function setNetStatus(mode, label) {
@@ -3390,13 +3642,16 @@
       const accountPill = document.getElementById('accountPill');
       const accountLabel = document.getElementById('accountLabel');
       const launchBtn = document.getElementById('navLaunchBtn');
+      const signOutBtn = document.getElementById('navSignOutBtn');
       if (currentUser) {
         if (launchBtn) launchBtn.textContent = `Continue as ${currentUser.name.split(' ')[0]} →`;
-        accountPill.style.display = 'flex';
-        accountLabel.textContent = currentUser.name;
+        if (signOutBtn) signOutBtn.style.display = 'block';
+        if (accountPill) accountPill.style.display = 'flex';
+        if (accountLabel) accountLabel.textContent = currentUser.name;
       } else {
         if (launchBtn) launchBtn.textContent = 'Sign In / Launch Platform →';
-        accountPill.style.display = 'none';
+        if (signOutBtn) signOutBtn.style.display = 'none';
+        if (accountPill) accountPill.style.display = 'none';
       }
     }
 
@@ -3420,7 +3675,8 @@
     }
 
     async function enterWorkspaceAs(user) {
-      await setSession(user);
+      // Mark as real user-initiated login with current session version
+      await setSession({ ...user, verifiedLogin: true, _v: SESSION_VERSION });
       history = [];
       document.getElementById('historyStrip').style.display = 'none';
       await initProfiles();
@@ -3431,44 +3687,149 @@
       document.getElementById('mainSkipTarget').focus();
     }
 
+    /* ================= MODAL & AUTH WORKFLOW ================= */
+    let currentModalPrimaryAction = null;
+    let currentModalSecondaryAction = null;
+
+    function showAuthModal({ type = 'warning', title, message, primaryText, primaryAction, secondaryText = 'Close', secondaryAction = null }) {
+      const modal = document.getElementById('authPopupModal');
+      const iconWrap = document.getElementById('authModalIconWrap');
+      const icon = document.getElementById('authModalIcon');
+      const titleEl = document.getElementById('authModalTitle');
+      const msgEl = document.getElementById('authModalMsg');
+      const primaryBtn = document.getElementById('authModalPrimaryBtn');
+      const secondaryBtn = document.getElementById('authModalSecondaryBtn');
+
+      if (!modal) return;
+
+      iconWrap.className = 'auth-modal-icon-wrap ' + (type === 'success' ? 'success' : (type === 'error' ? 'error' : ''));
+      icon.textContent = type === 'success' ? '🎉' : (type === 'error' ? '🚫' : '⚠️');
+      titleEl.textContent = title;
+      msgEl.textContent = message;
+
+      primaryBtn.textContent = primaryText;
+      secondaryBtn.textContent = secondaryText;
+
+      currentModalPrimaryAction = primaryAction;
+      currentModalSecondaryAction = secondaryAction;
+
+      modal.style.display = 'flex';
+      setTimeout(() => primaryBtn.focus(), 60);
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('authPopupModal');
+      if (modal) modal.style.display = 'none';
+      currentModalPrimaryAction = null;
+      currentModalSecondaryAction = null;
+    }
+
+    const modalCloseBtn = document.getElementById('authModalCloseBtn');
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeAuthModal);
+
+    const modalPrimaryBtn = document.getElementById('authModalPrimaryBtn');
+    if (modalPrimaryBtn) {
+      modalPrimaryBtn.addEventListener('click', () => {
+        if (typeof currentModalPrimaryAction === 'function') {
+          currentModalPrimaryAction();
+        } else {
+          closeAuthModal();
+        }
+      });
+    }
+
+    const modalSecondaryBtn = document.getElementById('authModalSecondaryBtn');
+    if (modalSecondaryBtn) {
+      modalSecondaryBtn.addEventListener('click', () => {
+        if (typeof currentModalSecondaryAction === 'function') {
+          currentModalSecondaryAction();
+        } else {
+          closeAuthModal();
+        }
+      });
+    }
+
+    const popupModalBackdrop = document.getElementById('authPopupModal');
+    if (popupModalBackdrop) {
+      popupModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === popupModalBackdrop) closeAuthModal();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('authPopupModal');
+        if (modal && modal.style.display === 'flex') closeAuthModal();
+      }
+    });
+
     function switchAuthTab(tabId) {
       const signInTab = document.getElementById('authTabSignIn');
       const registerTab = document.getElementById('authTabRegister');
       const isSignIn = tabId === 'authTabSignIn';
-      [signInTab, registerTab].forEach(t => {
-        const active = t.id === tabId;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-      document.getElementById('authPanelSignIn').classList.toggle('active', isSignIn);
-      document.getElementById('authPanelRegister').classList.toggle('active', !isSignIn);
-      document.getElementById('authHeading').textContent = isSignIn ? 'Sign in to your workspace' : 'Register a new workspace';
-      document.getElementById('authSubText').textContent = isSignIn
-        ? 'Look up your workspace by the email you used before.'
-        : 'Create a named workspace to keep your brand voice profiles and history separate.';
+
+      if (signInTab) {
+        signInTab.classList.toggle('active', isSignIn);
+        signInTab.setAttribute('aria-selected', isSignIn ? 'true' : 'false');
+      }
+      if (registerTab) {
+        registerTab.classList.toggle('active', !isSignIn);
+        registerTab.setAttribute('aria-selected', !isSignIn ? 'true' : 'false');
+      }
+
+      const panelSignIn = document.getElementById('authPanelSignIn');
+      const panelRegister = document.getElementById('authPanelRegister');
+      if (panelSignIn) panelSignIn.classList.toggle('active', isSignIn);
+      if (panelRegister) panelRegister.classList.toggle('active', !isSignIn);
+
+      const stepPillReg = document.getElementById('authStepPillRegister');
+      const stepPillSign = document.getElementById('authStepPillSignIn');
+      if (stepPillReg) stepPillReg.classList.toggle('active', !isSignIn);
+      if (stepPillSign) stepPillSign.classList.toggle('active', isSignIn);
+
+      const heading = document.getElementById('authHeading');
+      const sub = document.getElementById('authSubText');
+      if (heading) heading.textContent = isSignIn ? 'Sign in to your workspace' : 'Register your workspace account';
+      if (sub) sub.textContent = isSignIn
+        ? 'Enter your registered email or username to launch your workspace.'
+        : 'First-time creator? Register your username and email to get started.';
+
       const errBox = document.getElementById('authError');
-      errBox.style.display = 'none';
-      setTimeout(() => document.getElementById(isSignIn ? 'authSignInEmail' : 'authName').focus(), 50);
+      if (errBox) { errBox.style.display = 'none'; errBox.innerHTML = ''; }
+
+      setTimeout(() => {
+        const target = document.getElementById(isSignIn ? 'authSignInEmail' : 'authName');
+        if (target) target.focus();
+      }, 60);
     }
+
     document.getElementById('authTabSignIn').addEventListener('click', () => switchAuthTab('authTabSignIn'));
     document.getElementById('authTabRegister').addEventListener('click', () => switchAuthTab('authTabRegister'));
 
-    function showAuthGate() {
+    const authLinkToSignIn = document.getElementById('authLinkToSignIn');
+    if (authLinkToSignIn) authLinkToSignIn.addEventListener('click', () => switchAuthTab('authTabSignIn'));
+
+    const authLinkToRegister = document.getElementById('authLinkToRegister');
+    if (authLinkToRegister) authLinkToRegister.addEventListener('click', () => switchAuthTab('authTabRegister'));
+
+    function showAuthGate(defaultTab = 'authTabRegister') {
       document.getElementById('authGate').style.display = 'flex';
       document.getElementById('appMain').style.display = 'none';
-      document.getElementById('authSignInEmail').value = currentUser ? currentUser.email : '';
-      document.getElementById('authName').value = currentUser ? currentUser.name : '';
-      document.getElementById('authEmail').value = currentUser ? currentUser.email : '';
-      switchAuthTab('authTabSignIn');
+      const errBox = document.getElementById('authError');
+      if (errBox) { errBox.style.display = 'none'; errBox.innerHTML = ''; }
+      const successBanner = document.getElementById('authSignInSuccessBanner');
+      if (successBanner) { successBanner.style.display = 'none'; }
+      switchAuthTab(defaultTab);
       renderAccountList();
     }
 
     async function requireWorkspace() {
-      showApp();
       if (!currentUser) {
-        currentUser = { name: 'Damu Balaji', email: 'damubalaji144@gmail.com' };
-        await setSession(currentUser);
+        showApp();
+        showAuthGate('authTabRegister');
+        return;
       }
+      showApp();
       updateAccountUI();
       document.getElementById('authGate').style.display = 'none';
       document.getElementById('appMain').style.display = 'block';
@@ -3477,69 +3838,308 @@
     }
     window.requireWorkspace = requireWorkspace;
 
+    /* ─── Keyboard Enter navigation for auth fields ─── */
+    const authNameInput = document.getElementById('authName');
+    const authEmailInput = document.getElementById('authEmail');
+    const authSignInInput = document.getElementById('authSignInEmail');
+
+    if (authNameInput) {
+      authNameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (authEmailInput) authEmailInput.focus();
+        }
+      });
+    }
+    if (authEmailInput) {
+      authEmailInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          document.getElementById('authContinueBtn').click();
+        }
+      });
+    }
+    if (authSignInInput) {
+      authSignInInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          document.getElementById('authSignInBtn').click();
+        }
+      });
+    }
+
+    /* ─── REGISTER WORKSPACE BUTTON ─── */
     document.getElementById('authContinueBtn').addEventListener('click', async () => {
       const name = document.getElementById('authName').value.trim();
       const email = document.getElementById('authEmail').value.trim();
       const errBox = document.getElementById('authError');
+      const btn = document.getElementById('authContinueBtn');
       errBox.style.display = 'none';
-      if (!name) { errBox.textContent = 'Add your name to label this workspace.'; errBox.style.display = 'block'; return; }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = 'Enter a valid email address.'; errBox.style.display = 'block'; return; }
+      errBox.innerHTML = '';
+
+      if (!name) {
+        errBox.innerHTML = '⚠️ Please enter your username or full name.';
+        errBox.style.display = 'block';
+        document.getElementById('authName').focus();
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errBox.innerHTML = '⚠️ Please enter a valid email address.';
+        errBox.style.display = 'block';
+        document.getElementById('authEmail').focus();
+        return;
+      }
+
+      btn.textContent = 'Registering…';
+      btn.disabled = true;
+
       try {
         const res = await fetch(`${API_BASE}/api/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email: email.toLowerCase().trim() }),
         });
-        if (res.ok) {
-          const data = await res.json();
-          await enterWorkspaceAs(data.user || { name, email });
+        const data = await res.json().catch(() => ({}));
+
+        // DUPLICATE CHECK: If username or email is already found
+        if (res.status === 409 || data.code === 'USERNAME_EXISTS' || data.code === 'EMAIL_EXISTS') {
+          const isUserTaken = data.code === 'USERNAME_EXISTS';
+          const errMsg = data.error || (isUserTaken ? `Username "${name}" is already taken.` : `An account with email "${email}" already exists.`);
+          
+          errBox.innerHTML = `<div>⚠️ <strong>Account Already Exists:</strong> ${errMsg}</div><button type="button" class="auth-inline-action-btn" id="inlineGoToSignIn">Sign In Instead →</button>`;
+          errBox.style.display = 'block';
+
+          const inlineBtn = document.getElementById('inlineGoToSignIn');
+          if (inlineBtn) {
+            inlineBtn.addEventListener('click', () => {
+              switchAuthTab('authTabSignIn');
+              document.getElementById('authSignInEmail').value = email || name;
+              document.getElementById('authSignInEmail').focus();
+            });
+          }
+
+          showAuthModal({
+            type: 'error',
+            title: isUserTaken ? 'Username Already Found' : 'Email Already Registered',
+            message: `${errMsg} If this is your account, please sign in. Otherwise, use another username.`,
+            primaryText: 'Sign In Instead →',
+            primaryAction: () => {
+              closeAuthModal();
+              switchAuthTab('authTabSignIn');
+              document.getElementById('authSignInEmail').value = email || name;
+              document.getElementById('authSignInEmail').focus();
+            },
+            secondaryText: 'Change Username',
+            secondaryAction: () => {
+              closeAuthModal();
+              document.getElementById('authName').focus();
+              document.getElementById('authName').select();
+            }
+          });
           return;
         }
+
+        if (!res.ok || !data.user) {
+          errBox.textContent = data.error || 'Registration failed. Please try again.';
+          errBox.style.display = 'block';
+          return;
+        }
+
+        // REGISTRATION SUCCESS!
+        // Requirement: "first user registers, once registered they login"
+        // User must NOT be logged in directly; route to login with a clear confirmation popup.
+        const createdUser = data.user;
+        
+        // Clear registration inputs
+        document.getElementById('authName').value = '';
+        document.getElementById('authEmail').value = '';
+
+        // Switch to Sign In panel & pre-fill email
+        switchAuthTab('authTabSignIn');
+        document.getElementById('authSignInEmail').value = createdUser.email;
+
+        // Show green confirmation banner on Sign In panel
+        const banner = document.getElementById('authSignInSuccessBanner');
+        const bannerMsg = document.getElementById('authSignInSuccessMsg');
+        if (banner && bannerMsg) {
+          bannerMsg.textContent = `✓ Registration complete for "${createdUser.name}"! Click "Sign In" below or press Enter to launch your workspace.`;
+          banner.style.display = 'flex';
+        }
+
+        // Show congratulations popup modal
+        showAuthModal({
+          type: 'success',
+          title: '🎉 Registration Successful!',
+          message: `Welcome, ${createdUser.name}! Your workspace account is registered. Please sign in now with your email or username to access your workspace.`,
+          primaryText: 'Proceed to Sign In →',
+          primaryAction: () => {
+            closeAuthModal();
+            document.getElementById('authSignInBtn').focus();
+          },
+          secondaryText: 'Close',
+          secondaryAction: () => {
+            closeAuthModal();
+            document.getElementById('authSignInEmail').focus();
+          }
+        });
+
+        renderAccountList();
+
       } catch (err) {
-        console.warn('Backend register offline fallback');
+        console.error('Registration network error:', err);
+        errBox.textContent = 'Could not connect to the server. Please verify backend is running.';
+        errBox.style.display = 'block';
+      } finally {
+        btn.textContent = 'Register Workspace →';
+        btn.disabled = false;
       }
-      await enterWorkspaceAs({ name, email: email.toLowerCase().trim() });
     });
 
+    /* ─── SIGN IN BUTTON ─── */
     document.getElementById('authSignInBtn').addEventListener('click', async () => {
-      const email = document.getElementById('authSignInEmail').value.trim();
+      const input = document.getElementById('authSignInEmail').value.trim();
       const errBox = document.getElementById('authError');
+      const btn = document.getElementById('authSignInBtn');
       errBox.style.display = 'none';
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errBox.textContent = 'Enter a valid email address.'; errBox.style.display = 'block'; return; }
+      errBox.innerHTML = '';
+
+      if (!input) {
+        errBox.innerHTML = '⚠️ Please enter your registered email address or username.';
+        errBox.style.display = 'block';
+        document.getElementById('authSignInEmail').focus();
+        return;
+      }
+
+      btn.textContent = 'Signing in…';
+      btn.disabled = true;
+
       try {
         const res = await fetch(`${API_BASE}/api/auth/signin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email.toLowerCase().trim() }),
+          body: JSON.stringify({ email: input }),
         });
-        if (res.ok) {
-          const data = await res.json();
-          await enterWorkspaceAs(data.user || { name: email.split('@')[0], email });
+        const data = await res.json().catch(() => ({}));
+
+        // NOT REGISTERED: If user didn't register and directly went for login
+        if (res.status === 404 || data.code === 'NOT_REGISTERED') {
+          const notFoundMsg = data.error || `No workspace account found for "${input}".`;
+          
+          errBox.innerHTML = `<div>⚠️ <strong>Account Not Registered:</strong> ${notFoundMsg}</div><button type="button" class="auth-inline-action-btn" id="inlineGoToRegister">Register First →</button>`;
+          errBox.style.display = 'block';
+
+          const inlineRegisterBtn = document.getElementById('inlineGoToRegister');
+          if (inlineRegisterBtn) {
+            inlineRegisterBtn.addEventListener('click', () => {
+              switchAuthTab('authTabRegister');
+              if (input.includes('@')) {
+                document.getElementById('authEmail').value = input;
+                document.getElementById('authName').focus();
+              } else {
+                document.getElementById('authName').value = input;
+                document.getElementById('authEmail').focus();
+              }
+            });
+          }
+
+          // Trigger dedicated popup message
+          showAuthModal({
+            type: 'warning',
+            title: 'Please Register First',
+            message: `No account was found for "${input}". You must register an account before signing in to your workspace.`,
+            primaryText: 'Go to Registration Page →',
+            primaryAction: () => {
+              closeAuthModal();
+              switchAuthTab('authTabRegister');
+              if (input.includes('@')) {
+                document.getElementById('authEmail').value = input;
+                document.getElementById('authName').focus();
+              } else {
+                document.getElementById('authName').value = input;
+                document.getElementById('authEmail').focus();
+              }
+            },
+            secondaryText: 'Try Another Email',
+            secondaryAction: () => {
+              closeAuthModal();
+              document.getElementById('authSignInEmail').focus();
+              document.getElementById('authSignInEmail').select();
+            }
+          });
           return;
         }
+
+        if (!res.ok || !data.user) {
+          errBox.textContent = data.error || 'Sign-in failed. Please check your credentials or register.';
+          errBox.style.display = 'block';
+          return;
+        }
+
+        // SIGN IN SUCCESS!
+        await enterWorkspaceAs(data.user);
+
       } catch (err) {
-        console.warn('Backend signin fallback');
+        console.error('Sign-in network error:', err);
+        errBox.textContent = 'Could not connect to the server. Please try again.';
+        errBox.style.display = 'block';
+      } finally {
+        btn.textContent = 'Sign In to Workspace →';
+        btn.disabled = false;
       }
-      // Resilient fallback: auto-sign in
-      const defaultName = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
-      await enterWorkspaceAs({ name: defaultName, email: email.toLowerCase().trim() });
     });
 
     document.getElementById('signOutBtn').addEventListener('click', async () => {
       await clearSessionStorage();
       updateAccountUI();
-      showAuthGate();
+      showAuthGate('authTabSignIn');
     });
 
     async function initAuth() {
-      // Restore session from sessionStorage (survives page refresh, cleared on tab close)
+      // Nuke legacy sessions: anything without verifiedLogin OR wrong version is wiped
       try {
+        // Clear both storage types to be thorough
         const stored = sessionStorage.getItem('genai:session');
-        if (stored) currentUser = JSON.parse(stored);
+        const localStored = localStorage.getItem('genai:session');
+
+        const purge = (raw) => {
+          if (!raw) return null;
+          try {
+            const parsed = JSON.parse(raw);
+            // Keep session only if it was created via real login AND matches current version
+            if (parsed && parsed.verifiedLogin === true && parsed._v === SESSION_VERSION) {
+              return parsed;
+            }
+          } catch (e) {}
+          return null;
+        };
+
+        // Clear localStorage unconditionally (old code used it, new code uses sessionStorage only)
+        localStorage.removeItem('genai:session');
+
+        const fromSession = purge(stored);
+        if (fromSession) {
+          currentUser = fromSession;
+        } else {
+          // Wipe the stale/invalid session
+          sessionStorage.removeItem('genai:session');
+          currentUser = null;
+        }
       } catch (e) { currentUser = null; }
       updateAccountUI();
     }
     initAuth();
+
+
+    // Wire up the navbar Sign Out button
+    const navSignOutBtn = document.getElementById('navSignOutBtn');
+    if (navSignOutBtn) {
+      navSignOutBtn.addEventListener('click', async () => {
+        await clearSessionStorage();
+        updateAccountUI();
+      });
+      navSignOutBtn.addEventListener('mouseenter', () => { navSignOutBtn.style.borderColor = 'rgba(255,255,255,0.5)'; navSignOutBtn.style.color = '#fff'; });
+      navSignOutBtn.addEventListener('mouseleave', () => { navSignOutBtn.style.borderColor = 'rgba(255,255,255,0.2)'; navSignOutBtn.style.color = 'rgba(255,255,255,0.6)'; });
+    }
 
     /* ---------------- workspace section tabs (Transform / Dashboard) ---------------- */
     const pageTabs = document.querySelectorAll('.page-tab:not(.auth-tab)');
@@ -4644,7 +5244,7 @@
     const slideState = {};
 
     function generateMockupHtml(fmt, text) {
-      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Damu Balaji';
+      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Creator';
       const clean = (text || '').trim();
 
       if (fmt === 'linkedin') {
@@ -4985,7 +5585,7 @@
       const input = document.getElementById('mlCommentInput');
       const text = input ? input.value.trim() : '';
       if (!text) return;
-      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Damu Balaji';
+      const authorName = (currentUser && currentUser.name) ? currentUser.name : 'Creator';
       const state = window.linkedinMockState || { likes: 248, liked: false, reposts: 12, comments: [] };
       state.comments.push({ author: authorName, title: 'Creator', text, time: 'Just now' });
       window.linkedinMockState = state;

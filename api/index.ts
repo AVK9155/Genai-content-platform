@@ -23,38 +23,69 @@ const memoryUsers: Map<string, { id: string; name: string; email: string; role: 
 const memoryProfiles: Record<string, any>[] = [];
 const memoryHistory: Record<string, any>[] = [];
 
-// POST /api/auth/signin — look up user by email, reject if not found
+// POST /api/auth/signin — look up user by email or username, reject if not found
 app.post("/api/auth/signin", (req: Request, res: Response) => {
-  const email = (req.body.email || "").toLowerCase().trim();
-  if (!email) return res.status(400).json({ error: "Email is required." });
+  const input = (req.body.email || req.body.identifier || "").trim();
+  if (!input) return res.status(400).json({ error: "Email or username is required." });
 
-  const user = memoryUsers.get(email);
-  if (!user) {
+  const normalInput = input.toLowerCase();
+  let foundUser: { id: string; name: string; email: string; role: string } | undefined;
+
+  const allUsers = Array.from(memoryUsers.values());
+  for (const u of allUsers) {
+    if (u.email.toLowerCase() === normalInput || u.name.toLowerCase() === normalInput) {
+      foundUser = u;
+      break;
+    }
+  }
+
+  if (!foundUser) {
     return res.status(404).json({
-      error: "No account found for that email. Please register first."
+      error: `No account found for "${input}". Please register first before logging in.`,
+      code: "NOT_REGISTERED",
+      identifier: input,
     });
   }
-  res.json({ user, token: "session-token" });
+  res.json({ user: foundUser, message: "Signed in successfully", token: "session-token" });
 });
 
-// POST /api/auth/register — create a new user (name + email required)
+// POST /api/auth/register — create a new user (reject duplicate username or email)
 app.post("/api/auth/register", (req: Request, res: Response) => {
   const email = (req.body.email || "").toLowerCase().trim();
   const name = (req.body.name || "").trim();
 
   if (!email || !name) {
-    return res.status(400).json({ error: "Name and email are required." });
+    return res.status(400).json({ error: "Username and email are required." });
   }
 
-  // If user already exists with this email, return them (idempotent)
-  const existing = memoryUsers.get(email);
-  if (existing) {
-    return res.json({ user: existing, token: "session-token" });
+  // 1. Check duplicate email
+  if (memoryUsers.has(email)) {
+    return res.status(409).json({
+      error: `An account with email "${email}" already exists. Please sign in instead.`,
+      code: "EMAIL_EXISTS",
+      email,
+    });
+  }
+
+  // 2. Check duplicate username
+  const existingUsers = Array.from(memoryUsers.values());
+  for (const u of existingUsers) {
+    if (u.name.toLowerCase() === name.toLowerCase()) {
+      return res.status(409).json({
+        error: `Username "${name}" is already taken. Please choose another username or sign in.`,
+        code: "USERNAME_EXISTS",
+        name,
+      });
+    }
   }
 
   const user = { id: "user-" + Date.now(), name, email, role: "CREATOR" };
   memoryUsers.set(email, user);
-  res.status(201).json({ user, token: "session-token" });
+  res.status(201).json({
+    user,
+    message: "Registration successful. Please sign in to your workspace.",
+    token: "session-token",
+  });
 });
 
 // GET /api/auth/accounts — list registered workspaces
